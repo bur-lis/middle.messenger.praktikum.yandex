@@ -1,0 +1,118 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+</head>
+
+<body>
+    <div class="login-form">
+        <div class="title">Регистация</div>
+
+        <form action="" method="post" class="form">
+            <div class="form-example">
+                <label class="form-label" for="name">Почта</label>
+                {{>required-input name="name" type="text" value=register_people.mail }}
+            </div>
+            <div class="form-example">
+                <label class="form-label" for="email">Логин </label>
+                {{>required-input name="name" type="text" value=register_people.login }}
+            </div>
+            <div class="form-example">
+                <label class="form-label" for="email">Имя </label>
+                {{>required-input name="name" type="text" value=register_people.first_name }}
+            </div>
+            <div class="form-example">
+                <label class="form-label" for="email">Фамилия </label>
+                {{>required-input name="name" type="text" value=register_people.second_name }}
+            </div>
+            <div class="form-example">
+                <label class="form-label" for="email">Телефон </label>
+                {{>required-input name="name" type="phone"  value=register_people.phone }}
+            </div>
+            <div class="form-example">
+                <label class="form-label" for="email">Пароль </label>
+                {{>required-input name="name" type="password"  value=register_people.password }}
+            </div>
+            <div class="form-example">
+                <label class="form-label" for="email">Пароль(ещё раз) </label>
+                {{>required-input name="name"  type="password"  value=register_people.confirm_password }}
+            </div>
+            <div class="form-example">
+                <!-- <input type="submit" value="Subscribe!" /> -->
+                {{>button type="submit" label="Зарегистрироваться"}}
+                
+            </div>
+        </form>
+<a href="./src/pages/authorization.html">Войти</a>
+        <!-- <ul>
+            {{#each name_people}}
+            <li>{{this}}</li>
+            <li>{{> button label=this}}</li>
+            {{/each}}
+        </ul> -->
+    </div>
+
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>
+
+<style>
+    .login-form {
+        width: 340px;
+        height: 615px;
+        background-color: #F8FAFB;
+        border: 1px solid #ABBFD3;
+        border-radius: 12px;
+        margin: calc(50vh - 307.5px) auto;
+        display: grid;
+        grid-template-rows: 2fr 3fr 1fr;
+        box-sizing: border-box;
+        align-items: center;
+        justify-items: center;
+        padding: 15px;
+    }
+
+    @media (max-width: 400px) {
+
+        .login-form {
+            width: 95%;
+            height: 90vh;
+            margin: calc(5vh - 2px) auto;
+        }
+
+    }
+
+    .form{
+        width: 100%;
+        margin: 0;
+        
+    }
+
+    .form-example {
+        display: flex;
+        flex-direction: column;
+        margin:10px;
+
+
+
+    }
+
+    .form-label {
+        font-size: 10px;
+        color: #999999;
+    }
+
+    .title {
+        color: #143256;
+        font-size: 24;
+        align-self: end;
+
+    }
+    a{
+        text-decoration: none;
+        font-size: 11px;
+        align-self: start;
+    }
+</style>
