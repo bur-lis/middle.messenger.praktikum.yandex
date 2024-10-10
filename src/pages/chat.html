@@ -1,0 +1,351 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <script type="module" src="/main.js"></script>
+</head>
+
+<body>
+    <aside class="aside-open">
+        <header class="action-header">
+            <div class="personal" onclick="location.href='../../src/pages/profile.html';">
+                <div class="personal__photo"></div>
+                <label class="personal__display-name">{{login_people.display_name}}</label>
+                <label class="personal__name">{{login_people.first_name}} {{ login_people.second_name}}</label>
+            </div>
+            <button class="collapse-button"> ❮ Свернуть</button>
+        </header>
+        <search>
+            <form action="./search/" class="serch">
+                <input type="search" id="movie" placeholder="Поиск" class="search__input" />
+            </form>
+        </search>
+        <ul class="chats-list">
+            {{#each chats}}
+            <li class="chats-list__message">
+                <div class="message__interlocutor-photo"></div>
+                <label class="message__interlocutor-name">{{this.name}}</label>
+                <div class="message__content">
+                    {{#if this.output}} <label class="content__is-sender">Вы:</label>{{/if}}
+                    <label class="content__text">{{this.message}}</label>
+                </div>
+                <label class="message__time">{{this.time}}</label>
+                {{#if this.new_count}} <div class="message__new-count">{{this.new_count}}</div>{{/if}}
+            </li>
+            {{/each}}
+        </ul>
+    </aside>
+
+    <main>
+        <header class="message-header">
+            <div class="interlocutor">
+                <div class="interlocutor__photo"></div>
+                <label class="interlocutor__display-name">{{login_people.display_name}}</label>
+            </div>
+            <button class="button-img chat-menu-button">
+                <img src="../../static/menu-dots-vertical.svg" />
+            </button>
+        </header>
+        <section class="message__history">
+            <ul class="history-list">
+                {{#each message}}<li>
+
+                    <label class="history-list__data-block">{{@key}}</label>
+                    {{#each this}}
+                    <div {{#if this.output}}class="history-list__message" {{else}} class="history-list__message--output"
+                        {{/if}}>
+                        <p class="message__text">{{this.message}}</p>
+                        <label class="message__time">{{this.time}}</label>
+
+                    </div>
+                    {{/each}}
+                </li>
+                {{/each}}
+        </section>
+        <section class="message__send-block">
+            <button class="button-img send-block___attach-file"> <img src="../../static/attach-file.svg" /></button>
+            <textarea class="send-block__writing-textarea" placeholder="Сообщение"></textarea>
+            <button class="send-block__send-button">➔</button>
+        </section>
+    </main>
+</body>
+
+</html>
+
+<style>
+    .history-list__message,
+    .history-list__message--output {
+        display: grid;
+        max-width: 40%;
+        width: auto;
+        padding: 15px;
+        margin: 20px;
+        border-radius: 10px;
+        font-size: 13px;
+        align-items: end;
+        grid-template-columns: 1fr 30px;
+        grid-template-areas: 'message time';
+    }
+
+    .send-block__send-button {
+        background: #3D6A95;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 20px;
+        margin: auto;
+        font-size: 18px;
+    }
+
+   
+
+    .message__text {
+        grid-area: message;
+        margin: 0;
+    }
+
+    .send-block___attach-file {
+        width: 5%;
+    }
+
+    .send-block___attach-file img {
+        height: 30px;
+    }
+
+    .history-list__data-block {
+        color: #999999;
+        font-size: 12px;
+        align-self: center;
+    }
+
+    .history-list__message {
+        background-color: #F8FAFB;
+        border-bottom-left-radius: 0;
+        margin-right: auto;
+
+    }
+
+    .history-list__data-block {
+        display: block;
+        text-align: center;
+    }
+
+
+    .history-list__message--output {
+        background-color: #DCE5F4;
+        border-bottom-right-radius: 0;
+        margin-left: auto;
+    }
+
+    .message__send-block {
+        height: 90px;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #EAEAEA;
+        box-sizing: border-box;
+        margin: 5px 20px;
+    }
+
+    textarea {
+        width: 90%;
+        height: 70px;
+        background: #EFEFEF;
+        border: none;
+        border-radius: 10px;
+        resize: none;
+        padding: 10px;
+    }
+
+    textarea::placeholder {
+        color: #999999;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .message__history {
+        height: calc(100% - 180px);
+        display: flex;
+        align-items: end;
+        overflow: hidden;
+    }
+
+
+
+    main {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .history-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    header {
+        width: calc(100% - 40px);
+        margin: 5px 20px;
+        height: 70px;
+        border-bottom: 1px solid #EAEAEA;
+        box-sizing: border-box;
+
+    }
+
+    .message-header {
+        display: flex;
+    }
+
+    .chat-menu-button img {
+        height: 20px;
+    }
+
+    .button-img {
+        background: none;
+        border: none;
+        padding: 0;
+    }
+
+    .interlocutor {
+        width: calc(100% - 30px);
+        display: flex;
+        align-items: center;
+    }
+
+    .personal__display-name,
+    .interlocutor__display-name {
+
+        color: #3D6A95;
+        font-weight: 500;
+    }
+
+    .action-header {
+        display: flex;
+    }
+
+    .personal__photo {
+        grid-area: photo;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        border: none;
+        background: #3D6A95;
+        align-self: center;
+    }
+
+    .personal {
+
+        display: grid;
+        align-self: center;
+        min-width: 250px;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 60px 1fr;
+        grid-template-areas:
+            'photo login'
+            'photo name'
+    }
+
+    .personal__name {
+        color: #999999;
+    }
+
+    .collapse-button {
+        background: none;
+        border: none;
+        font-size: 12px;
+        margin-left: auto;
+        padding: 5px 0;
+        height: 20px;
+        color: #627B9B;
+        font-weight: 500;
+        min-width: 70px;
+    }
+
+    .search__input {
+        width: calc(100% - 40px);
+        margin: 5px 20px;
+        padding-left: 10px;
+    }
+
+    .search__input::placeholder {
+        color: #143256;
+    }
+
+    .chats-list {
+        height: calc(100% - 140px);
+        list-style: none;
+        padding: 0 10px;
+        margin: 0;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+
+    .chats-list__message {
+        height: 70px;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 60px 1fr 40px;
+        grid-template-areas:
+            'photo name time'
+            'photo text none'
+            'photo text new_count';
+        border-bottom: 1px solid #EAEAEA;
+        color: #999999;
+        box-sizing: border-box;
+        margin: 10px 0;
+    }
+
+    .message__interlocutor-photo,
+    .interlocutor__photo {
+        grid-area: photo;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        border: none;
+        background: #EFEFEF;
+        align-self: center;
+        margin: 5px;
+    }
+
+    .message__interlocutor-name {
+        grid-area: name;
+        color: #143256;
+        font-size: 14px;
+        font-weight: 500;
+
+    }
+
+    .message__content {
+        grid-area: text;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .content__is-sender {
+        color: black;
+    }
+
+    .message__time {
+        grid-area: time;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    .message__new-count {
+        grid-area: new_count;
+        width: 20px;
+        height: 20px;
+        background: #3D6A95;
+        border-radius: 10px;
+        color: white;
+        align-content: center;
+        font-weight: 400;
+        text-align: center;
+        margin: 10px;
+        font-size: 12px;
+    }
+</style>
