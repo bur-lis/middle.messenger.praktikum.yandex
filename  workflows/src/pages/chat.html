@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1"
+    />
+    <script type="module" src="/main.js"></script>
+  </head>
+
+  <body>
+    <aside>
+        <header></header>
+        <search>
+            <form action="./search/">
+              <input type="search" id="movie" name="q" />
+              <button type="submit">Search</button>
+            </form>
+          </search>
+        <ul class="message-list">
+            {{#each message}}
+            <li class="message-list__message">
+                <div class="message__user-photo"></div>
+                <label class="message__user-name">{{this.name}}</label>
+                <div class="message__content">
+                    {{#if this.output}}  <label  class="content__is-sender">Вы:</label>{{/if}}
+                     <label class="content__text">{{this.message}}</label></div>
+                <label class="message__time">{{this.time}}</label>
+                {{#if this.new_count}}  <div class="message__new-count">{{this.new_count}}</div>{{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </aside>
+    
+    <main><header></header></main>
+  </body>
+</html>
+
+<style>
+aside{
+    width: 400px;
+    height: 100%;
+    background: #FAFCFF;
+    border-right: 1px solid #EAEAEA;
+}
+main{
+    width: 100%;
+    height: 100%;
+}
+
+header{
+
+    width: calc(100% - 50px);
+    margin: 0 25px;
+    height: 50px;
+    border-bottom: 1px solid #EAEAEA;
+
+}
+
+
+
+.message-list{
+    height: 70px;
+    list-style: none;
+    padding: 0 10px;
+    margin: 0;
+    box-sizing: border-box; }  
+
+
+.message-list__message{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 60px 1fr 40px;
+    grid-template-areas:
+        'photo name time'
+        'photo text none'
+        'photo text new_count';
+    border-bottom: 1px solid #EAEAEA;
+    color: #999999;
+    box-sizing: border-box;
+    height: 100%;
+    margin: 10px 0;
+}
+.message__user-photo{
+grid-area: photo;
+width: 50px;
+height: 50px;
+border-radius: 25px;
+border: none;
+background: #EFEFEF;
+align-self: center;
+    }
+
+  .message__user-name{
+        grid-area: name;
+        color: #143256;
+        font-size: 14px;
+        font-weight: 500;
+
+    }
+
+    .message__content{
+        grid-area: text;       
+        font-size: 12px;
+        font-weight: 500 ;        
+    }
+.content__is-sender{
+    color: black;
+}
+    .message__time{
+        grid-area: time;
+        font-size: 10px;
+    }
+    .message__new-count{
+        grid-area: new_count;
+        width: 20px;
+    height: 20px;
+    background: #3D6A95;
+    border-radius: 10px;
+    color: white;
+    align-content: center;
+    font-weight: 400;
+    text-align: center;
+    margin: 5px;
+    font-size: 12px;
+    }
+</style>
