@@ -33,4 +33,4 @@ npm run start
 
 ## Netlify
 
-The project is deployed on Netlify at the [link](https://app.netlify.com/teams/bur-lis/sites)
+The project is deployed on Netlify at the [link](https://app.netlify.com/sites/tranquil-kheer-4a92fe/overview)
