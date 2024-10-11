@@ -1,0 +1,33 @@
+<aside {{#if open}} class="aside-open" {{else}} class="aside-closed" {{/if}}>
+    {{#if open}}
+    <header class="action-header">
+        <div class="personal" onclick="location.href='./profile.html';">
+            <div class="personal__photo"></div>
+            <label class="bright-blue-name  personal__display-name">{{login_people.display_name}}</label>
+            <label class="personal__name">{{login_people.first_name}} {{ login_people.second_name}}</label>
+        </div>
+        <button class="collapse-button"> ❮ Свернуть</button>
+    </header>
+    <search>
+        <form action="./search/" class="serch">
+            <input type="search" id="movie" placeholder="Поиск" class="search__input" />
+        </form>
+    </search>
+    <ul class="chats-list">
+        {{#each chats}}
+        <li class="chats-list__message">
+            <div class="plug chats-list__message__interlocutor-photo"></div>
+            <label class="chats-list__message__interlocutor-name">{{this.name}}</label>
+            <div class="chats-list__message__content">
+                {{#if this.output}} <label class="chats-list__message__content__is-sender">Вы:</label>{{/if}}
+                <label class="chats-list__message__ccontent__text">{{this.message}}</label>
+            </div>
+            <label class="chats-list__message__time">{{this.time}}</label>
+            {{#if this.new_count}} <div class="chats-list__message__new-count">{{this.new_count}}</div>{{/if}}
+        </li>
+        {{/each}}
+    </ul>
+    {{else}}
+    <button class="aside-closed__expand-button">➔</button>
+    {{/if}}
+</aside>
