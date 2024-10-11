@@ -7,9 +7,24 @@ export default defineConfig({
         port
             : 3000
     },
+    build: {
+        // outDir: resolve(__dirname, 'dist'),
+        rollupOptions: {
+            input: {
+                main: resolve(__dirname, 'index.html'),
+                register: resolve(__dirname, 'pages/register.html'),
+                authorization: resolve(__dirname, 'pages/authorization.html'),
+                change_password: resolve(__dirname, 'pages/change_password.html'),
+                chat: resolve(__dirname, 'pages/chat.html'),
+                client_errors: resolve(__dirname, 'pages/client_errors.html'),
+                profile: resolve(__dirname, 'pages/profile.html'),
+                server_errors: resolve(__dirname, 'pages/server_errors.html'),
+              },
+        },
+    },
     plugins: [
         handlebars({
-            partialDirectory: resolve(__dirname, 'partials'),
+            partialDirectory: [resolve(__dirname, 'partials')],
             context: {
                 chats: {
                     0: {
@@ -106,7 +121,4 @@ export default defineConfig({
                 },
             },
         })],
-}) 
-
-
-
+})
