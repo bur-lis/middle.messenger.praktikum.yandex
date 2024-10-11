@@ -9,7 +9,7 @@ You can view it by following the [link](https://www.figma.com/design/RC8oqsy8WuM
 
 ## Pages
 
-Currently, the project consists of several main pages.Below are links to their implementation:
+Currently, the project consists of several main pages.Below are links to their implementation git:
 
 * [Start page](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/index.html)
 * [User authorization](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/authorization.html)
@@ -20,7 +20,15 @@ Currently, the project consists of several main pages.Below are links to their i
 * [Server error](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/server_errors.html)
 * [Client error](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/client_errors.html)
 
-
+And the result posted on Nelifay:
+* [Start page](https://tranquil-kheer-4a92fe.netlify.app/)
+* [User authorization](https://tranquil-kheer-4a92fe.netlify.app/pages/authorization)
+* [User registration](https://tranquil-kheer-4a92fe.netlify.app/pages/register)
+* [Selected chat page](https://tranquil-kheer-4a92fe.netlify.app/pages/chat)
+* [Edit profile](https://tranquil-kheer-4a92fe.netlify.app/pages/profile)
+* [Change password](hhttps://tranquil-kheer-4a92fe.netlify.app/pages/change_password)
+* [Server error](https://tranquil-kheer-4a92fe.netlify.app/pages/server_errors)
+* [Client error](https://tranquil-kheer-4a92fe.netlify.app/pages/client_errors.html)
 ## Runing
 
 ```js
