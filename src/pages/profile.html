@@ -1,24 +1,17 @@
 <html>
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-    <script type="module" src="/main.js"></script>
-</head>
-
+    {{>head}}
 <body>
-    <aside class="aside-closed">
-        <button class="saside-closed__expand-button">➔</button>
-    </aside>
+    {{>aside open=false}}
     <main>
         <div class="user-profile">
-            <div class="user-profile__user-logo">
+            <!-- <div class="user-profile__user-logo">
                 <div class="user-logo__photo">
                     <img src="../../ static/add-user-photo.svg" />
                 </div>
                 <h1 class="user-logo__display_name">{{login_people.display_name}}</h1>
-            </div>
-            <form method="post" class="user-profile__settings-form">
+            </div> -->
+            {{>user-logo}}
+            <form action="../../src/pages/chat.html" method="post" class="user-profile__settings-form">
 
                 {{>input-block name="email"
                 type="text" value=login_people.mail label="Почта" }}
@@ -37,14 +30,15 @@
                     label="Сохранить" class="settings-form____button"}}
 </form> 
 
-      <div class="button-block">      <button onclick="location.href='../../src/pages/chat.html'" class="button-block__button">Изменить
-                пароль</button> {{>button
+      <div class="button-block">      
+        <button onclick="location.href='../../src/pages/change_password.html'" class="button-block__button">Изменить
+                пароль</button>
+                 {{>button onclick="location.href='../../index.html'"
             label="Выйти" class="button-block__button-red"}}
         </div>
         </div>
     </main>
 </body>
-<!-- action="../../src/pages/chat.html" -->
 
 </html>
 
@@ -52,7 +46,7 @@
     .user-profile {
         width: 60%;
         max-width: 600px;
-        margin: auto;
+        margin: calc(50vh - 320px) auto;
     }
 
     .button-block__button,
@@ -67,24 +61,7 @@
     }
 
 
-    .user-logo__photo {
-        width: 150px;
-        height: 150px;
-        border-radius: 80px;
-        background: #EFEFEF;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        margin: 0 auto;
-    }
 
-    .user-logo__photo img {
-        height: 70px;
-    }
-
-    .user-profile__user-logo {
-        text-align: center;
-    }
 
     .button-block {
         display: flex;
@@ -92,15 +69,5 @@
         margin: -74px 0;
     }
 
-    .saside-closed__expand-button {
-        background: #ABBFD3;
-        color: white;
-        border: none;
-        width: 35px;
-        height: 35px;
-        border-radius: 20px;
-        margin: 45vh 20px;
-        font-size: 18px;
-
-    }
+ 
 </style>
