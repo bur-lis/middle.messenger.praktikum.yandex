@@ -6,7 +6,7 @@
     <main>
         <div class="user-profile">
             {{>user-logo}}
-            <form action="../pages/chat.html" method="post" class="user-profile__settings-form">
+            <form action="../pages/chat" method="post" class="user-profile__settings-form">
                 {{>input_block name="email"
                 type="text" value=login_people.mail label="Почта" }}
                 {{>input_block name="login"
@@ -23,7 +23,7 @@
                 label="Сохранить" class="settings-form____button"}}
             </form>
             <div class="user-profile__button-block">
-                {{>button onclick="location.href='../pages/change_password.html'"
+                {{>button onclick="location.href='../pages/change_password'"
                 label="Изменить пароль" class="user-profile__button-block__button"}}
                 {{>button onclick="location.href='../../index.html'"
                 label="Выйти" class="user-profile__button-block__button-red"}}

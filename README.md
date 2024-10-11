@@ -26,7 +26,7 @@ And the result posted on Nelifay:
 * [User registration](https://tranquil-kheer-4a92fe.netlify.app/pages/register)
 * [Selected chat page](https://tranquil-kheer-4a92fe.netlify.app/pages/chat)
 * [Edit profile](https://tranquil-kheer-4a92fe.netlify.app/pages/profile)
-* [Change password](hhttps://tranquil-kheer-4a92fe.netlify.app/pages/change_password)
+* [Change password](https://tranquil-kheer-4a92fe.netlify.app/pages/change_password)
 * [Server error](https://tranquil-kheer-4a92fe.netlify.app/pages/server_errors)
 * [Client error](https://tranquil-kheer-4a92fe.netlify.app/pages/client_errors.html)
 ## Runing
