@@ -5,7 +5,7 @@ My project is a tool for exchanging messages over a computer network in real tim
 ## Prototype
 
 The prototype of the application is made using Figma.
-You can view it by following the [link](ttps://www.figma.com/design/RC8oqsy8WuMJ5G4etzYgNd/%D0%9C%D0%B0%D0%BA%D0%B5%D1%82?node-id=15-78&node-type=frame&t=wS1p6AUJI3YXtMVE-0)
+You can view it by following the [link](https://www.figma.com/design/RC8oqsy8WuMJ5G4etzYgNd/%D0%9C%D0%B0%D0%BA%D0%B5%D1%82?node-id=15-78&node-type=frame&t=wS1p6AUJI3YXtMVE-0)
 
 ## Pages
 
