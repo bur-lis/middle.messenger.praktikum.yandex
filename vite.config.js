@@ -3,12 +3,7 @@ import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
 
 export default defineConfig({
-    server: {
-        port
-            : 3000
-    },
     build: {
-        // outDir: resolve(__dirname, 'dist'),
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
@@ -19,8 +14,11 @@ export default defineConfig({
                 client_errors: resolve(__dirname, 'pages/client_errors.html'),
                 profile: resolve(__dirname, 'pages/profile.html'),
                 server_errors: resolve(__dirname, 'pages/server_errors.html'),
-              },
+            },
         },
+    },server: {
+        port: 3000,
+        open: true
     },
     plugins: [
         handlebars({
