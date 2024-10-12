@@ -4,8 +4,8 @@ import handlebars from 'vite-plugin-handlebars';
 
 export default defineConfig({
     server: {
-        port
-            : 3000
+        port: 3000,
+        open: true
     },
     build: {
         // outDir: resolve(__dirname, 'dist'),
@@ -19,7 +19,7 @@ export default defineConfig({
                 client_errors: resolve(__dirname, 'pages/client_errors.html'),
                 profile: resolve(__dirname, 'pages/profile.html'),
                 server_errors: resolve(__dirname, 'pages/server_errors.html'),
-              },
+            },
         },
     },
     plugins: [
