@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-        "dev": "vite",
-        "start": "vite build && vite preview --port 3000",
-        "build": "vite build"
-    },
+    "dev": "vite",
+    "start": "vite build && vite preview --port 3000",
+    "build": "vite build"
+  },
   "devDependencies": {
     "sass": "^1.79.4",
+    "typescript": "^5.6.3",
     "vite": "^5.4.1"
   },
   "dependencies": {
@@ -19,4 +20,3 @@
     "node": ">=16.0.0"
   }
 }
-

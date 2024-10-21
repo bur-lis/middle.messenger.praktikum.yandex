@@ -7,13 +7,13 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: resolve(__dirname, 'index.html'),
-                register: resolve(__dirname, 'pages/register.html'),
-                authorization: resolve(__dirname, 'pages/authorization.html'),
-                change_password: resolve(__dirname, 'pages/change_password.html'),
-                chat: resolve(__dirname, 'pages/chat.html'),
-                client_errors: resolve(__dirname, 'pages/client_errors.html'),
-                profile: resolve(__dirname, 'pages/profile.html'),
-                server_errors: resolve(__dirname, 'pages/server_errors.html'),
+                register: resolve(__dirname, 'src/pages/register.html'),
+                authorization: resolve(__dirname, 'src/pages/authorization.html'),
+                change_password: resolve(__dirname, 'src/pages/change_password.html'),
+                chat: resolve(__dirname, 'src/pages/chat.html'),
+                client_errors: resolve(__dirname, 'src/pages/client_errors.html'),
+                profile: resolve(__dirname, 'src/pages/profile.html'),
+                server_errors: resolve(__dirname, 'src/pages/server_errors.html'),
             },
         },
     },server: {
@@ -22,7 +22,7 @@ export default defineConfig({
     },
     plugins: [
         handlebars({
-            partialDirectory: [resolve(__dirname, 'partials')],
+            partialDirectory: [resolve(__dirname, 'src/components')],
             context: {
                 chats: {
                     0: {
