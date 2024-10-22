@@ -2,15 +2,18 @@
 import { Block,Props } from '../../block';
 import Handlebars from 'handlebars';
 import {  default as mu_button} from "./button.hbs?raw";
-const base_template = `
-  {{ label }}
-`;
+// const base_template = `
+//   {{ label }}
+// `;
+
+
 export class Button extends Block {
   constructor(props:Props) {
     super('div', props);
   }
 
   
+ 
 
   render() {
     const template = Handlebars.compile(mu_button);
@@ -23,3 +26,5 @@ export class Button extends Block {
     });
   }
 }
+
+// const btn = new Button({label:'',class:'ccc'});

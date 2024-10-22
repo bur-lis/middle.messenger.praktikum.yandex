@@ -1,5 +1,10 @@
 <html>
-{{>head}}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+ 
+</head>
+
 
 <body>
   <div class="middle-panel authorization">
@@ -9,11 +14,13 @@
       type="text" value=login_people.login label="Логин" }}
       {{>input_block name="password"
       type="password" value=login_people.password label="Пароль"}}
-      {{>button type="submit"
-      label="Войти" class="middle-panel__button"}}
+      <!-- {{>button type="submit"
+      label="Войти" class="middle-panel__button"}} -->
     </form>
     <a href="./register.html" class="middle-panel__linck">Нет аккаунта?</a>
-  </div>
+  </div>   
+  <script type="module" src="authorization.ts"></script>
+  <!-- <script type="module" src="/main.ts"></script> -->
 </body>
 
 </html>

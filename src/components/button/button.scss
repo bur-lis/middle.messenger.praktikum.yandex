@@ -1,0 +1,16 @@
+button {
+    height: 33px;
+    border: 1px solid $bright-blue;
+    color: white;
+    background: $dusty-blue;
+    border-radius: 8px;
+    margin-top: 25px;
+    padding: 0 10px;
+  }
+ 
+  .button-img {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }

@@ -1,5 +1,5 @@
  $main-text: #3c4b5f;
- $grey-text: #999999;
+ $grey-text: #999;
  $dark-text: #143256;
  $dusty-blue: #627B9B;
  $bright-blue: #3D6A95;
@@ -9,7 +9,7 @@
  $grey-background: #EFEFEF;
  $grey-border: #EAEAEA;
  $red-background: #862A2A;
- $red-border: #BB0000;
+ $red-border: #B00;
 
  :root {
    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -17,7 +17,7 @@
    font-weight: 400;
    color: $main-text;
    font-synthesis: none;
-   text-rendering: optimizeLegibility;
+   text-rendering: optimizelegibility;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
  }
@@ -36,8 +36,9 @@
    margin: 0 auto;
    padding: 2rem;
    text-align: center;
-   .additional_links{
-text-align: left;
+
+   .additional-links {
+     text-align: left;
    }
  }
 
@@ -143,8 +144,7 @@ text-align: left;
    margin: calc(50vh - 307.5px) auto;
    display: grid;
    box-sizing: border-box;
-   align-items: center;
-   justify-items: center;
+   place-items: center center;
    padding: 15px;
 
    &__linck {
@@ -166,14 +166,13 @@ text-align: left;
    &__form {
      width: 100%;
      margin: 0;
-
      height: 100%;
      display: flex;
      flex-direction: column;
    }
  }
 
- @media (max-width: 400px) {
+ @media (width <=400px) {
    .middle-panel {
      width: 95%;
      height: 90vh;
@@ -182,7 +181,6 @@ text-align: left;
  }
 
  .bright-blue-name {
-
    color: $bright-blue;
    font-weight: 500;
  }
@@ -199,7 +197,6 @@ text-align: left;
  }
 
  aside {
-
    overflow: hidden;
    height: 100vh;
    background: $lite-background;
@@ -209,12 +206,10 @@ text-align: left;
      display: flex;
 
      .personal {
-
        display: grid;
        align-self: center;
        min-width: 250px;
-       grid-template-rows: 1fr 1fr;
-       grid-template-columns: 60px 1fr;
+       grid-template: repeat(2, 1fr) / 60px 1fr;
        grid-template-areas:
          'photo login'
          'photo name';
@@ -251,9 +246,11 @@ text-align: left;
 
    }
 
-   .search__input {
-     width: calc(100% - 40px);
-     margin: 5px 20px;
+   .search {
+     &__input {
+       width: calc(100% - 40px);
+       margin: 5px 20px;
+     }
    }
 
    .chats-list {
@@ -267,8 +264,7 @@ text-align: left;
      &__message {
        height: 70px;
        display: grid;
-       grid-template-rows: 1fr 1fr 1fr;
-       grid-template-columns: 60px 1fr 40px;
+       grid-template: repeat(3, 1fr) / 60px 1fr 40px;
        grid-template-areas:
          'photo name time'
          'photo text none'
@@ -468,61 +464,63 @@ text-align: left;
    }
  }
 
- .message__history {
-   height: calc(100% - 180px);
-   display: flex;
-   align-items: end;
-   overflow: hidden;
+ .message {
+   &__history {
+     height: calc(100% - 180px);
+     display: flex;
+     align-items: end;
+     overflow: hidden;
 
-   .history-list {
-     margin: 0;
-     padding: 0;
-     list-style: none;
-     height: 100%;
-     overflow-y: auto;
+     .history-list {
+       margin: 0;
+       padding: 0;
+       list-style: none;
+       height: 100%;
+       overflow-y: auto;
 
-     &__data-block {
-       color: #999999;
-       font-size: 12px;
-       align-self: center;
-       display: block;
-       text-align: center;
-     }
-
-     &__message,
-     &__message--output {
-       display: grid;
-       max-width: 40%;
-       width: auto;
-       padding: 15px;
-       margin: 20px;
-       border-radius: 10px;
-       font-size: 13px;
-       align-items: end;
-       grid-template-columns: 1fr 30px;
-       grid-template-areas: 'message time';
-
-       &__text {
-         grid-area: message;
-         margin: 0;
-       }
-     }
-
-     &__message {
-       background-color: #F8FAFB;
-       border-bottom-left-radius: 0;
-       margin-right: auto;
-
-       &--output {
-         background-color: #DCE5F4;
-         border-bottom-right-radius: 0;
-         margin-left: auto;
+       &__data-block {
+         color: #999;
+         font-size: 12px;
+         align-self: center;
+         display: block;
+         text-align: center;
        }
 
+       &__message,
+       &__message--output {
+         display: grid;
+         max-width: 40%;
+         width: auto;
+         padding: 15px;
+         margin: 20px;
+         border-radius: 10px;
+         font-size: 13px;
+         align-items: end;
+         grid-template-columns: 1fr 30px;
+         grid-template-areas: 'message time';
+
+         &__text {
+           grid-area: message;
+           margin: 0;
+         }
+       }
+
+       &__message {
+         background-color: #F8FAFB;
+         border-bottom-left-radius: 0;
+         margin-right: auto;
+
+         &--output {
+           background-color: #DCE5F4;
+           border-bottom-right-radius: 0;
+           margin-left: auto;
+         }
+
+       }
+
+
      }
-
-
    }
  }
-/* - все ради пустой строки- */
 
+ /* - все ради пустой строки- */

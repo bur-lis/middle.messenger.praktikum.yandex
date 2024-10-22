@@ -1,10 +1,6 @@
 import { EventBus } from './event_bus';
-export type Props = Record<string, any>;
-interface ProxyConstructor {
-  revocable<T extends object>(target: T, handler: ProxyHandler<T>): { proxy: T; revoke: () => void; };
-  new <T extends object>(target: T, handler: ProxyHandler<T>): T;
-}
-declare var Proxy: ProxyConstructor;
+export type Props = Record<string, string | Callback>;
+type Callback = (args: string | undefined) => void;
 
 export class Block {
   static EVENTS = {
@@ -71,8 +67,9 @@ readonly eventBus: () => EventBus;
     }
     this._render();
   }
-
+//  componentDidUpdate(oldProps: Props, newProps: Props) {
   componentDidUpdate(oldProps: Props, newProps: Props) {
+    console.log(oldProps, newProps)
     return true;
   }
 
@@ -110,7 +107,8 @@ readonly eventBus: () => EventBus;
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target: Props, prop: keyof Props, value: any) {
+      
+      set(target: Props, prop: keyof Props, value: string ) {
         target[prop] = value;
 
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);

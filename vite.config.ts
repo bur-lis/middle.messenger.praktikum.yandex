@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
+
 import { resolve } from 'path';
 import handlebars from 'vite-plugin-handlebars';
+      
+        // import eslint from 'vite-plugin-eslint'   eslint(),
 
 export default defineConfig({
     build: {
@@ -8,7 +11,7 @@ export default defineConfig({
             input: {
                 main: resolve(__dirname, 'index.html'),
                 register: resolve(__dirname, 'src/pages/register.html'),
-                authorization: resolve(__dirname, 'src/pages/authorization.html'),
+                authorization: resolve(__dirname, 'src/pages/authorization/authorization.html'),
                 change_password: resolve(__dirname, 'src/pages/change_password.html'),
                 chat: resolve(__dirname, 'src/pages/chat.html'),
                 client_errors: resolve(__dirname, 'src/pages/client_errors.html'),
@@ -22,7 +25,7 @@ export default defineConfig({
     },
     plugins: [
         handlebars({
-            partialDirectory: [resolve(__dirname, 'src/components')],
+            partialDirectory: [resolve(__dirname, 'src/components/*')],
             context: {
                 chats: {
                     0: {
