@@ -1,26 +1,19 @@
 {
     "compilerOptions": {
-        "target": "es2015",
-        "module": "ESNext",
-        "strict": true,
+        "target": "ES2020",
+        
         "moduleResolution": "node",
+        "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
-        "types": [
-            "node",
-            "vite/client"
-        ],
-        "baseUrl": ".",
-        "paths": {
-            "*.ts": [
-                "*"
-            ]
-        }
+        "isolatedModules": true,
+        "noEmit": true,
+
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "sourceMap": true,
+        "strictNullChecks": true,
     },
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
     "include": [
         "src/**/*",
         "package.json"
