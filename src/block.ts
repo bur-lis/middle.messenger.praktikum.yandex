@@ -1,5 +1,9 @@
 import { EventBus } from './event_bus';
-export type Props = Record<string, string | Callback>;
+export type Props = Record<string, PropsValue>;
+
+import Handlebars from 'handlebars';
+
+type PropsValue = string | Callback | Record<string, Callback>//{[key: string]: Callback};
 type Callback = (args: string | undefined) => void;
 
 export class Block {
@@ -10,7 +14,7 @@ export class Block {
     FLOW_RENDER: "flow:render"
   };
 
-readonly eventBus: () => EventBus;
+  readonly eventBus: () => EventBus;
   _element: HTMLElement;
   props: Props;
   _meta: {
@@ -18,7 +22,13 @@ readonly eventBus: () => EventBus;
     props: Props;
   };
 
-  constructor(tagName = "div", props = {}) {
+  constructor(tagName = "div", propsAndChildren = {}) {
+    const { children, props } = this._getChildren(propsAndChildren);
+    console.log(tagName)
+    console.log(children)
+    this.children = children;
+
+
     const eventBus = new EventBus();
     this._meta = {
       tagName,
@@ -30,6 +40,20 @@ readonly eventBus: () => EventBus;
 
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
+  }
+  _getChildren(propsAndChildren) {
+    const children = {};
+    const props = {};
+
+    Object.entries(propsAndChildren).forEach(([key, value]) => {
+      if (value instanceof Block) {
+        children[key] = value;
+      } else {
+        props[key] = value;
+      }
+    });
+
+    return { children, props };
   }
 
   _registerEvents(eventBus: EventBus) {
@@ -67,7 +91,7 @@ readonly eventBus: () => EventBus;
     }
     this._render();
   }
-//  componentDidUpdate(oldProps: Props, newProps: Props) {
+  //  componentDidUpdate(oldProps: Props, newProps: Props) {
   componentDidUpdate(oldProps: Props, newProps: Props) {
     console.log(oldProps, newProps)
     return true;
@@ -92,9 +116,15 @@ readonly eventBus: () => EventBus;
     // Нужно не в строку компилировать (или делать это правильно),
     // либо сразу в DOM-элементы возвращать из compile DOM-ноду
     this._element.innerHTML = block;
+    this._addEvents();
   }
 
-
+  _addEvents() {
+    const { events = {} } = this.props;
+    Object.keys(events).forEach((eventName: string) => {
+      this._element.addEventListener(eventName, events[eventName]);
+    });
+  }
 
   getContent() {
     return this.element;
@@ -107,8 +137,8 @@ readonly eventBus: () => EventBus;
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      
-      set(target: Props, prop: keyof Props, value: string ) {
+
+      set(target: Props, prop: keyof Props, value: string) {
         target[prop] = value;
 
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -122,9 +152,40 @@ readonly eventBus: () => EventBus;
 
   _createDocumentElement(tagName: string): HTMLElement {
     // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-    return document.createElement(tagName);
-  }
+    console.log('tagName',tagName)
+    console.log('tagName',this)
+    if (tagName === '')  console.log('vaaaaaaaa')
+    else return document.createElement(tagName);
+    }
+  //   console.log(tagName)
+  //   if (typeof tagName === 'string') {
+  //     console.log("sss")
+  //     return document.createElement(tagName);
+  //   }
+  //   else Object.keys(tagName).forEach(function (tag) {
+  //     return document.createElement(tag);
+  //   });
+  // }
 
+  compile(template, props) {
+    const propsAndStubs = { ...props };
+
+    Object.entries(this.children).forEach(([key, child]) => {
+        propsAndStubs[key] = `<div data-id="${child.id}"></div>`
+    });
+
+    const fragment = this._createDocumentElement('template');
+
+    fragment.innerHTML = Handlebars.compile(template, propsAndStubs);
+
+    Object.values(this.children).forEach(child => {
+        const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
+        
+        stub.replaceWith(child.getContent());
+    });
+
+    return fragment.content;
+}
   show() {
     this.getContent().style.display = "block";
   }
