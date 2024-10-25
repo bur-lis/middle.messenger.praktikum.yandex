@@ -1,6 +1,7 @@
 import { EventBus } from './event_bus';
 export type Props = Record<string, PropsValue>;
 
+import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
 
 type PropsValue = string | Callback | Record<string, Callback>//{[key: string]: Callback};
@@ -16,6 +17,7 @@ export class Block {
 
   readonly eventBus: () => EventBus;
   _element: HTMLElement;
+  _id = null;
   props: Props;
   _meta: {
     tagName: string;
@@ -24,12 +26,12 @@ export class Block {
 
   constructor(tagName = "div", propsAndChildren = {}) {
     const { children, props } = this._getChildren(propsAndChildren);
-    console.log(tagName)
-    console.log(children)
     this.children = children;
 
 
     const eventBus = new EventBus();
+    this._id = makeUUID();
+    this.props = this._makePropsProxy({ ...props, __id: this._id });
     this._meta = {
       tagName,
       props
@@ -41,18 +43,21 @@ export class Block {
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
   }
+
   _getChildren(propsAndChildren) {
     const children = {};
     const props = {};
+  
 
     Object.entries(propsAndChildren).forEach(([key, value]) => {
+      console.log(value)
       if (value instanceof Block) {
         children[key] = value;
       } else {
         props[key] = value;
       }
     });
-
+  console.log('ffff',children, props)
     return { children, props };
   }
 
@@ -76,6 +81,11 @@ export class Block {
 
   _componentDidMount() {
     this.componentDidMount();
+
+    Object.values(this.children).forEach(child => {
+      child.dispatchComponentDidMount();
+    });
+
   }
 
   componentDidMount() { }
@@ -110,13 +120,16 @@ export class Block {
   }
   render(): string { return '' }
   _render() {
-    const block = this.render();
-    // Этот небезопасный метод для упрощения логики
-    // Используйте шаблонизатор из npm или напишите свой безопасный
-    // Нужно не в строку компилировать (или делать это правильно),
-    // либо сразу в DOM-элементы возвращать из compile DOM-ноду
+    const block = this.render(); // render теперь возвращает DocumentFragment
+
+    // // this._removeEvents();
+    // this._element.innerHTML = ''; // удаляем предыдущее содержимое
+    // console.log(block)
+
+    // this._element.appendChild(block);
+
+    // this._addEvents();
     this._element.innerHTML = block;
-    this._addEvents();
   }
 
   _addEvents() {
@@ -151,41 +164,33 @@ export class Block {
   }
 
   _createDocumentElement(tagName: string): HTMLElement {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
-    console.log('tagName',tagName)
-    console.log('tagName',this)
-    if (tagName === '')  console.log('vaaaaaaaa')
-    else return document.createElement(tagName);
-    }
-  //   console.log(tagName)
-  //   if (typeof tagName === 'string') {
-  //     console.log("sss")
-  //     return document.createElement(tagName);
-  //   }
-  //   else Object.keys(tagName).forEach(function (tag) {
-  //     return document.createElement(tag);
-  //   });
-  // }
+    const element = document.createElement(tagName);
+    if (this.props.settings) element.setAttribute('data-id', this._id);
+    return element;
+  }
+
 
   compile(template, props) {
+    if (typeof props == 'undefined') props = this.props;
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([key, child]) => {
-        propsAndStubs[key] = `<div data-id="${child.id}"></div>`
+      propsAndStubs[key] = `<div data-id="${child._id}"></div>`
     });
+
 
     const fragment = this._createDocumentElement('template');
 
     fragment.innerHTML = Handlebars.compile(template, propsAndStubs);
-
     Object.values(this.children).forEach(child => {
-        const stub = fragment.content.querySelector(`[data-id="${child.id}"]`);
-        
-        stub.replaceWith(child.getContent());
+      console.log('child' ,child)
+      const stub = fragment.content.querySelector(`[data-id="${child._id}"]`);
+      if (stub) stub.replaceWith(child.getContent());
     });
 
     return fragment.content;
-}
+    // return Handlebars.compile(template, propsAndStubs);
+  }
   show() {
     this.getContent().style.display = "block";
   }

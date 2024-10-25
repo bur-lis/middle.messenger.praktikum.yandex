@@ -1,33 +1,20 @@
-  //  "eslint": "^9.13.0",
-  import { Block } from './src/block';
-  import Handlebars from 'handlebars';
-// const button = new Block("button",{
-//     label: 'Click me',
-//     class: 'abc',
-//     onclick: '()=>console.log("Click me")'
-    
-// });
-
-
 import './style.scss'
 import {Button} from "./src/components/button/button"
-// import {Authorization} from "./src/pages/authorization/authorization"
-const profileTemplate = `
-    <div>
-    {{ userName }}
-        {{ button }}
-    </div>
-`;
+import {Authorization} from "./src/pages/authorization/authorization"
 
-class UserProfile extends Block {
-  render() {
-    return this.compile(profileTemplate, { userName: this.props.userName });
-    }}
-
-const profile = new UserProfile('',{
-    button: new Button({ text: 'Change name' }),
+const button = new Button({
+  label: 'Click me',
+  class: 'abc',
+  events: {
+      click: event => {
+          console.log(event);
+      },
+  settings: {withInternalID: true},
+  }
 });
+console.log( button._id )
 
+const page = new Authorization({ userName: 'John Doe', button:button,})
 
 function render(query, block) {
     console.log(block.getContent())
@@ -37,5 +24,5 @@ function render(query, block) {
   }
   
 
-  render("#app", profile);
+  render("#app", page);
   
