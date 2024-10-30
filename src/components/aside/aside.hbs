@@ -3,10 +3,10 @@
     <header class="action-header">
         <div class="personal" onclick="location.href='./profile.html';">
             <div class="personal__photo"></div>
-            <label class="bright-blue-name  personal__display-name">{{login_people.display_name}}</label>
-            <label class="personal__name">{{login_people.first_name}} {{ login_people.second_name}}</label>
+            <label class="bright-blue-name  personal__display-name">{{display_name}}</label>
+            <label class="personal__name">{{first_name}} {{second_name}}</label>
         </div>
-        <button class="collapse-button"> ❮ Свернуть</button>
+        {{{collapse_button}}}
     </header>
     <search>
         <form action="./search/" class="serch">
@@ -28,7 +28,7 @@
         {{/each}}
     </ul>
     {{else}}
-    <button class="aside-closed__expand-button">➔</button>
+    {{{expand_button}}}
     {{/if}}
 </aside>
 

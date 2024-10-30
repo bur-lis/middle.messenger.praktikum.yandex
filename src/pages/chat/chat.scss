@@ -1,0 +1,143 @@
+@import "../../../style.scss";
+
+textarea {
+    width: 90%;
+    height: 60px;
+    background: $grey-background;
+    border: none;
+    border-radius: 10px;
+    resize: none;
+    padding: 10px;
+}
+
+textarea::placeholder {
+    color: $grey-text;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.bright-blue-name {
+    color: $bright-blue;
+    font-weight: 500;
+}
+
+.plug {
+    grid-area: photo;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+    background: $grey-background;
+    align-self: center;
+    margin: 5px;
+}
+
+.send-block {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid $grey-border;
+    box-sizing: border-box;
+    margin: 5px 20px;
+
+    &__attach-file {
+        background: none;
+        border: none;
+        margin: 0;
+        img {
+            height: 30px;
+        }
+    }
+    &__send-button {
+        background: $bright-blue;
+        color: white;
+        border: none;
+        width: 35px;
+        height: 35px;
+        border-radius: 20px;
+        margin: auto;
+        font-size: 18px;
+        margin: 5px;
+    }
+}
+
+.message-header {
+    display: flex;
+    align-items: center;
+
+    &__interlocutor {
+        width: calc(100% - 30px);
+        display: flex;
+        align-items: center;
+    }
+
+    &__menu-button {
+        background: none;
+        border: none;
+        margin: 0;
+        img {
+            height: 20px;
+        }
+    }
+}
+
+.message {
+    &__history {
+        height: calc(100% - 180px);
+        display: flex;
+        align-items: end;
+        overflow: hidden;
+
+        .history-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            height: 100%;
+            overflow-y: auto;
+
+            &__data-block {
+                color: #999;
+                font-size: 12px;
+                align-self: center;
+                display: block;
+                text-align: center;
+            }
+
+            &__message,
+            &__message--output {
+                display: grid;
+                max-width: 40%;
+                width: auto;
+                padding: 15px;
+                margin: 20px;
+                border-radius: 10px;
+                font-size: 13px;
+                align-items: end;
+                grid-template-columns: 1fr 30px;
+                grid-template-areas: "message time";
+
+                &__text {
+                    grid-area: message;
+                    margin: 0;
+                    text-align: left;
+                }
+
+                &__time {
+                    color: $grey-text;
+                }
+            }
+
+            &__message {
+                background-color: #f8fafb;
+                border-bottom-left-radius: 0;
+                margin-right: auto;
+
+                &--output {
+                    background-color: #dce5f4;
+                    border-bottom-right-radius: 0;
+                    margin-left: auto;
+                }
+            }
+        }
+    }
+}

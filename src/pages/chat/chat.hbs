@@ -1,22 +1,20 @@
-<html>
-{{>head}}
-
-<body>
-    {{>aside open=true}}
+<div class="chat-page">
+     {{{aside}}}
     <main>
         <header class="message-header">
             <div class="message-header__interlocutor" onclick="location.href='./client_errors.html'">
                 <div class="plug message-header__interlocutor__photo"></div>
-                <label class="bright-blue-name message-header__interlocutor__display-name">{{login_people.display_name}}</label>
+                <label class="bright-blue-name message-header__interlocutor__display-name">{{display_name}}</label>
             </div>
-            <button class="button-img message-header__menu-button">
-                <img src="../public/menu-dots-vertical.svg" alt="Меню чата"/>
-            </button>
+            {{!-- <button class="button-img message-header__menu-button">
+                <img src="/public/menu-dots-vertical.svg" alt="Меню чата"/>
+            </button> --}}
+            {{{message_menu_button}}}
         </header>
         <section class="message__history">
             <ul class="history-list">
+                {{displa}}
                 {{#each message}}<li>
-
                     <label class="history-list__data-block">{{@key}}</label>
                     {{#each this}}
                     <div {{#if this.output}}class="history-list__message" {{else}} class="history-list__message--output"
@@ -30,13 +28,12 @@
                 {{/each}}
         </section>
         <section class="send-block">
-            <button class="button-img send-block__attach-file"><img src="../public/attach-file.svg" alt="Прикрепить вложение к сообщению"/></button>
+            {{{attach_file_button}}}
+            {{!-- <button class="button-img send-block__attach-file"><img src="/public/attach-file.svg" alt="Прикрепить вложение к сообщению"/></button> --}}
             <textarea class="send-block__writing-textarea" placeholder="Сообщение"></textarea>
-            <button class="send-block__send-button" onclick="location.href='./server_errors.html'">
-                ➔</button>
+            {{!-- <button class="send-block__send-button" onclick="location.href='./server_errors.html'">
+                ➔</button> --}}
+{{{send_message_button}}}
         </section>
     </main>
-</body>
-
-</html>
-
+</div>

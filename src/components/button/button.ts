@@ -1,30 +1,20 @@
 
-import { Block,Props } from '../../block';
-import Handlebars from 'handlebars';
-import {  default as mu_button} from "./button.hbs?raw";
-// const base_template = `
-//   {{ label }}
-// `;
-
+import './button.scss'
+import { Block, Props } from '../../block.ts';
+import mu_button from "./button.hbs";
 
 export class Button extends Block {
   constructor(props:Props) {
     super('div', props);
   }
 
-  
- 
-
   render() {
-    const template = Handlebars.compile(mu_button);
-    return template({
+    return this.compile(mu_button,{
       label: this.props.label,
       class: this.props.class,
-      settings:this.props.settings,
-      onclick: this.props.onclick,
-
+      type:this.props.type,     
+      img:this.props.img,     
+      alt:this.props.alt
     });
   }
 }
-
-// const btn = new Button({label:'',class:'ccc'});
