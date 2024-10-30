@@ -1,5 +1,8 @@
 <div class="input-block">
   <label class="input-block__label" name={{name}}>{{label}}</label>
-  <input name={{name}} type={{type}}  value={{value}} required={{required}}/>
+  {{{input}}}
+  <label class="input-block__error-label {{display_error_label}}" >{{regtext}}</label>
 </div>
 
+{{!-- {{#if valid_error}} style="display:block " {{/if}} --}}
+{{!-- {{#if valid_error}} block {{/if}} --}}

@@ -43,7 +43,6 @@ export class Block {
       tagName,
       props
     };
-    console.log(this._id)
     this.props = this._makePropsProxy({ ...props, __id: this._id });
 
     this.eventBus = () => eventBus;
@@ -62,7 +61,6 @@ export class Block {
         props[key] = value as PropsValue;
       }
     });
-    console.log(children, props)
     return { children, props };
   }
 
@@ -77,7 +75,8 @@ export class Block {
     const events: Record<string, Callback> = this.props.events;
     if (events) {
       Object.keys(events).forEach((eventName: string) => {
-        this._element.addEventListener(eventName, events[eventName]);
+        console.log(eventName,this._element )
+        this._element.children[0].addEventListener(eventName, events[eventName]);
       });
     }
 
@@ -187,12 +186,10 @@ export class Block {
 
   compile(template: Function, props: Props) {
     const propsAndStubs = { ...props };
-    console.log(this.children)
 
     Object.entries(this.children).forEach(([key, child]) => {
 
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`
-      console.log(propsAndStubs[key])
     });
 
     const fragment: HTMLTemplateElement = this._createDocumentElement('template') as HTMLTemplateElement;

@@ -1,9 +1,10 @@
 import './authorization.scss'
 import '/style.scss'
 
-import { renderDom } from '../../utils'
+import { renderDom, Validate } from '../../utils'
 import { InputBlock } from '../../components/input_block/input_block';
 import { Button } from '../../components/button/button';
+import { Input } from '../../components/input/input';
 import { Block, Props } from '../../block';
 import authorization_template from "./authorization.hbs";
 
@@ -23,24 +24,28 @@ export class Authorization extends Block {
 
 const login_input = new InputBlock({
     label: 'Логин',
-    name: 'login',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
+        name: 'login',
+        events: {
+            blur: () => { Validate(login_input, 'fdhgdirfhg') }
+        }
+    })
+
 });
 
 const password_input = new InputBlock({
     label: 'Пароль',
-    name: 'password',
-    type: 'password',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
+        name: 'password',
+        type: 'password',
+        events: {
+            blur: () => { Validate(password_input, 'dsgsdg') }
+        }
+    })
 });
 
 const button = new Button({
@@ -48,9 +53,10 @@ const button = new Button({
     class: 'middle-panel__button',
     type: 'submit',
     events: {
-        click: (event: Event) => {
-            console.log(event);            
-            console.log(this);
+        click: () => {
+            const form = document.getElementsByTagName('form')[0];
+            const formData = new FormData(form);
+            console.log(formData);
         },
     },
 });

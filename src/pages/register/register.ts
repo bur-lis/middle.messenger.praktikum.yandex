@@ -1,7 +1,9 @@
 import './register.scss'
-import { renderDom } from '../../utils'
-import { InputBlock } from '../../components/input_block/input_block';
+import { renderDom, Validate } from '../../utils'
+// import { InputBlock } from '../../components/input_block/input_block';
 import { Button } from '../../components/button/button';
+// import { Input } from '../../components/input/input';
+import { mail_input, login_input, first_name_input, phone_input, second_name_input, password_input, confirm_password_input } from '../../main_input';
 import { Block, Props } from '../../block';
 import register_template from "./register.hbs";
 
@@ -24,81 +26,91 @@ export class Register extends Block {
     };
 }
 
-const mail_input = new InputBlock({
-    label: 'Почта',
-    name: 'email',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
-});
+// const mail_input = new InputBlock({
+//     label: 'Почта',
+//     regtext: '2222',
+//     display_error_label: 'none',
+//     input: new Input({
+//         name: 'email',
+//         events: {
+//             blur: () => { Validate(mail_input, 'fdhgdirfhg') }
+//         }
+//     })
+// });
 
-const login_input = new InputBlock({
-    label: 'Логин',
-    name: 'login',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
-});
+// const login_input = new InputBlock({
+//     label: 'Логин',
+//     regtext: '2222',
+//     display_error_label: 'none',
+//     input: new Input({
+//         name: 'login',
+//         events: {
+//             blur: () => { Validate(login_input, 'fdhgdirfhg') }
+//         }
+//     })
+// });
 
-const first_name_input = new InputBlock({
-    label: 'Фамилия',
-    name: 'first_name',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
-});
-const phone_input = new InputBlock({
-    label: 'Телефон',
-    name: 'phone_name',
-    tupe: 'phone',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
-});
+// const first_name_input = new InputBlock({
+//     label: 'Фамилия',
+//     regtext: '2222',
+//     display_error_label: 'none',
+//     input: new Input({
+//         name: 'first_name',
+//         events: {
+//             blur: () => { Validate(first_name_input, 'fdhgdirfhg') }
+//         }
+//     })
+// });
+// const phone_input = new InputBlock({
+//     label: 'Телефон',
+//     regtext: '2222',
+//     display_error_label: 'none',
+//     input: new Input({
+//         name: 'phone_name',
+//         type: 'phone',
+//         events: {
+//             blur: () => { Validate(phone_input, 'fdhgdirfhg') }
+//         }
+//     })
+// });
 
-const second_name_input = new InputBlock({
-    label: 'Имя',
-    name: 'second_name',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
-});
+// const second_name_input = new InputBlock({
+//     label: 'Имя',
+//     regtext: '2222',
+//     display_error_label: 'none',
+//     input: new Input({
+//         name: 'second_name',
+//         require: 'require',
+//         events: {
+//             blur: () => { Validate(second_name_input, 'fdhgdirfhg') }
+//         }
+//     })
+// });
 
-const password_input = new InputBlock({
-    label: 'Пароль',
-    name: 'password',
-    type: 'password',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
-});
-const confirm_password_input = new InputBlock({
-    label: 'Пароль(ещё раз)',
-    name: 'confirm_password',
-    type: 'password',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
-});
+// const password_input = new InputBlock({
+//     label: 'Пароль',
+//     regtext: '2222',
+//     display_error_label: 'none',
+//     input: new Input({
+//         name: 'password',
+//         type: 'password',
+//         events: {
+//             blur: () => { Validate(second_name_input, 'fdhgdirfhg') }
+//         }
+//     })
+// });
+// const confirm_password_input = new InputBlock({
+//     label: 'Пароль(ещё раз)',
+//     regtext: '2222',
+//     display_error_label: 'none',
+//     input: new Input({
+//         name: 'confirm_password',
+//         type: 'password',
+//         events: {
+//             blur: () => { Validate(second_name_input, 'fdhgdirfhg') }
+//         }
+//     })
+// });
 
 const button = new Button({
     label: 'Зарегистрироваться',

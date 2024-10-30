@@ -11,7 +11,7 @@ export function handlebarsPrecompile(): PluginOption {
             }
             // language=javascript
             const code = `
-                import Handlebars from 'handLebars/runtime';
+                import Handlebars from 'handlebars/runtime';
                 export default Handlebars.template(${Handlebars.precompile(src)});
             `;
 

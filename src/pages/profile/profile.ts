@@ -1,7 +1,8 @@
 import './profile.scss'
-import { renderDom } from '../../utils'
+import { renderDom , Validate} from '../../utils'
 import { InputBlock } from '../../components/input_block/input_block';
 import { Button } from '../../components/button/button';
+import { Input } from '../../components/input/input';
 import { UserLogo } from '../../components/user_logo/user_logo';
 import { Aside } from '../../components/aside/aside';
 import { Block, Props } from '../../block';
@@ -37,70 +38,77 @@ const aside = new Aside({
         chats: '',
         open: false,
 })
-
 const mail_input = new InputBlock({
     label: 'Почта',
-    name: 'email',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
+        name: 'email',
+        events: {
+            blur: () => { Validate(mail_input, 'fdhgdirfhg') }
+        }
+    })
 });
 
 const login_input = new InputBlock({
     label: 'Логин',
-    name: 'login',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
+        name: 'login',
+        events: {
+            blur: () => { Validate(login_input, 'fdhgdirfhg') }
+        }
+    })
 });
 
 const first_name_input = new InputBlock({
     label: 'Фамилия',
-    name: 'first_name',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
+        name: 'first_name',
+        events: {
+            blur: () => { Validate(first_name_input, 'fdhgdirfhg') }
+        }
+    })
 });
 const phone_input = new InputBlock({
     label: 'Телефон',
-    name: 'phone_name',
-    tupe: 'phone',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
+        name: 'phone_name',
+        type: 'phone',
+        events: {
+            blur: () => { Validate(phone_input, 'fdhgdirfhg') }
+        }
+    })
 });
 
 const second_name_input = new InputBlock({
     label: 'Имя',
-    name: 'second_name',
-    require: 'require',
-    events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
+        name: 'second_name',
+        require: 'require',
+        events: {
+            blur: () => { Validate(second_name_input, 'fdhgdirfhg') }
+        }
+    })
 });
 
 const display_name = new InputBlock({
     label: 'Имя в чате',
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
     name: 'display_name',
     events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+        blur: () => { Validate(second_name_input, 'fdhgdirfhg') }
+    }
+})
 });
 
 

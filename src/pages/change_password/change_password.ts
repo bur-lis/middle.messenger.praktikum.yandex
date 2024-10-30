@@ -1,7 +1,8 @@
 import './change_password.scss'
-import { renderDom } from '../../utils'
+import { renderDom , Validate} from '../../utils'
 import { InputBlock } from '../../components/input_block/input_block';
 import { Button } from '../../components/button/button';
+import { Input } from '../../components/input/input';
 import { Block, Props } from '../../block';
 import { UserLogo } from '../../components/user_logo/user_logo';
 import { Aside } from '../../components/aside/aside';
@@ -37,37 +38,43 @@ const user_logo = new UserLogo({
 
 const old_password_input = new InputBlock({
     label: 'Старый пароль',
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
     name: 'old_password',
     type: 'password',
     require: 'require',
     events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+        blur: () => { Validate(old_password_input, 'fdhgdirfhg') }
+    }
+})
 });
 
 const new_password_input = new InputBlock({
     label: 'Новый пароль',
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
     name: 'new_password',
     type: 'password',
     require: 'require',
     events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+        blur: () => { Validate(new_password_input, 'fdhgdirfhg') }
+    }
+})
 });
 const confirm_new_password_input = new InputBlock({
     label: 'Новый пароль(ещё раз)',
+    regtext: '2222',
+    display_error_label: 'none',
+    input: new Input({
     name: 'confirm_new_password',
     type: 'password',
     require: 'require',
     events: {
-        click: (event: Event) => {
-            console.log(event);
-        },
-    },
+        blur: () => { Validate(confirm_new_password_input, 'fdhgdirfhg') }
+    }
+})
 });
 
 const save_button = new Button({
