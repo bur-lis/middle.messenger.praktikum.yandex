@@ -1,7 +1,8 @@
 export type Props = Record<string, PropsValue>;
-type PropsValue = string | boolean | Callback | Record<string, Callback> | Block
+type PropsValue = string | boolean | Callback | Record<string, Callback> | Record<string, string | PropsObject | PropsObject[]> | Block
 type Callback = (args: string | undefined | Event) => void;
-type Children = Record<string, Block>
+type Children = Record<string, Block>;
+type PropsObject =  Record<string, string | boolean | number>;
 
 import { EventBus } from './event_bus.js';
 import { v4 as makeUUID } from 'uuid';
@@ -75,7 +76,6 @@ export class Block {
     const events: Record<string, Callback> = this.props.events;
     if (events) {
       Object.keys(events).forEach((eventName: string) => {
-        console.log(eventName,this._element )
         this._element.children[0].addEventListener(eventName, events[eventName]);
       });
     }
@@ -122,7 +122,7 @@ export class Block {
   }
 
   componentDidUpdate(oldProps: Props, newProps: Props) {
-    console.log(oldProps, newProps)
+    // console.log(oldProps, newProps)
     return true;
   }
 

@@ -1,14 +1,11 @@
 <div class="chat-page">
-     {{{aside}}}
+    {{{aside}}}
     <main>
         <header class="message-header">
             <div class="message-header__interlocutor" onclick="location.href='./client_errors.html'">
                 <div class="plug message-header__interlocutor__photo"></div>
                 <label class="bright-blue-name message-header__interlocutor__display-name">{{display_name}}</label>
             </div>
-            {{!-- <button class="button-img message-header__menu-button">
-                <img src="/public/menu-dots-vertical.svg" alt="Меню чата"/>
-            </button> --}}
             {{{message_menu_button}}}
         </header>
         <section class="message__history">
@@ -29,11 +26,8 @@
         </section>
         <section class="send-block">
             {{{attach_file_button}}}
-            {{!-- <button class="button-img send-block__attach-file"><img src="/public/attach-file.svg" alt="Прикрепить вложение к сообщению"/></button> --}}
             <textarea class="send-block__writing-textarea" placeholder="Сообщение"></textarea>
-            {{!-- <button class="send-block__send-button" onclick="location.href='./server_errors.html'">
-                ➔</button> --}}
-{{{send_message_button}}}
+            {{{send_message_button}}}
         </section>
     </main>
 </div>

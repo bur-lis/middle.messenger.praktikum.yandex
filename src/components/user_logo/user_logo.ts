@@ -1,6 +1,6 @@
 import './user_logo.scss'
-import { Block, Props } from '../../block.ts';
-import {  default as user_logo_template} from "./user_logo.hbs";
+import { Block, Props } from '../../core/block.ts';
+import { default as user_logo_template } from "./user_logo.hbs";
 
 export class UserLogo extends Block {
   constructor(props: Props) {
@@ -8,8 +8,8 @@ export class UserLogo extends Block {
   }
 
   render() {
-    return this.compile(user_logo_template,{
-        display_name: this.props.display_name
+    return this.compile(user_logo_template, {
+      display_name: this.props.display_name
     });
   }
 }

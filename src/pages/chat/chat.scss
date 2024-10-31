@@ -44,10 +44,12 @@ textarea::placeholder {
         background: none;
         border: none;
         margin: 0;
+
         img {
             height: 30px;
         }
     }
+
     &__send-button {
         background: $bright-blue;
         color: white;
@@ -75,6 +77,7 @@ textarea::placeholder {
         background: none;
         border: none;
         margin: 0;
+
         img {
             height: 20px;
         }

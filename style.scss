@@ -31,21 +31,26 @@ body {
 }
 
 #app {
-  // max-width: 1280px;
   text-align: center;
   width: 100%;
+
   .additional-links {
     text-align: left;
   }
 }
+
 .stasrt-page-main {
   margin: calc(50vh - 150px) auto;
   width: 700px;
   height: 300px;
 }
-.profile-page, .change-password-page, .chat-page{
+
+.profile-page,
+.change-password-page,
+.chat-page {
   display: flex;
 }
+
 main {
   min-width: 700px;
   width: 100%;
@@ -70,26 +75,9 @@ h2 {
   margin: 20px auto;
 }
 
-input {
-  height: 33px;
-  border: 1px solid #e8eef2;
-  border-radius: 5px;
-  padding-left: 10px;
-  width: calc(100% - 10px);
-}
-
-.button-img {
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-
-
-
 .middle-panel {
   width: 340px;
-  height: 615px;
+  height: 650px;
   background-color: $lite-background;
   border: 1px solid $dark-bacground;
   border-radius: 12px;

@@ -1,5 +1,5 @@
 import './input.scss'
-import { Block, Props } from '../../block.ts';
+import { Block, Props } from '../../core/block.ts';
 import input_template from "./input.hbs";
 
 export class Input extends Block {

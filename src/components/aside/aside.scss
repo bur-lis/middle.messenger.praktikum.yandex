@@ -1,144 +1,144 @@
 @import '../../../style.scss';
 
 aside {
-    overflow: hidden;
-    height: 100vh;
-    background: $lite-background;
-    border-right: 1px solid $grey-border;
- 
-    .action-header {
-      display: flex;
- 
-      .personal {
-        display: grid;
-        align-self: center;
-        text-align: left;
-        min-width: 250px;
-        grid-template: repeat(2, 1fr) / 60px 1fr;
-        grid-template-areas:
-          'photo login'
-          'photo name';
- 
-        &__photo {
-          grid-area: photo;
-          width: 50px;
-          height: 50px;
-          border-radius: 25px;
-          border: none;
-          background: $bright-blue;
-          align-self: center;
-        }
- 
- 
- 
-        &__name {
-          color: $grey-text;
-        }
-      }
- 
-      .collapse-button {
-        background: none;
+  overflow: hidden;
+  height: 100vh;
+  background: $lite-background;
+  border-right: 1px solid $grey-border;
+
+  .action-header {
+    display: flex;
+
+    .personal {
+      display: grid;
+      align-self: center;
+      text-align: left;
+      min-width: 250px;
+      grid-template: repeat(2, 1fr) / 60px 1fr;
+      grid-template-areas:
+        'photo login'
+        'photo name';
+
+      &__photo {
+        grid-area: photo;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
         border: none;
-        font-size: 12px;
-        margin: 0;
-        margin-left: auto;
-        padding: 5px 0;
-        height: 20px;
-        color: $dusty-blue;
-        font-weight: 500;
-        min-width: 70px;
+        background: $bright-blue;
+        align-self: center;
       }
- 
-    }
- 
-    .search {
-      &__input {
-        width: calc(100% - 40px);
-        margin: 5px 20px;
-      }
-    }
- 
-    .chats-list {
-      height: calc(100% - 140px);
-      list-style: none;
-      padding: 0 10px;
-      margin: 0;
-      box-sizing: border-box;
-      overflow-y: auto;
- 
-      &__message {
-        height: 70px;
-        display: grid;
-        grid-template: repeat(3, 1fr) / 60px 1fr 40px;
-        grid-template-areas:
-          'photo name time'
-          'photo text none'
-          'photo text new_count';
-        border-bottom: 1px solid $grey-border;
+
+
+
+      &__name {
         color: $grey-text;
-        box-sizing: border-box;
-        margin: 10px 0;
-        text-align: left;
- 
-        &__interlocutor-name {
-          grid-area: name;
-          color: $dark-text;
-          font-size: 14px;
-          font-weight: 500;
- 
+      }
+    }
+
+    .collapse-button {
+      background: none;
+      border: none;
+      font-size: 12px;
+      margin: 0;
+      margin-left: auto;
+      padding: 5px 0;
+      height: 20px;
+      color: $dusty-blue;
+      font-weight: 500;
+      min-width: 70px;
+    }
+
+  }
+
+  .search {
+    &__input {
+      width: calc(100% - 40px);
+      margin: 5px 20px;
+    }
+  }
+
+  .chats-list {
+    height: calc(100% - 140px);
+    list-style: none;
+    padding: 0 10px;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+
+    &__message {
+      height: 70px;
+      display: grid;
+      grid-template: repeat(3, 1fr) / 60px 1fr 40px;
+      grid-template-areas:
+        'photo name time'
+        'photo text none'
+        'photo text new_count';
+      border-bottom: 1px solid $grey-border;
+      color: $grey-text;
+      box-sizing: border-box;
+      margin: 10px 0;
+      text-align: left;
+
+      &__interlocutor-name {
+        grid-area: name;
+        color: $dark-text;
+        font-size: 14px;
+        font-weight: 500;
+
+      }
+
+      &__time {
+        grid-area: time;
+        font-size: 10px;
+        text-align: center;
+      }
+
+      &__content {
+        grid-area: text;
+        font-size: 12px;
+        font-weight: 500;
+
+        &__is-sender {
+          color: black;
         }
- 
-        &__time {
-          grid-area: time;
-          font-size: 10px;
-          text-align: center;
-        }
- 
-        &__content {
-          grid-area: text;
-          font-size: 12px;
-          font-weight: 500;
- 
-          &__is-sender {
-            color: black;
-          }
- 
-        }
- 
-        &__new-count {
-          grid-area: new_count;
-          width: 20px;
-          height: 20px;
-          background: $bright-blue;
-          border-radius: 10px;
-          color: white;
-          align-content: center;
-          font-weight: 400;
-          text-align: center;
-          justify-self: center;
-          font-size: 12px;
-        }
+
+      }
+
+      &__new-count {
+        grid-area: new_count;
+        width: 20px;
+        height: 20px;
+        background: $bright-blue;
+        border-radius: 10px;
+        color: white;
+        align-content: center;
+        font-weight: 400;
+        text-align: center;
+        justify-self: center;
+        font-size: 12px;
       }
     }
   }
- 
-  .aside-closed {
-    width: 80px;
- 
-    &__expand-button {
-      background: $dark-bacground;
-      color: white;
-      border: none;
-      width: 35px;
-      height: 35px;
-      border-radius: 20px;
-      margin: 45vh 20px;
-      font-size: 18px;
- 
-    }
+}
+
+.aside-closed {
+  width: 80px;
+
+  &__expand-button {
+    background: $dark-bacground;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+    margin: 45vh 20px;
+    font-size: 18px;
+
   }
- 
-  .aside-open {
-    min-width: 350px;
-    max-width: 400px;
-  }
+}
+
+.aside-open {
+  min-width: 350px;
+  max-width: 400px;
+}

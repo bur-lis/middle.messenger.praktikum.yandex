@@ -1,5 +1,5 @@
 import './error_template.scss'
-import { Block, Props } from '../../block.ts';
+import { Block, Props } from '../../core/block.ts';
 import error_template from "./error_template.hbs";
 
 export class ErrorTemplate extends Block {
@@ -8,10 +8,10 @@ export class ErrorTemplate extends Block {
   }
 
   render() {
-    return this.compile(error_template,{
+    return this.compile(error_template, {
       code: this.props.code,
       title: this.props.title,
-      message:this.props.message,
+      message: this.props.message,
     });
   }
 }

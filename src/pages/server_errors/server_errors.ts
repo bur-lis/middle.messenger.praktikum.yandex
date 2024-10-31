@@ -1,4 +1,4 @@
-import {renderDom} from '../../utils'
+import {renderDom} from '../../core/utils'
 import { ErrorTemplate } from '../../components/error_template/error_template';
 
 const server_errors = new ErrorTemplate({
