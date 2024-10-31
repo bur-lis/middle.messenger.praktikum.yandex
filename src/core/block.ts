@@ -122,7 +122,7 @@ export class Block {
   }
 
   componentDidUpdate(oldProps: Props, newProps: Props) {
-    // console.log(oldProps, newProps)
+    console.log(oldProps, newProps)
     return true;
   }
 
@@ -155,7 +155,6 @@ export class Block {
   }
 
   _makePropsProxy(props: Props) {
-    const self = this;
 
     return new Proxy(props, {
       get(target: Props, prop: keyof Props) {

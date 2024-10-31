@@ -15,7 +15,7 @@ function queryStringify(data: Record<string, string>) {
     }, '?');
 }
 
-class HTTPTransport {
+class MyFetch {
     get = (url: string, options: Options) => {
         return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
     };
@@ -69,3 +69,5 @@ class HTTPTransport {
         });
     };
 }
+
+console.log(new MyFetch);
