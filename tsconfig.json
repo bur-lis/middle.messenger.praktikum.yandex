@@ -1,27 +1,30 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
-        "types": [
-            "node"
-          ],
-        "moduleResolution": "node",
-        "allowImportingTsExtensions": true,
-        "allowSyntheticDefaultImports": true,
+        "target": "ESNext",
+        "useDefineForClassFields": true,
+        "module": "ESNext",
+        "lib": ["ESNext", "DOM"],
+        "moduleResolution": "Node",
+        "strict": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
+        "esModuleInterop": true,
         "noEmit": true,
-
-        "noImplicitAny": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "skipLibCheck": true,
+        "noImplicitAny": true,
         "sourceMap": true,
         "strictNullChecks": true,
-        "skipLibCheck": true
+        "baseUrl": ".",
+        "paths": {
+            "core": ["src/core/core"],
+            "components": ["src/components/components"]
+        }
     },
     "include": [
-        "src//*",
-        "src/**/*",
-        "package.json"
-, "hendlbars_precompille.ts"    ],
+      "src",
+      "node_modules/handlebars/types/index.d.ts"
+    ]
 }
-
