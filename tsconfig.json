@@ -22,6 +22,6 @@
         "src/**/*",
         "package.json",
         "hendlbars_precompille.ts"
-    ],
+    ]
 }
 
