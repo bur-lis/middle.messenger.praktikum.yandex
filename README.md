@@ -9,26 +9,26 @@ You can view it by following the [link](https://www.figma.com/design/RC8oqsy8WuM
 
 ## Pages
 
-Currently, the project consists of several main pages.Below are links to their implementation git:
+The project currently consists of several main pages. Below are links to the git folders with their implementation:
 
 * [Start page](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/index.html)
-* [User authorization](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/authorization.html)
-* [User registration](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/register.html)
-* [Selected chat page](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/chat.html)
-* [Edit profile](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/profile.html)
-* [Change password](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/change_password.html)
-* [Server error](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/server_errors.html)
-* [Client error](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/client_errors.html)
+* [User authorization](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/authorization)
+* [User registration](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/register)
+* [Selected chat page](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/chat)
+* [Edit profile](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/profile)
+* [Change password](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/change_password)
+* [Server error](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/server_errors)
+* [Client error](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/client_errors)
 
 And the result posted on Nelifay:
-* [Start page](https://gleaming-pixie-8d9ada.netlify.app/)
-* [User authorization](https://gleaming-pixie-8d9ada.netlify.app/pages/authorization)
-* [User registration](https://gleaming-pixie-8d9ada.netlify.app/pages/register)
-* [Selected chat page](https://gleaming-pixie-8d9ada.netlify.app/pages/chat)
-* [Edit profile](https://gleaming-pixie-8d9ada.netlify.app/pages/profile)
-* [Change password](https://gleaming-pixie-8d9ada.netlify.app/pages/change_password)
-* [Server error](https://gleaming-pixie-8d9ada.netlify.app/pages/server_errors)
-* [Client error](https://gleaming-pixie-8d9ada.netlify.app/pages/client_errors.html)
+* [Start page](https://gleaming-pixie-8d9ada.netlify.app)
+* [User authorization](https://gleaming-pixie-8d9ada.netlify.app/src/pages/authorization/authorization)
+* [User registration](https://gleaming-pixie-8d9ada.netlify.app/src/pages/register/register.html)
+* [Selected chat page](https://gleaming-pixie-8d9ada.netlify.app/src/pages/chat/chat)
+* [Edit profile](https://gleaming-pixie-8d9ada.netlify.app/src/pages/profile/profile)
+* [Change password](https://gleaming-pixie-8d9ada.netlify.app/src/pages/change_password/change_password.html)
+* [Server error](https://gleaming-pixie-8d9ada.netlify.app/src/pages/server_errors/server_errors)
+* [Client error](https://gleaming-pixie-8d9ada.netlify.app/src/pages/client_errors/client_errors)
 ## Runing
 
 ```js
