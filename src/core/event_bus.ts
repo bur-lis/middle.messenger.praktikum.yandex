@@ -1,5 +1,4 @@
-type Callback = (args: string | undefined) => void;
-type Listeners = Record<string, Array<Callback>>;
+import { Listeners, Callback, Props } from "./type";
 
 export class EventBus {
   private listeners:Listeners;
@@ -25,7 +24,7 @@ export class EventBus {
       );
     }
   
-      emit(event: string, args?: string) {
+      emit(event: string, args?: Props) {
       if (!this.listeners[event]) {
         throw new Error(`Нет события: ${event}`);
       }
@@ -35,3 +34,5 @@ export class EventBus {
       });
     }
   }
+
+  

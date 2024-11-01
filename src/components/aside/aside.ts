@@ -1,6 +1,8 @@
 
 import './aside.scss'
-import { Block, Props } from '../../core/block.ts';
+
+import { Block } from '../../core/block.ts';
+import { Props } from '../../core/type.ts';
 import { Button } from '../button/button.ts';
 import aside from "./aside.hbs";
 

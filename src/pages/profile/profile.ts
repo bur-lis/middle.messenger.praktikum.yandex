@@ -6,7 +6,9 @@ import { first_name_input, second_name_input, phone_input } from '../../core/rep
 import { InputBlock } from '../../components/input_block/input_block';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
-import { Block, Props } from '../../core/block';
+
+import { Block } from '../../core/block';
+import { Props } from '../../core/type';
 import profile_template from "./profile.hbs";
 
 export class Profile extends Block {
@@ -16,7 +18,7 @@ export class Profile extends Block {
             class: 'user-profile__settings-form__button',
             type: 'submit',
             events: {
-                click: () => FormDatatoConsole(this)
+                click: () => FormDatatoConsole(this, 'profile_form')
             },
         });
 
@@ -86,5 +88,4 @@ const profile_page = new Profile({
 
 
 renderDom("#app", profile_page);
-
 

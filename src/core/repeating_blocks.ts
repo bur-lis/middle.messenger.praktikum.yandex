@@ -72,6 +72,7 @@ export const aside = new Aside({
 
 export const mail_input = new InputBlock({
     label: 'Почта',
+    type:'email',
     regtext: 'латиница, цифры, дефис, подчёркивания, обязательно "@.", но перед точкой должны быть буквы',
     regexp: '^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$', // eslint-disable-line
     display_error_label: 'none',
@@ -168,5 +169,4 @@ export const confirm_password_input = new InputBlock({
         }
     })
 });
-
 

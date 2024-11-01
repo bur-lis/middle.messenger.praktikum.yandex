@@ -1,6 +1,8 @@
 
 import './button.scss'
-import { Block, Props } from '../../core/block.ts';
+
+import { Block } from '../../core/block.ts';
+import { Props } from '../../core/type.ts';
 import mu_button from "./button.hbs";
 
 export class Button extends Block {
@@ -18,3 +20,4 @@ export class Button extends Block {
     });
   }
 }
+

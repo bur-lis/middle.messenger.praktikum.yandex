@@ -8,3 +8,4 @@ const server_errors = new ErrorTemplate({
 });
 
 renderDom("#app", server_errors);
+

@@ -4,7 +4,9 @@ import '/style.scss'
 import { renderDom, FormDatatoConsole } from '../../core/utils'
 import { Button } from '../../components/button/button';
 import { password_input, login_input } from '../../core/repeating_blocks';
-import { Block, Props } from '../../core/block';
+
+import { Block } from '../../core/block';
+import { Props } from '../../core/type';
 import authorization_template from "./authorization.hbs";
 
 export class Authorization extends Block {
@@ -14,7 +16,7 @@ export class Authorization extends Block {
             class: 'middle-panel__button',
             type: 'submit',
             events: {
-                click: () => FormDatatoConsole(this)
+                click: () => FormDatatoConsole(this,'authorization_form')
             },
         });
         super('div', { ...props, button });

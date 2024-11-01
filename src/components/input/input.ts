@@ -1,5 +1,7 @@
 import './input.scss'
-import { Block, Props } from '../../core/block.ts';
+
+import { Block } from '../../core/block.ts';
+import { Props } from '../../core/type.ts';
 import input_template from "./input.hbs";
 
 export class Input extends Block {
@@ -16,3 +18,4 @@ export class Input extends Block {
         });
     }
 }
+

@@ -1,7 +1,8 @@
 import './register.scss'
 
 import register_template from "./register.hbs";
-import { Block, Props } from '../../core/block';
+import { Block } from '../../core/block';
+import { Props } from '../../core/type';
 import { Button } from '../../components/button/button';
 import { renderDom, FormDatatoConsole } from '../../core/utils'
 import { mail_input, login_input, first_name_input, phone_input } from '../../core/repeating_blocks';
@@ -15,7 +16,7 @@ export class Register extends Block {
             class: 'middle-panel__button',
             type: 'submit',
             events: {
-                click: () => FormDatatoConsole(this),
+                click: () => FormDatatoConsole(this, 'register_form'),
             },
         });
         super('div', {...props,button});
@@ -48,5 +49,4 @@ const register_page = new Register({
 
 
 renderDom("#app", register_page);
-
 

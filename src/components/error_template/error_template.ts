@@ -1,5 +1,7 @@
 import './error_template.scss'
-import { Block, Props } from '../../core/block.ts';
+
+import { Block } from '../../core/block.ts';
+import { Props } from '../../core/type.ts';
 import error_template from "./error_template.hbs";
 
 export class ErrorTemplate extends Block {
@@ -15,3 +17,4 @@ export class ErrorTemplate extends Block {
     });
   }
 }
+

@@ -2,7 +2,9 @@ import './chat.scss'
 import { renderDom, FormDatatoConsole } from '../../core/utils'
 import { aside } from '../../core/repeating_blocks';
 import { Button } from '../../components/button/button';
-import { Block, Props } from '../../core/block';
+
+import { Block } from '../../core/block';
+import { Props } from '../../core/type';
 import chat_template from "./chat.hbs";
 
 export class Chat extends Block {
@@ -12,7 +14,7 @@ export class Chat extends Block {
             label: '➔',
             type:'submit',
             events: {
-                click: () => FormDatatoConsole(this)
+                click: () => FormDatatoConsole(this,'send_message_form')
             },
         });
         super('div', { ...props, send_message_button });
@@ -87,5 +89,4 @@ const chat_page = new Chat({
 
 
 renderDom("#app", chat_page);
-
 

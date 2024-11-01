@@ -8,3 +8,4 @@ const client_errors = new ErrorTemplate({
 });
 
 renderDom("#app", client_errors);
+

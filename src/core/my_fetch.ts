@@ -71,3 +71,4 @@ class MyFetch {
 }
 
 console.log(new MyFetch);
+

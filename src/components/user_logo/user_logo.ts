@@ -1,5 +1,6 @@
 import './user_logo.scss'
-import { Block, Props } from '../../core/block.ts';
+import { Block } from '../../core/block.ts';
+import { Props } from '../../core/type.ts';
 import { default as user_logo_template } from "./user_logo.hbs";
 
 export class UserLogo extends Block {
@@ -13,3 +14,4 @@ export class UserLogo extends Block {
     });
   }
 }
+

@@ -7,7 +7,7 @@ export function renderDom(query: string, block: Block) {
     return root;
 }
 
-export function FormDatatoConsole(page_block: Block) {
+export function FormDatatoConsole(page_block: Block, form_id:string) {
     const page_children = page_block.children;
     let form_valid = true;
     Object.keys(page_children).forEach((input_block_name: string) => {
@@ -18,9 +18,9 @@ export function FormDatatoConsole(page_block: Block) {
     })
    
     if (form_valid) {
-        const form = document.getElementsByTagName('form')[0];
+        const form = document.getElementById(form_id) as HTMLFormElement;
          console.log(form)
-        const form_data = new FormData(form);
+        const form_data = form ? new FormData(form) : 'Форма не найдена ';
         console.log(form_data);
     }
 }
@@ -45,3 +45,4 @@ export function Validate(input_block: Block) {
     }
 
 }
+

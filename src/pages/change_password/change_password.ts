@@ -4,7 +4,9 @@ import { renderDom, FormDatatoConsole } from '../../core/utils'
 import { InputBlock } from '../../components/input_block/input_block';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
-import { Block, Props } from '../../core/block';
+
+import { Block } from '../../core/block';
+import { Props } from '../../core/type';
 import { password_input, confirm_password_input, aside, user_logo } from '../../core/repeating_blocks';
 import change_password_template from "./change_password.hbs";
 
@@ -15,7 +17,7 @@ export class ChangePassword extends Block {
             class: 'change-password__save-button',
             type: 'submit',
             events: {
-                click: () => FormDatatoConsole(this),
+                click: () => FormDatatoConsole(this, 'change_password_form'),
             },
         });
         super('div', { ...props, save_button });
@@ -57,5 +59,4 @@ const change_password_page = new ChangePassword({
 
 
 renderDom("#app", change_password_page);
-
 

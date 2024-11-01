@@ -1,9 +1,4 @@
-export type Props = Record<string, PropsValue>;
-type PropsValue = string | boolean | Callback | Record<string, Callback> | Record<string, string | PropsObject | PropsObject[]> | Block
-type Callback = (args: string | undefined | Event) => void;
-type Children = Record<string, Block>;
-type PropsObject =  Record<string, string | boolean | number>;
-
+import { Props, PropsValue, Children} from './type.js';
 import { EventBus } from './event_bus.js';
 import { v4 as makeUUID } from 'uuid';
 
@@ -23,7 +18,7 @@ export class Block {
     tagName: string;
     props: Props;
   };
-  private readonly _id: string;
+  _id: string;
 
   /** JSDoc
      * @param {string} tagName
@@ -73,7 +68,7 @@ export class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
   _addEvents() {
-    const events = this.props.events as Record<string, Callback>;
+    const events = this.props.events as Record<string, () => void>;
     if (events) {
       Object.keys(events).forEach((eventName: string) => {
         this._element.children[0].addEventListener(eventName, events[eventName]);
@@ -83,7 +78,7 @@ export class Block {
   }
 
   private _removeEvents() {
-    const events = this.props.events as Record<string, Callback>;;
+    const events = this.props.events as Record<string, () => void>;;
 
     if (events) {
       Object.keys(events).forEach((eventName: string) => {
@@ -130,7 +125,7 @@ export class Block {
     if (!nextProps) {
       return;
     }
-
+    
     Object.assign(this.props, nextProps);
   };
 
@@ -155,26 +150,23 @@ export class Block {
   }
 
   _makePropsProxy(props: Props) {
-    const self = this ;
     return new Proxy(props, {
-      get(target: Props, prop: keyof Props) {
+      get: (target: Props, prop: keyof Props) => {
         const value = target[prop];
         return typeof value === "function" ? value.bind(target) : value;
       },
-      set(target: Props, prop: keyof Props, value) {
+      set: (target: Props, prop: keyof Props, value) => {
         target[prop] = value;
-
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим { ...target },
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU,  target);
+        console.log(self, this,props)
+        this.eventBus().emit(Block.EVENTS.FLOW_CDU, target);
         return true;
       },
-      deleteProperty() {
+      deleteProperty: () => {
         throw new Error("Нет доступа");
       }
     });
   }
-
+ 
   _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
@@ -219,3 +211,4 @@ export function MYcompile<T>(file_hbs: unknown, options?: Record<string, T>): st
   }
   return '';
 }
+
