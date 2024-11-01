@@ -21,14 +21,14 @@ Currently, the project consists of several main pages.Below are links to their i
 * [Client error](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/pages/client_errors.html)
 
 And the result posted on Nelifay:
-* [Start page](https://tranquil-kheer-4a92fe.netlify.app/)
-* [User authorization](https://tranquil-kheer-4a92fe.netlify.app/pages/authorization)
-* [User registration](https://tranquil-kheer-4a92fe.netlify.app/pages/register)
-* [Selected chat page](https://tranquil-kheer-4a92fe.netlify.app/pages/chat)
-* [Edit profile](https://tranquil-kheer-4a92fe.netlify.app/pages/profile)
-* [Change password](https://tranquil-kheer-4a92fe.netlify.app/pages/change_password)
-* [Server error](https://tranquil-kheer-4a92fe.netlify.app/pages/server_errors)
-* [Client error](https://tranquil-kheer-4a92fe.netlify.app/pages/client_errors.html)
+* [Start page](https://gleaming-pixie-8d9ada.netlify.app/)
+* [User authorization](https://gleaming-pixie-8d9ada.netlify.app/pages/authorization)
+* [User registration](https://gleaming-pixie-8d9ada.netlify.app/pages/register)
+* [Selected chat page](https://gleaming-pixie-8d9ada.netlify.app/pages/chat)
+* [Edit profile](https://gleaming-pixie-8d9ada.netlify.app/pages/profile)
+* [Change password](https://gleaming-pixie-8d9ada.netlify.app/pages/change_password)
+* [Server error](https://gleaming-pixie-8d9ada.netlify.app/pages/server_errors)
+* [Client error](https://gleaming-pixie-8d9ada.netlify.app/pages/client_errors.html)
 ## Runing
 
 ```js
@@ -41,4 +41,6 @@ npm run start
 
 ## Netlify
 
-The project is deployed on Netlify at the [link](https://app.netlify.com/sites/tranquil-kheer-4a92fe/overview)
+
+The project is deployed on Netlify at the [link](https://app.netlify.com/sites/gleaming-pixie-8d9ada/overview)
+

@@ -19,8 +19,14 @@ export default defineConfig({
                 client_errors: resolve(__dirname, 'pages/client_errors.html'),
                 profile: resolve(__dirname, 'pages/profile.html'),
                 server_errors: resolve(__dirname, 'pages/server_errors.html'),
-              },
+
+            },
         },
+    },
+    server: {
+        port: 3000,
+        open: true
+
     },
     plugins: [
         handlebars({
