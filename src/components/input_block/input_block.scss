@@ -1,4 +1,4 @@
-@import '../../../style.scss';
+@import '../../../style';
 
 input:focus-visible {
   outline: 1px solid $dusty-blue;
@@ -21,6 +21,7 @@ input::placeholder {
   .block {
     display: block;
   }
+  
   .none {
     display: none;
   }

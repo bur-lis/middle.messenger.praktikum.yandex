@@ -1,4 +1,4 @@
-@import "../../../style.scss";
+@import "../../../style";
 
 textarea {
     width: 90%;
@@ -57,7 +57,6 @@ textarea::placeholder {
         width: 35px;
         height: 35px;
         border-radius: 20px;
-        margin: auto;
         font-size: 18px;
         margin: 5px;
     }

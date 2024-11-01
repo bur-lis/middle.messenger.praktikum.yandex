@@ -16,8 +16,10 @@ export function FormDatatoConsole(page_block: Block) {
             form_valid = form_valid && Validate(child);
         }
     })
+   
     if (form_valid) {
         const form = document.getElementsByTagName('form')[0];
+         console.log(form)
         const form_data = new FormData(form);
         console.log(form_data);
     }

@@ -1,5 +1,5 @@
 import './chat.scss'
-import { renderDom } from '../../core/utils'
+import { renderDom, FormDatatoConsole } from '../../core/utils'
 import { aside } from '../../core/repeating_blocks';
 import { Button } from '../../components/button/button';
 import { Block, Props } from '../../core/block';
@@ -9,8 +9,12 @@ export class Chat extends Block {
     constructor(props: Props) {
         const send_message_button = new Button({
             class: 'send-block__send-button',
-            label: '➔'
-        })
+            label: '➔',
+            type:'submit',
+            events: {
+                click: () => FormDatatoConsole(this)
+            },
+        });
         super('div', { ...props, send_message_button });
     }
 

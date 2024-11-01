@@ -73,7 +73,7 @@ export class Block {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
   _addEvents() {
-    const events: Record<string, Callback> = this.props.events;
+    const events = this.props.events as Record<string, Callback>;
     if (events) {
       Object.keys(events).forEach((eventName: string) => {
         this._element.children[0].addEventListener(eventName, events[eventName]);
@@ -83,7 +83,7 @@ export class Block {
   }
 
   private _removeEvents() {
-    const events = this.props.events;
+    const events = this.props.events as Record<string, Callback>;;
 
     if (events) {
       Object.keys(events).forEach((eventName: string) => {
@@ -155,7 +155,7 @@ export class Block {
   }
 
   _makePropsProxy(props: Props) {
-
+    const self = this ;
     return new Proxy(props, {
       get(target: Props, prop: keyof Props) {
         const value = target[prop];
@@ -165,8 +165,8 @@ export class Block {
         target[prop] = value;
 
         // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
-        self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
+        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим { ...target },
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU,  target);
         return true;
       },
       deleteProperty() {
@@ -176,14 +176,11 @@ export class Block {
   }
 
   _createDocumentElement(tagName: string) {
-    // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
     return document.createElement(tagName);
   }
-  ////////////////////////////////////
-  ///////////////////////////////////
-  ///////////////////////////////////  FUNCTION
 
-  compile(template: Function, props: Props) {
+
+  compile(template: unknown, props: Props) {
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([key, child]) => {

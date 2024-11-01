@@ -73,7 +73,7 @@ export const aside = new Aside({
 export const mail_input = new InputBlock({
     label: 'Почта',
     regtext: 'латиница, цифры, дефис, подчёркивания, обязательно "@.", но перед точкой должны быть буквы',
-    regexp: '^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$',
+    regexp: '^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$', // eslint-disable-line
     display_error_label: 'none',
     input: new Input({
         name: 'email',
@@ -87,7 +87,7 @@ export const mail_input = new InputBlock({
 export const login_input = new InputBlock({
     label: 'Логин',
     regtext: '3-20 символов, латиница и цифры, без пробелов, без спецсимволов (только - или _ )',
-    regexp: '(?:\s|^)[0-9A-Za-z\-\_]{3,20}(?:\s|$)',
+    regexp: '(?:\s|^)[0-9A-Za-z\-\_]{3,20}(?:\s|$)',// eslint-disable-line
     display_error_label: 'none',
     input: new Input({
         name: 'login',
@@ -101,7 +101,7 @@ export const login_input = new InputBlock({
 export const first_name_input = new InputBlock({
     label: 'Фамилия',
     regtext: 'латиница или кириллица, первая буква заглавная, без пробелов, цифр, спецсимволов',
-    regexp: '(?:\s|^)[A-ZА-Я]{1}[a-zа-я]+(?:\s|$)',
+    regexp: '(?:\s|^)[A-ZА-Я]{1}[a-zа-я]+(?:\s|$)',// eslint-disable-line
     display_error_label: 'none',
     input: new Input({
         name: 'first_name',
@@ -129,7 +129,7 @@ export const phone_input = new InputBlock({
 export const second_name_input = new InputBlock({
     label: 'Имя',
     regtext: 'латиница или кириллица, первая буква заглавная, без пробелов, цифр, спецсимволов',
-    regexp: '(?:\s|^)[A-ZА-Я]{1}[a-zа-я]+(?:\s|$)',
+    regexp: '(?:\s|^)[A-ZА-Я]{1}[a-zа-я]+(?:\s|$)', // eslint-disable-line
     display_error_label: 'none',
     input: new Input({
         name: 'second_name',

@@ -24,10 +24,10 @@
                 </li>
                 {{/each}}
         </section>
-        <section class="send-block">
+        <form onsubmit="return false" class="send-block">
             {{{attach_file_button}}}
-            <textarea class="send-block__writing-textarea" placeholder="Сообщение"></textarea>
+            <textarea class="send-block__writing-textarea" name="message" placeholder="Сообщение" required="required"></textarea>
             {{{send_message_button}}}
-        </section>
+        </form>
     </main>
 </div>
