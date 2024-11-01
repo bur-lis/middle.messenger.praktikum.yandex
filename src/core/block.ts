@@ -157,7 +157,6 @@ export class Block {
       },
       set: (target: Props, prop: keyof Props, value) => {
         target[prop] = value;
-        console.log(self, this,props)
         this.eventBus().emit(Block.EVENTS.FLOW_CDU, target);
         return true;
       },
