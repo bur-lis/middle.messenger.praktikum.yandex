@@ -1,0 +1,49 @@
+@import '../../../style';
+
+input:focus-visible {
+  outline: 1px solid $dusty-blue;
+}
+
+input::placeholder {
+  color: $dark-text;
+}
+
+.input-block {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 5px;
+  position: relative;
+
+  label {
+    font-size: 10px;
+  }
+
+  .block {
+    display: block;
+  }
+  
+  .none {
+    display: none;
+  }
+
+  &__error-label {
+    display: none;
+    width: 100%;
+    color: $red-border;
+    position: absolute;
+    margin: 0 2px;
+    top: 55px;
+  }
+
+  &__label {
+    color: $grey-text;
+    text-align: start;
+    margin: 2px;
+  }
+
+   .error {
+    border-color: $red-border;
+    color: $red-background
+  }
+}
+

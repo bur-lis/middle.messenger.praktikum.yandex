@@ -1,0 +1,30 @@
+@import '../../../style';
+
+.user-profile {
+  width: 60%;
+  max-width: 600px;
+  margin: calc(50vh - 300px) auto;
+
+  &__settings-form {
+    &__button {
+      margin-right: 100%;
+    }
+  }
+
+  &__button-block {
+    display: flex;
+    justify-content: end;
+    margin: -57px 0;
+
+    &__button,
+    &__button-red {
+      margin-left: 10px;
+    }
+
+    &__button-red {
+      background: $red-background;
+      border: $red-border;
+    }
+  }
+}
+
