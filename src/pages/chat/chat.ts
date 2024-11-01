@@ -35,7 +35,7 @@ export class Chat extends Block {
 
 const message_menu_button = new Button({
     img: {
-        src: '/public/menu-dots-vertical.svg',
+        src: '/menu-dots-vertical.svg',
         alt: 'Меню чата'
     },
     class: 'message-header__menu-button'
@@ -43,7 +43,7 @@ const message_menu_button = new Button({
 
 const attach_file_button = new Button({
     img: {
-        src: '/public/attach-file.svg',
+        src: '/attach-file.svg', 
         alt: 'Прикрепить вложение к сообщению'
     },
     class: 'send-block__attach-file'
