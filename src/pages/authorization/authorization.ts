@@ -1,7 +1,7 @@
 import './authorization.scss'
 import '/style.scss'
 
-import { renderDom, FormDatatoConsole } from '../../core/utils'
+import { FormDatatoConsole } from '../../core/utils'
 import { Button } from '../../components/button/button';
 import { password_input, login_input } from '../../core/repeating_blocks';
 
@@ -9,7 +9,7 @@ import { Block } from '../../core/block';
 import { Props } from '../../core/type';
 import authorization_template from "./authorization.hbs";
 
-export class Authorization extends Block {
+ export class Authorization extends Block {
     constructor(props: Props) {
         const button = new Button({
             label: 'Войти',
@@ -19,7 +19,7 @@ export class Authorization extends Block {
                 click: () => FormDatatoConsole(this,'authorization_form')
             },
         });
-        super('div', { ...props, button });
+        super('div', { ...props, button,login_input,password_input });
     }
 
     render() {
@@ -31,10 +31,4 @@ export class Authorization extends Block {
     };
 }
 
-const authorization_page = new Authorization({
-    login_input: login_input,
-    password_input: password_input
-});
-
-renderDom("#app", authorization_page);
 

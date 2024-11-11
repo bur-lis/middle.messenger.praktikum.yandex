@@ -27,7 +27,7 @@ export class Block {
      * @returns {void}
      */
 
-  constructor(tagName = "div", propsAndChildren = {}) {
+ constructor(tagName = "div", propsAndChildren = {}) {
 
     this._id = makeUUID();
     const { children, props } = this._getChildren(propsAndChildren);

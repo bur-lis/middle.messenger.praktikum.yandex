@@ -6,6 +6,9 @@ export function renderDom(query: string, block: Block) {
     root?.appendChild(block.getContent());
     return root;
 }
+export function isEqual(lhs:string, rhs:string) {
+    return lhs === rhs;
+  }
 
 export function FormDatatoConsole(page_block: Block, form_id:string) {
     const page_children = page_block.children;
