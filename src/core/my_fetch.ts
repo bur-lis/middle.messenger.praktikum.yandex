@@ -1,3 +1,5 @@
+import { HTTPMethod, Options, } from "./type";
+
 const METHODS = {
     GET: 'GET',
     POST: 'POST',
@@ -5,8 +7,7 @@ const METHODS = {
     DELETE: 'DELETE',
 };
 
-interface Options { method: string, data?: RequestData, timeout?: number }
-type RequestData =  Record<string, string> | FormData | XMLHttpRequestBodyInit;
+
 
 function queryStringify(data: Record<string, string>) {
     const keys = Object.keys(data);
@@ -16,16 +17,16 @@ function queryStringify(data: Record<string, string>) {
 }
 
 class MyFetch {
-    get = (url: string, options: Options) => {
+    get: HTTPMethod = (url, options) => {
         return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
     };
-    put = (url: string, options: Options) => {
+    put: HTTPMethod = (url, options) => {
         return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
     };
-    post = (url: string, options: Options) => {
+    post: HTTPMethod = (url, options) => {
         return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
     };
-    delete = (url: string, options: Options) => {
+    delete: HTTPMethod = (url, options) => {
         return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
     };
 
