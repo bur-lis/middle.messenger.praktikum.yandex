@@ -2,9 +2,9 @@ import { Block } from "./block";
 import { Props } from "./type";
 import { renderDom, isEqual } from "./utils";
 
-type Constructor<C = unknown, P = unknown> = new ( ...args: P[]) => C
+type Constructor<C = unknown, P = Props> = new ( ...args: P[]) => C
 
-export class Route <C extends Block = Block, P extends Props = Props> {
+export class Route <C extends Block, P extends Props = Props> {
     _pathname:string;
     _blockClass:Constructor;
     _block: C | null;
@@ -36,8 +36,8 @@ export class Route <C extends Block = Block, P extends Props = Props> {
 
     render() {
         if (!this._block) {
-            console.log(this._blockClass);
-            this._block = new this._blockClass();
+            this._block = new this._blockClass(this._props);
+            console.log(this._block);
             renderDom(this._props.rootQuery as string, this._block);
             return;
         }
@@ -65,8 +65,9 @@ export class Router {
         Router.__instance = this;
     }
 
-    use(pathname: string, block: Block) {
-        const route = new Route(pathname, block, {rootQuery: this._rootQuery});
+    use(pathname: string, block: Constructor, props: Props = {}) {
+        props.rootQuery = this._rootQuery;
+        const route = new Route(pathname, block, props);
 
         this.routes.push(route);
 

@@ -7,5 +7,5 @@ const client_errors = new ErrorTemplate({
     message: ''
 });
 
-renderDom("#app", client_errors);
+// renderDom("#app", client_errors);
 

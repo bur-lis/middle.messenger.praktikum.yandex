@@ -19,17 +19,9 @@ aside {
         'photo login'
         'photo name';
 
-      &__photo {
-        grid-area: photo;
-        width: 50px;
-        height: 50px;
-        border-radius: 25px;
-        border: none;
-        background: $bright-blue;
-        align-self: center;
+      div:nth-child(1) {
+        grid-row: 1 / 3;
       }
-
-
 
       &__name {
         color: $grey-text;
@@ -144,4 +136,3 @@ aside {
 }
 
 /* - все ради пустой строки- */
-

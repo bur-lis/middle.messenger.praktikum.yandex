@@ -7,5 +7,5 @@ const server_errors = new ErrorTemplate({
     message: 'Мы уже устраняем неисправность, попробуйте перезагрузить страницу через время.'
 });
 
-renderDom("#app", server_errors);
+// renderDom("#app", server_errors);
 

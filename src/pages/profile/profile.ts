@@ -1,6 +1,7 @@
 import './profile.scss'
 
-import { renderDom, FormDatatoConsole } from '../../core/utils'
+import { FormDatatoConsole } from '../../core/utils'
+import { Router } from '../../core/my_router';
 import { aside, user_logo, mail_input, login_input } from '../../core/repeating_blocks';
 import { first_name_input, second_name_input, phone_input } from '../../core/repeating_blocks';
 import { InputBlock } from '../../components/input_block/input_block';
@@ -11,18 +12,52 @@ import { Block } from '../../core/block';
 import { Props } from '../../core/type';
 import profile_template from "./profile.hbs";
 
+const router = new Router('#app');
+
 export class Profile extends Block {
     constructor(props: Props) {
+        const display_name = new InputBlock({
+            label: 'Имя в чате',
+            display_error_label: 'none',
+            input: new Input({
+                name: 'display_name',
+            })
+        });
+        const change_password_button = new Button({
+            label: 'Изменить пароль',
+            class: 'user-profile__button-block__button',
+            events: {
+                click: () => router.go('/change_password')
+            },
+        });
+        const sign_out_button = new Button({
+            label: 'Выйти',
+            class: 'user-profile__button-block__button-red',
+            events: {
+                click: () => router.go('/')
+            },
+        });
         const save_button = new Button({
             label: 'Сохранить',
             class: 'user-profile__settings-form__button',
             type: 'submit',
             events: {
-                click: () => FormDatatoConsole(this, 'profile_form')
+                click: () => { FormDatatoConsole(this, 'profile_form') }
             },
         });
 
-        super('div', { ...props, save_button });
+        super('div', {
+            ...props,
+            save_button,
+            display_name,
+            change_password_button,
+            sign_out_button, user_logo,
+            mail_input,
+            login_input,
+            first_name_input,
+            second_name_input,
+            phone_input
+        });
         aside.setProps({ open: false })
     }
 
@@ -43,49 +78,6 @@ export class Profile extends Block {
     };
 }
 
-const display_name = new InputBlock({
-    label: 'Имя в чате',
-    display_error_label: 'none',
-    input: new Input({
-        name: 'display_name',
-    })
-});
 
 
-
-const change_password_button = new Button({
-    label: 'Изменить пароль',
-    class: 'user-profile__button-block__button',
-    events: {
-        click: () => {
-            location.href = '../change_password/change_password.html'
-        },
-    },
-});
-const sign_out_button = new Button({
-    label: 'Выйти',
-    class: 'user-profile__button-block__button-red',
-    events: {
-        click: () => {
-            location.href = '../../../index.html'
-        },
-    },
-});
-
-const profile_page = new Profile({
-    aside: aside,
-    user_logo: user_logo,
-    mail_input: mail_input,
-    login_input: login_input,
-    first_name_input: first_name_input,
-    second_name_input: second_name_input,
-    display_name: display_name,
-    phone_input: phone_input,
-    change_password_button: change_password_button,
-    sign_out_button: sign_out_button
-});
-
-
-
-renderDom("#app", profile_page);
 
