@@ -10,7 +10,7 @@ export type Callback = (args: Event | Props | undefined) => void;
 type PropsObject = Record<string, Primitives>;
 type Primitives = string | boolean | number;
 
-export type HTTPMethod = (url: string, options: Options) => Promise<unknown>
-export interface Options { method: string, data?: RequestData, timeout?: number }
+export type HTTPMethod = (url: string, options?: Options | {timeout?: number}) => Promise<unknown>
+export interface Options { method?: string, data?: RequestData, timeout?: number }
 type RequestData =  Record<string, string> | FormData | XMLHttpRequestBodyInit;
 

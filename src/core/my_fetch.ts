@@ -16,18 +16,18 @@ function queryStringify(data: Record<string, string>) {
     }, '?');
 }
 
-class MyFetch {
+export class MyFetch {
     get: HTTPMethod = (url, options) => {
-        return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+        return this.request(url, { ...options, method: METHODS.GET }, options?.timeout);
     };
     put: HTTPMethod = (url, options) => {
-        return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+        return this.request(url, { ...options, method: METHODS.PUT }, options?.timeout);
     };
     post: HTTPMethod = (url, options) => {
-        return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+        return this.request(url, { ...options, method: METHODS.POST }, options?.timeout);
     };
     delete: HTTPMethod = (url, options) => {
-        return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+        return this.request(url, { ...options, method: METHODS.DELETE }, options?.timeout);
     };
 
 
@@ -70,6 +70,4 @@ class MyFetch {
         });
     };
 }
-
-console.log(new MyFetch);
 
