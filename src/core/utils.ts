@@ -45,7 +45,7 @@ export function ReturnFormData(page_block: Block, form_id:string) {
         const form = document.getElementById(form_id) as HTMLFormElement;
          console.log(form)
         const form_data = form ? new FormData(form) : 'Форма не найдена ';
-        return form_data;
+        return Object.fromEntries(form_data);
     }
 }
 

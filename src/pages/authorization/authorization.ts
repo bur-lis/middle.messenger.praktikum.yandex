@@ -1,6 +1,6 @@
 import './authorization.scss'
 
-import { FormDatatoConsole, ReturnFormData } from '../../core/utils'
+import {ReturnFormData } from '../../core/utils'
 import { Router } from '../../core/my_router';
 import { Button } from '../../components/button/button';
 import { Linck } from '../../components/linck/linck';
@@ -28,7 +28,7 @@ const a = new AuthorizationController();
             class: 'middle-panel__button',
             type: 'submit',
             events: {
-                click: () =>{ a.login(ReturnFormData(this,'authorization_form')); FormDatatoConsole(this,'authorization_form')}
+                click: () =>{ const f = ReturnFormData(this,'authorization_form'); if (f) a.login(f);}
             },
         });
 

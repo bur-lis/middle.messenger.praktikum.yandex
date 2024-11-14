@@ -61,10 +61,13 @@ export class MyFetch {
 
             xhr.timeout = timeout;
             xhr.ontimeout = reject;
+            console.log(data)
+            console.log(JSON.stringify(data))
 
             if (method === METHODS.GET || !data) {
                 xhr.send();
             } else {
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
                 xhr.send(JSON.stringify(data));
             }
         });

@@ -8,7 +8,9 @@ const chatAPIInstance = new MyFetch();
 export class AuthorizationAPI extends BaseAPI {
     create(data:RequestData) {
         // Здесь уже не нужно писать полный путь /api/v1/chats/
-        return chatAPIInstance.post('/auth/signin', {data:data});
+        const response  = chatAPIInstance.post('/api/v2/auth/signin', {data:data}).then(({response, status}) => {return {'response':JSON.parse(response) ,'status': status}});
+        console.log(response)
+        return response;
     }
 
     // request(data) {
@@ -22,6 +24,6 @@ export class AuthorizationAPI extends BaseAPI {
 // class LoginAPI extends BaseAPI {
 //         public request(user: LoginRequest) {
 //           return authAPIInstance.post<LoginRequest, LoginResponse>('/login', user)
-//             .then(({user_id}) => user_id); // Обрабатываем получение данных из сервиса далее
+//              // Обрабатываем получение данных из сервиса далее
 //         }
 //       } 

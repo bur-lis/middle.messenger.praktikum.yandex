@@ -21,9 +21,10 @@ export class AuthorizationController{
             // }
         
             // const userID = authorization_api.request(prepareDataToRequest(data));
+            console.log(data)
             const userID = authorization_api.create(data)
-            console.log(userID)
-            router.go('/chats');
+            console.log((await userID).status)
+            // router.go('/chats');
 
             // Останавливаем крутилку
         } catch (error) {
