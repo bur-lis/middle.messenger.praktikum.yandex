@@ -1,16 +1,18 @@
 import './register.scss'
-
 import register_template from "./register.hbs";
+import { RegisterController } from '../../controllers/register-controller';
+
 import { Block } from '../../core/block';
 import { Props } from '../../core/type';
 import { Router } from '../../core/my_router';
+
 import { Button } from '../../components/button/button';
 import { Linck } from '../../components/linck/linck';
-import { FormDatatoConsole } from '../../core/utils'
 import { mail_input, login_input, first_name_input, phone_input } from '../../core/repeating_blocks';
 import { second_name_input, password_input, confirm_password_input } from '../../core/repeating_blocks';
 
 const router = new Router('#app');
+const controller = new RegisterController();
 
 export class Register extends Block {
     constructor(props: Props) {
@@ -21,14 +23,16 @@ export class Register extends Block {
                 click: () => router.go('/authorization')
             },
         });
+
         const button = new Button({
             label: 'Зарегистрироваться',
             class: 'middle-panel__button',
             type: 'submit',
             events: {
-                click: () => FormDatatoConsole(this, 'register_form'),
+                click: () => controller.registr(this),
             },
         });
+        
         super('div', {
             ...props,
             authorization_lick,

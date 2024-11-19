@@ -1,10 +1,22 @@
-@import '../../../style';
+@import "../../../style";
 
 aside {
   overflow: hidden;
   height: 100vh;
   background: $lite-background;
   border-right: 1px solid $grey-border;
+  .add_chat_button {
+    position: absolute;
+    font-size: 25px;
+    font-weight: 400;
+    bottom: 25px;
+    left: 300px;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background: #3d6a95;   
+    box-shadow: 0px 0px 3px gray;
+  }
 
   .action-header {
     display: flex;
@@ -16,8 +28,8 @@ aside {
       min-width: 250px;
       grid-template: repeat(2, 1fr) / 60px 1fr;
       grid-template-areas:
-        'photo login'
-        'photo name';
+        "photo login"
+        "photo name";
 
       div:nth-child(1) {
         grid-row: 1 / 3;
@@ -40,7 +52,6 @@ aside {
       font-weight: 500;
       min-width: 70px;
     }
-
   }
 
   .search {
@@ -63,9 +74,9 @@ aside {
       display: grid;
       grid-template: repeat(3, 1fr) / 60px 1fr 40px;
       grid-template-areas:
-        'photo name time'
-        'photo text none'
-        'photo text new_count';
+        "photo name time"
+        "photo text none"
+        "photo text new_count";
       border-bottom: 1px solid $grey-border;
       color: $grey-text;
       box-sizing: border-box;
@@ -77,7 +88,6 @@ aside {
         color: $dark-text;
         font-size: 14px;
         font-weight: 500;
-
       }
 
       &__time {
@@ -94,7 +104,6 @@ aside {
         &__is-sender {
           color: black;
         }
-
       }
 
       &__new-count {
@@ -126,7 +135,6 @@ aside {
     border-radius: 20px;
     margin: 45vh 20px;
     font-size: 18px;
-
   }
 }
 

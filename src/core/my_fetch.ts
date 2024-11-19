@@ -7,14 +7,14 @@ const METHODS = {
     DELETE: 'DELETE',
 };
 
-
-
 function queryStringify(data: Record<string, string>) {
     const keys = Object.keys(data);
     return keys.reduce((result, key, index) => {
         return result + key + '=' + data[key] + (index < keys.length - 1 ? '&' : '');
     }, '?');
 }
+
+const api_versions = '/api/v2';
 
 export class MyFetch {
     get: HTTPMethod = (url, options) => {
@@ -47,9 +47,9 @@ export class MyFetch {
             const xhr = new XMLHttpRequest();
             xhr.open(
                 method,
-                method === METHODS.GET && !!data
-                    ? (url + queryStringify(data as Record<string, string>))
-                    : url,
+
+                api_versions + url + (method === METHODS.GET && !!data ? queryStringify(data as Record<string, string>) : '')
+
             );
 
             xhr.onload = function () {
@@ -64,9 +64,15 @@ export class MyFetch {
             console.log(data)
             console.log(JSON.stringify(data))
 
+            xhr.withCredentials = true;
+
             if (method === METHODS.GET || !data) {
                 xhr.send();
-            } else {
+            }
+            else if (data instanceof FormData) {
+                xhr.send(data);
+            }
+            else {
                 xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
                 xhr.send(JSON.stringify(data));
             }

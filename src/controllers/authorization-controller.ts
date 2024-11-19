@@ -1,45 +1,32 @@
-import {AuthorizationAPI} from "../api/authorization-api"
+import { AuthorizationAPI } from "../api/authorization-api"
 import { Router } from "../core/my_router";
+import { Block } from "../core/block";
+import { ValidateForm, RederectToError, GetJsonDataFromForm } from "../core/utils";
 const authorization_api = new AuthorizationAPI();
-// const userLoginValidator = validateLoginFields(validateRules);
-interface LoginFormModel {
-    email: string;
-    password: string;
-  }
+interface Response {
+  status: number,
+}
 const router = new Router('#app');
 
-export class AuthorizationController{
+export class AuthorizationController {
 
-     public async login(data: LoginFormModel) {
-        try {
-            // Запускаем крутилку            
+  public async login(login_block: Block) {
+    try {
+      // Запускаем крутилку 
 
-            // const validateData = userLoginValidator(data);
-
-            // if (!validateData.isCorrect) {
-            //     throw new Error(validateData);
-            // }
-        
-            // const userID = authorization_api.request(prepareDataToRequest(data));
-            console.log(data)
-            const userID = authorization_api.create(data)
-            console.log((await userID).status)
-            // router.go('/chats');
-
-            // Останавливаем крутилку
-        } catch (error) {
-            // Логика обработки ошибок
+      if (ValidateForm(login_block)) {
+        const request_data = GetJsonDataFromForm('authorization_form');
+        authorization_api.create(request_data).then((response: Response) => {
+          if (response.status === 200) {
+            router.go('/chats');
+          }
+          else RederectToError(response.status)
+        })
+      }
+      else throw new Error('Форма авторизации не корректно заполнена');
+      // Останавливаем крутилку
+    } catch (error) {
+      // Логика обработки ошибок
     }
   }
 }
-// class UserLoginController {
-//  
-// }
-
-
-// class UserController {
-//     public getUser() {
-//       UserAPI.getUser()
-//                .then(data => store.set('user', data);
-//     }
-//   } 

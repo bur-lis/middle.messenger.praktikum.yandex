@@ -1,5 +1,6 @@
 <div class="chat-page">
     {{{aside}}}
+    {{#if display_name}}
     <main>
         <header class="message-header">
             <div class="message-header__interlocutor">
@@ -9,7 +10,7 @@
             {{{message_menu_button}}}
         </header>
         <section class="message__history">
-            <ul class="history-list">
+            {{#if message}} <ul class="history-list">
                 {{#each message}}<li>
                     <label class="history-list__data-block">{{@key}}</label>
                     {{#each this}}
@@ -22,12 +23,27 @@
                     {{/each}}
                 </li>
                 {{/each}}
+            </ul>
+            {{else}}
+            <div class="default-message">
+                <label>История сообщений пока пуста</label>
+            </div>
+            {{/if}}
+
         </section>
         <form onsubmit="return false" class="send-block" id="send_message_form">
             {{{attach_file_button}}}
-            <textarea class="send-block__writing-textarea" name="message" placeholder="Сообщение" required="required"></textarea>
+            <textarea class="send-block__writing-textarea" name="message" placeholder="Сообщение"
+                required="required"></textarea>
             {{{send_message_button}}}
         </form>
     </main>
-</div>
+    {{else}}
+    <main>
+        <div class="default-message">
+            <label>Не выбран ни один чат</label>
+        </div>
+    </main>
+    {{/if}}
 
+</div>
