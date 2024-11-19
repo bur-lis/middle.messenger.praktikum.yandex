@@ -1,12 +1,11 @@
-
 import './aside.scss'
+import aside from "./aside.hbs";
 
 import { Block } from '../../core/block.ts';
 import { Props } from '../../core/type.ts';
 import { Router } from '../../core/my_router';
 import { Button } from '../../components/button/button';
 import { PersonalPhoto } from '../personal_photo/personal_photo.ts';
-import aside from "./aside.hbs";
 
 const router = new Router('#app');
 
@@ -17,6 +16,15 @@ export class Aside extends Block {
       events: {
         click: () => {
           router.go('/profile')
+        },
+      }
+    })
+    const add_chat_button = new Button({
+      label: '+',
+      class: 'add_chat_button',
+      events: {
+        click: () => {
+          console.log('jafgsak')
         },
       }
     })
@@ -38,7 +46,7 @@ export class Aside extends Block {
         },
       }
     })
-    super('div', { ...props, collapse_button, expand_button, personal_photo });
+    super('div', { ...props, collapse_button, expand_button, personal_photo , add_chat_button});
   }
 
 
@@ -48,7 +56,7 @@ export class Aside extends Block {
       second_name: this.props.second_name,
       first_name: this.props.first_name,
       chats: this.props.chats,
-      open: this.props.open,
+      open: this.props.open
 
     });
   }

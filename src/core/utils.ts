@@ -6,11 +6,11 @@ export function renderDom(query: string, block: Block) {
     root?.appendChild(block.getContent());
     return root;
 }
-export function isEqual(lhs:string, rhs:string) {
+export function isEqual(lhs: string, rhs: string) {
     return lhs === rhs;
-  }
+}
 
-export function FormDatatoConsole(page_block: Block, form_id:string) {
+export function FormDatatoConsole(page_block: Block, form_id: string) {
     const page_children = page_block.children;
     let form_valid = true;
     Object.keys(page_children).forEach((input_block_name: string) => {
@@ -20,16 +20,16 @@ export function FormDatatoConsole(page_block: Block, form_id:string) {
         }
     })
 
-    
-   
+
+
     if (form_valid) {
         const form = document.getElementById(form_id) as HTMLFormElement;
-         console.log(form)
+        console.log(form)
         const form_data = form ? new FormData(form) : 'Форма не найдена ';
         console.log(form_data);
     }
 }
-export function ReturnFormData(page_block: Block, form_id:string) {
+export function ValidateForm(page_block: Block): boolean {
     const page_children = page_block.children;
     let form_valid = true;
     Object.keys(page_children).forEach((input_block_name: string) => {
@@ -39,15 +39,21 @@ export function ReturnFormData(page_block: Block, form_id:string) {
         }
     })
 
-    
-   
-    if (form_valid) {
-        const form = document.getElementById(form_id) as HTMLFormElement;
-         console.log(form)
-        const form_data = form ? new FormData(form) : 'Форма не найдена ';
-        return form_data;
-    }
+    return form_valid;
 }
+export function GetJsonDataFromForm(form_name: string) {
+    const form = document.getElementById(form_name) as HTMLFormElement;
+    const form_data = new FormData(form);
+    var object: Record<string,string> = {};
+    form_data.forEach(function(value, key){
+    object[key] = value as string;
+});
+    return object // Object.fromEntries(form_data) as Record<string, string>;
+}
+export function RederectToError(status: number) {
+
+}
+
 
 export function Validate(input_block: Block) {
 

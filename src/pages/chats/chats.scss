@@ -31,6 +31,11 @@ textarea::placeholder {
     align-self: center;
     margin: 5px;
 }
+.default-message {
+    width: 100%;
+    margin: 50vh 0;;
+    color: $grey-text;
+}
 
 .send-block {
     height: 90px;
@@ -145,4 +150,3 @@ textarea::placeholder {
 }
 
 /* - все ради пустой строки- */
-

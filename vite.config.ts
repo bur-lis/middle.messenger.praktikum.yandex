@@ -18,7 +18,27 @@ export default defineConfig({
         },
     },server: {
         port: 3000,
-        open: true
+        open: true,
+        proxy: {
+            "/api": {
+              target: 'https://ya-praktikum.tech', 
+              changeOrigin: true,
+              secure: false,
+              ws: true,
+              configure: (proxy) => {
+                proxy.on('proxyReq', (proxyReq, req, res) => {
+                    proxyReq.setHeader('Origin', 'https://ya-praktikum.tech');
+                });
+            },
+            cookieDomainRewrite: '', 
+            },
+            '/ws': {
+              target: 'ws://localhost:5249/ws',  //'ws://192.168.10.111:5249/ws', //  'ws://10.100.100.123:5000/ws',
+              ws: true,
+              changeOrigin: true,
+              rewrite: path => path.replace(/^\/ws/, '')
+            }
+          },
     },
     plugins:[
         handlebarsPrecompile(),

@@ -7,11 +7,14 @@ export class EventBus {
     }
   
     on(event: string, callback:Callback) {
+      
       if (!this.listeners[event]) {
         this.listeners[event] = [];
       }
   
       this.listeners[event].push(callback);
+      
+      if (event === 'updated') console.log(this, this.listeners)
     }
   
     off(event: string, callback:Callback) {
@@ -25,6 +28,7 @@ export class EventBus {
     }
   
       emit(event: string, args?: Props) {
+        if (event === 'updated') console.log(this, this.listeners)
       if (!this.listeners[event]) {
         throw new Error(`Нет события: ${event}`);
       }

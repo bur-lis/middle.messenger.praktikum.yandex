@@ -118,7 +118,7 @@ export const phone_input = new InputBlock({
     regexp: '^[+]?[0-9]{10,15}$',
     display_error_label: 'none',
     input: new Input({
-        name: 'phone_name',
+        name: 'phone',
         type: 'phone',
         required: 'required',
         events: {

@@ -12,5 +12,9 @@ type Primitives = string | boolean | number;
 
 export type HTTPMethod = (url: string, options?: Options | {timeout?: number}) => Promise<unknown>
 export interface Options { method?: string, data?: RequestData, timeout?: number }
-type RequestData =  Record<string, string> | FormData | XMLHttpRequestBodyInit;
+export type RequestData =  Record<string, string> | FormData | XMLHttpRequestBodyInit;
+export interface Response {
+    status: number,
+    response: string
+}
 

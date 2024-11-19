@@ -6,7 +6,7 @@ import { EventBus } from "./event_bus";
 
 export enum StoreEvents {
     Updated = 'updated',
-}
+  }  
 
 export class Store extends EventBus {
     private state: Indexed = {};
@@ -16,7 +16,10 @@ export class Store extends EventBus {
     }
 
     public set(path: string, value: unknown) {
+        console.log(set(this.state, path, value))
         set(this.state, path, value);
+        
+        console.log('this.emit')
         this.emit(StoreEvents.Updated);
     };
 
@@ -57,3 +60,5 @@ function set(object: Indexed | unknown, path: string, value: unknown): Indexed |
     }), value as any);
     return merge(object as Indexed, result);
 }
+
+export default new Store(); 

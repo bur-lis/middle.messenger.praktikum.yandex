@@ -118,5 +118,48 @@ h2 {
 }
 
 
+
+// html, body {
+//     scrollbar-color: #458245 #714826; /* «цвет ползунка» «цвет полосы скроллбара» */
+//     scrollbar-width: auto | thin | none;  /* толщина */
+// }
+// scrollbar-color
+
+// scrollbar-width
+
+// auto — толщина скролла по умолчанию;
+// thin — более тонкий вариант скролла;
+// none — скрыть скролл.
+// Firefox
+
+
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+    width: 5px; /* ширина для вертикального скролла */
+    height: 5px; /* высота для горизонтального скролла */
+    background-color: none;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+    background-color: $dusty-blue;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 10px white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    box-shadow:none ;
+}
+
+/* Стрелки */
+
+::-webkit-scrollbar-button:vertical:start:decrement, 
+::-webkit-scrollbar-button:vertical:end:increment,
+::-webkit-scrollbar-button:horizontal:start:decrement,
+::-webkit-scrollbar-button:horizontal:end:increment {
+    background: none;
+}
+
 /* - все ради пустой строки- */
 
