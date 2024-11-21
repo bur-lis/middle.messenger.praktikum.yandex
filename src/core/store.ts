@@ -1,7 +1,4 @@
-type Indexed<T = any> = {
-    [key in string]: T;
-};
-
+import { Indexed } from "./type";
 import { EventBus } from "./event_bus";
 
 export enum StoreEvents {
@@ -9,7 +6,7 @@ export enum StoreEvents {
   }  
 
 export class Store extends EventBus {
-    private state: Indexed = {};
+    private state: Indexed = {user:{}};
 
     public getState() {
         return this.state;

@@ -18,3 +18,8 @@ export interface Response {
     response: string
 }
 
+
+export type Indexed<T = any> = {
+    [key in string]: T;
+};
+

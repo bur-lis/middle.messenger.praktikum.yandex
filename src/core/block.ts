@@ -117,11 +117,14 @@ export class Block {
   }
 
   componentDidUpdate(oldProps: Props, newProps: Props) {
-    console.log(oldProps, newProps)
+    // console.log(oldProps, newProps)
     return true;
   }
 
   setProps = (nextProps: Props) => {
+    console.log('khdf', this)
+    console.log('пропс', nextProps)
+
     if (!nextProps) {
       return;
     }

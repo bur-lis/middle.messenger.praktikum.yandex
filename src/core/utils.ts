@@ -54,6 +54,9 @@ export function RederectToError(status: number) {
 
 }
 
+export function NotificationMassage(massege:string){
+    
+}
 
 export function Validate(input_block: Block) {
 
