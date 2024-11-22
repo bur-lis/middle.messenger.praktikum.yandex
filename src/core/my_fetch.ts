@@ -16,7 +16,7 @@ function queryStringify(data: Record<string, string>) {
 
 const api_versions = '/api/v2';
 
-export class MyFetch {
+class MyFetch {
     get: HTTPMethod = (url, options) => {
         return this.request(url, { ...options, method: METHODS.GET }, options?.timeout);
     };
@@ -80,3 +80,4 @@ export class MyFetch {
     };
 }
 
+export default new MyFetch(); 

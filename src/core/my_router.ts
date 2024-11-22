@@ -1,12 +1,13 @@
 import { Block } from "./block";
 import { Props } from "./type";
-import { renderDom, isEqual } from "./utils";
+import store from "./store";
+import { renderDom, isEqual , RederectToError} from "./utils";
 
-type Constructor<C = unknown, P = Props> = new ( ...args: P[]) => C
+type Constructor<C = unknown, P = Props> = new (...args: P[]) => C
 
-export class Route <C extends Block, P extends Props = Props> {
-    _pathname:string;
-    _blockClass:Constructor;
+export class Route<C extends Block, P extends Props = Props> {
+    _pathname: string;
+    _blockClass: Constructor;
     _block: C | null;
     _props: P;
 
@@ -30,7 +31,7 @@ export class Route <C extends Block, P extends Props = Props> {
         }
     }
 
-    match(pathname:string) {
+    match(pathname: string) {
         return isEqual(pathname, this._pathname);
     }
 
@@ -47,12 +48,12 @@ export class Route <C extends Block, P extends Props = Props> {
 }
 
 export class Router {
-    routes:Route[];
-    history:History;
-    _currentRoute:Route | null;
-    _rootQuery:string;
+    routes: Route[];
+    history: History;
+    _currentRoute: Route | null;
+    _rootQuery: string;
 
-    constructor(rootQuery:string) {
+    constructor(rootQuery: string) {
         if (Router.__instance) {
             return Router.__instance;
         }
@@ -75,16 +76,14 @@ export class Router {
     }
 
     start() {
-        window.onpopstate = (event => {
-            this._onRoute(event.currentTarget.location.pathname);
-        }).bind(this);
-
-        this._onRoute(window.location.pathname);
+        window.onpopstate = (() => { this.isLogin() }).bind(this);
+        this.isLogin();
     }
 
-    _onRoute(pathname:string) {
+    _onRoute(pathname: string) {
         const route = this.getRoute(pathname);
         if (!route) {
+            RederectToError(400);
             return;
         }
 
@@ -93,10 +92,10 @@ export class Router {
         }
 
         this._currentRoute = route;
-         route.render(route, pathname);
+        route.render(route, pathname);
     }
 
-    go(pathname:string) {
+    go(pathname: string) {
         this.history.pushState({}, '', pathname);
         this._onRoute(pathname);
     }
@@ -109,11 +108,18 @@ export class Router {
         this.history.forward();
     }
 
-    getRoute(pathname:string) {
+    getRoute(pathname: string) {
         return this.routes.find(route => route.match(pathname));
+    }
+    isLogin() {
+        if (!store.getState().user.login && !['/register', '/authorization', '/'].includes(window.location.pathname)) {
+            console.log(!['/register', '/authorization', '/'].includes(window.location.pathname));
+            this.go('/')
+        }
+        else { this._onRoute(window.location.pathname); }
     }
 }
 
 
+// window.onpopstate = () =>{}
 
-  

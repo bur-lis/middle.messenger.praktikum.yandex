@@ -2,8 +2,8 @@
 import { Validate } from './utils'
 import { InputBlock } from '../components/input_block/input_block';
 import { Input } from '../components/input/input';
-import { Aside } from '../components/aside/aside';
-import { UserLogo } from '../components/user_logo/user_logo';
+import Aside  from '../components/aside/aside';
+import  UserLogo  from '../components/user_logo/user_logo';
 
 export const user_logo = new UserLogo({
     display_name: 'Елена'

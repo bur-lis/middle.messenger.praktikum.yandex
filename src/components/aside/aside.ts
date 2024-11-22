@@ -6,12 +6,12 @@ import { Props } from '../../core/type.ts';
 import { Router } from '../../core/my_router';
 import { Button } from '../../components/button/button';
 import { PersonalPhoto } from '../personal_photo/personal_photo.ts';
-import store, { StoreEvents } from '../../core/store';
+import { connect } from '../../core/hos.ts';
 
 const router = new Router('#app');
 
-export class Aside extends Block {
-  constructor(props: Props) {
+class Aside extends Block {
+  constructor(tag: string, props: Props) {
     const personal_photo = new PersonalPhoto({
       class: 'personal__photo',
       events: {
@@ -20,12 +20,6 @@ export class Aside extends Block {
         },
       }
     })
-
-    store.on(StoreEvents.Updated, () => {
-      // вызываем обновление компонента, передав данные из хранилища
-      this.setProps(store.getState());
-        });
-
 
     const add_chat_button = new Button({
       label: '+',
@@ -54,13 +48,14 @@ export class Aside extends Block {
         },
       }
     })
-    super('div', { ...props, collapse_button, expand_button, personal_photo , add_chat_button});
+    super(tag, { ...props, collapse_button, expand_button, personal_photo, add_chat_button });
   }
 
 
   render() {
+    console.log(this)
     return this.compile(aside, {
-      user:this.props.user,
+      user: this.props.user,
       chats: this.props.chats,
       open: this.props.open
 
@@ -68,3 +63,4 @@ export class Aside extends Block {
   }
 }
 
+export default connect('div', Aside, (state: Props) => ({ user: state.user })); 

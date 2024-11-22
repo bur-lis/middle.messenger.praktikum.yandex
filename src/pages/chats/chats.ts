@@ -1,19 +1,15 @@
 import './chats.scss'
 import chat_template from "./chats.hbs";
-import { FormDatatoConsole } from '../../core/utils'
-import { CurrentUser } from '../../controllers/user-controller';
+import { FormDatatoConsole } from '../../core/utils';
 import { Button } from '../../components/button/button';
-import { Aside } from '../../components/aside/aside';
+import Aside  from '../../components/aside/aside';
 
 import { Block } from '../../core/block';
 import { Props } from '../../core/type';
 import { connect } from '../../core/hos';
 
-const user_controller = new CurrentUser();
-
 class Chats extends Block {
-    constructor(props: Props) {
-        user_controller.info();
+    constructor(tag: string, props: Props) {
 
         const message_menu_button = new Button({
             img: {
@@ -42,7 +38,7 @@ class Chats extends Block {
             },
         });
 
-        super('div', {
+        super(tag, {
             ...props,
             send_message_button,
             aside,
@@ -64,5 +60,5 @@ class Chats extends Block {
     };
 }
 
-export default connect(Chats, (state) => ({ user: state.user })); 
+export default connect( 'div', Chats, (state) => ({ user: state.user })); 
 

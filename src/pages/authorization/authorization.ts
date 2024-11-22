@@ -1,6 +1,6 @@
 import './authorization.scss'
 import authorization_template from "./authorization.hbs";
-import {AuthorizationController} from "../../controllers/authorization-controller"
+import auth_controller from "../../controllers/auth_controller"
 
 import { Block } from '../../core/block';
 import { Props } from '../../core/type';
@@ -11,7 +11,6 @@ import { Linck } from '../../components/linck/linck';
 import { password_input, login_input } from '../../core/repeating_blocks';
 
 const router = new Router('#app');
-const controller = new AuthorizationController();
 
  export class Authorization extends Block { 
     constructor(props: Props) {
@@ -28,7 +27,7 @@ const controller = new AuthorizationController();
             class: 'middle-panel__button',
             type: 'submit',
             events: {
-                click: () =>{ controller.login(this)}
+                click: () =>{ auth_controller.login(this)}
             },
         });
 

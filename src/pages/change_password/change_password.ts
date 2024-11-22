@@ -5,21 +5,25 @@ import { InputBlock } from '../../components/input_block/input_block';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 import { Linck } from '../../components/linck/linck';
+import Aside from '../../components/aside/aside';
+import UserLogo from '../../components/user_logo/user_logo';
 
 import { Block } from '../../core/block';
 import { Props } from '../../core/type';
-import { password_input, confirm_password_input, aside, user_logo } from '../../core/repeating_blocks';
+import { password_input, confirm_password_input } from '../../core/repeating_blocks';
 import change_password_template from "./change_password.hbs";
 import { Router } from '../../core/my_router';
-import { CurrentUser } from '../../controllers/user-controller';
-const user_controller = new CurrentUser();
+import current_user from '../../controllers/user-controller';
 const router = new Router('#app');
 
 export class ChangePassword extends Block {
-
     constructor(props: Props) {
+        const user_logo = new UserLogo({});
+        const aside = new Aside({ open: false });
+
         const confirm_new_password_input = confirm_password_input;
-      const new_password_input =    new InputBlock({
+
+        const new_password_input = new InputBlock({
             label: 'Пароль',
             regtext: '8-40 символов, обязательно хотя бы одна заглавная буква и цифра',
             regexp: '^(?=.*[0-9])(?=.*[A-ZА-Я])[0-9a-zA-ZА-Яа-я]{8,40}$',
@@ -43,23 +47,27 @@ export class ChangePassword extends Block {
                 required: 'required',
             })
         });
+
         const save_button = new Button({
             label: 'Сохранить',
             class: 'change-password__save-button',
             type: 'submit',
             events: {
-                click: () => user_controller.edit_password(this),
+                click: () => current_user.edit_password(this),
             },
         });
+
         const back_linck = new Linck({
             text_linck: 'Вернуться в профиль',
-            class:'change-password__back-linck',
+            class: 'change-password__back-linck',
             events: {
                 click: () => router.go('/profile')
             },
         });
+
         super('div', {
             ...props,
+            aside,
             save_button,
             old_password_input,
             new_password_input,
@@ -67,7 +75,6 @@ export class ChangePassword extends Block {
             user_logo,
             back_linck
         });
-        aside.setProps({ open: false })
     }
 
     render() {

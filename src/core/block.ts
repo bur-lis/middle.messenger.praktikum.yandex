@@ -127,9 +127,9 @@ export class Block {
 
     if (!nextProps) {
       return;
-    }
-    
+    }   
     Object.assign(this.props, nextProps);
+   if (nextProps.nextChildren) Object.assign(this.children, nextProps.nextChildren);
   };
 
   get element() {

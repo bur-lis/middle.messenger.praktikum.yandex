@@ -1,6 +1,6 @@
 import './register.scss'
 import register_template from "./register.hbs";
-import { RegisterController } from '../../controllers/register-controller';
+import auth_controller from "../../controllers/auth_controller"
 
 import { Block } from '../../core/block';
 import { Props } from '../../core/type';
@@ -12,7 +12,6 @@ import { mail_input, login_input, first_name_input, phone_input } from '../../co
 import { second_name_input, password_input, confirm_password_input } from '../../core/repeating_blocks';
 
 const router = new Router('#app');
-const controller = new RegisterController();
 
 export class Register extends Block {
     constructor(props: Props) {
@@ -29,7 +28,7 @@ export class Register extends Block {
             class: 'middle-panel__button',
             type: 'submit',
             events: {
-                click: () => controller.registr(this),
+                click: () => auth_controller.registr(this),
             },
         });
         
