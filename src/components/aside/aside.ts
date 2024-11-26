@@ -53,7 +53,6 @@ class Aside extends Block {
 
 
   render() {
-    console.log(this)
     return this.compile(aside, {
       user: this.props.user,
       chats: this.props.chats,

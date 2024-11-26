@@ -122,8 +122,6 @@ export class Block {
   }
 
   setProps = (nextProps: Props) => {
-    console.log('khdf', this)
-    console.log('пропс', nextProps)
 
     if (!nextProps) {
       return;

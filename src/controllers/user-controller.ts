@@ -3,7 +3,7 @@ import { Router } from "../core/my_router";
 import { Block } from "../core/block";
 import { Response } from "../core/type";
 import store from '../core/store';
-import { ValidateForm, RederectToError, GetJsonDataFromForm, NotificationMassage } from "../core/utils";
+import { ValidateForm, GetJsonDataFromForm, NotificationMassage } from "../core/utils";
 
 const router = new Router('#app');
 
@@ -23,7 +23,7 @@ class CurrentUser {
                         const user = response.response;
                         store.set('user', JSON.parse(user))
                     }
-                    else RederectToError(response.status)
+                    else router.rederectToError(response.status)
                 })
             }
             else throw new Error('Форма редактирования пользователя не корректно заполнена');
@@ -42,9 +42,8 @@ class CurrentUser {
                 UserAPI.update_avatar(request_data).then((response: Response) => {
                     if (response.status === 200) {
                         NotificationMassage('Аватар пользователя успешно изменен!')
-                        console.log(response)
                     }
-                    else RederectToError(response.status)
+                    else router.rederectToError(response.status)
                 })
             }
 
@@ -62,7 +61,7 @@ class CurrentUser {
                         NotificationMassage('Пароль успешно изменен!')
                         router.go('/profile');
                     }
-                    else RederectToError(response.status)
+                    else router.rederectToError(response.status)
                 })
             }
             else throw new Error('Форма смены пароля не корректно заполнена');

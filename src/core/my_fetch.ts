@@ -61,8 +61,6 @@ class MyFetch {
 
             xhr.timeout = timeout;
             xhr.ontimeout = reject;
-            console.log(data)
-            console.log(JSON.stringify(data))
 
             xhr.withCredentials = true;
 

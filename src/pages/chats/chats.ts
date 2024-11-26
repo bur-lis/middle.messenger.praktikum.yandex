@@ -1,6 +1,5 @@
 import './chats.scss'
 import chat_template from "./chats.hbs";
-import { FormDatatoConsole } from '../../core/utils';
 import { Button } from '../../components/button/button';
 import Aside  from '../../components/aside/aside';
 
@@ -34,7 +33,7 @@ class Chats extends Block {
             label: '➔',
             type: 'submit',
             events: {
-                click: () => FormDatatoConsole(this, 'send_message_form')
+                click: () => console.log(this, 'send_message_form')
             },
         });
 

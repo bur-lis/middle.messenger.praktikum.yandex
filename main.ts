@@ -7,17 +7,18 @@ import Chats from "./src/pages/chats/chats"
 import Profile from "./src/pages/profile/profile"
 import { ChangePassword } from "./src/pages/change_password/change_password"
 import auth_controller from './src/controllers/auth_controller'
+import { ErrorTemplate } from './src/components/error_template/error_template'
 const router = new Router('#app')
 auth_controller.user_info()
 .then(
     () => {
-        console.log('dsjgfhblfdhgldfsg')
         router.use('/', Start_Page);
         router.use('/register', Register);
         router.use('/authorization', Authorization);
         router.use('/chats', Chats);
         router.use('/profile', Profile);
         router.use('/change_password', ChangePassword);
+        router.use('/error', ErrorTemplate);
         router.start();
     }
 );

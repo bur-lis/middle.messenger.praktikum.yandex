@@ -13,10 +13,7 @@ export class Store extends EventBus {
     }
 
     public set(path: string, value: unknown) {
-        console.log(set(this.state, path, value))
         set(this.state, path, value);
-        
-        console.log('this.emit')
         this.emit(StoreEvents.Updated);
     };
 

@@ -1,7 +1,7 @@
 import { Block } from "./block";
 import { Props } from "./type";
 import store from "./store";
-import { renderDom, isEqual , RederectToError} from "./utils";
+import { renderDom, isEqual } from "./utils";
 
 type Constructor<C = unknown, P = Props> = new (...args: P[]) => C
 
@@ -10,7 +10,6 @@ export class Route<C extends Block, P extends Props = Props> {
     _blockClass: Constructor;
     _block: C | null;
     _props: P;
-
     constructor(pathname: string, view: Constructor, props: P) {
         this._pathname = pathname;
         this._blockClass = view;
@@ -37,8 +36,7 @@ export class Route<C extends Block, P extends Props = Props> {
 
     render() {
         if (!this._block) {
-            this._block = new this._blockClass(this._props);
-            console.log(this._block);
+            this._block = new this._blockClass(this._props) as C;
             renderDom(this._props.rootQuery as string, this._block);
             return;
         }
@@ -48,10 +46,11 @@ export class Route<C extends Block, P extends Props = Props> {
 }
 
 export class Router {
-    routes: Route[];
+    routes: Route<Block, Props>[];
     history: History;
-    _currentRoute: Route | null;
+    _currentRoute: Route<Block, Props> | null;
     _rootQuery: string;
+    __instance: Router;
 
     constructor(rootQuery: string) {
         if (Router.__instance) {
@@ -79,11 +78,31 @@ export class Router {
         window.onpopstate = (() => { this.isLogin() }).bind(this);
         this.isLogin();
     }
+    rederectToError(status: number) {
+        if (status != 401) {
+            this._onRoute('/error')
+            let props = {
+                code: status,
+                title: 'Что-то пошло не так((',
+                message: ''
+            };
+            switch (status) {
+                case 404:
+                    props.title = 'Страница не найдена';
+                    break;
+                case 500:
+                    props.title = 'Ошибка обращения к сереверу';
+                    props.message = 'Мы уже устраняем неисправность, попробуйте перезагрузить страницу через время.';
+                    break;
+            }
+            this._currentRoute?._block?.setProps(props)
+        }
+    }
 
     _onRoute(pathname: string) {
-        const route = this.getRoute(pathname);
+        let route = this.getRoute(pathname);
         if (!route) {
-            RederectToError(400);
+            this.rederectToError(404);
             return;
         }
 
@@ -91,13 +110,14 @@ export class Router {
             this._currentRoute.leave();
         }
 
-        this._currentRoute = route;
-        route.render(route, pathname);
+        this._currentRoute = route as Route<Block, Props>;
+        route!.render();
     }
 
     go(pathname: string) {
         this.history.pushState({}, '', pathname);
-        this._onRoute(pathname);
+        this.isLogin()
+        // this._onRoute(pathname);
     }
 
     back() {
@@ -113,13 +133,9 @@ export class Router {
     }
     isLogin() {
         if (!store.getState().user.login && !['/register', '/authorization', '/'].includes(window.location.pathname)) {
-            console.log(!['/register', '/authorization', '/'].includes(window.location.pathname));
             this.go('/')
         }
         else { this._onRoute(window.location.pathname); }
     }
 }
-
-
-// window.onpopstate = () =>{}
 

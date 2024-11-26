@@ -8,7 +8,7 @@ class AuthorizationAPI extends BaseAPI {
         return MyFetch.get('/auth/user');
     }
     get_avatar(part_path:string) {
-        return MyFetch.get('/resources/' + part_path);
+        return MyFetch.get('/resources' + part_path);
     }
     sign_in(data?: RequestData) {
         return MyFetch.post('/auth/signin', { data: data });
