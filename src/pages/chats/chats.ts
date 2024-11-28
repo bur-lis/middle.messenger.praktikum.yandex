@@ -1,5 +1,6 @@
 import './chats.scss'
 import chat_template from "./chats.hbs";
+import chats_controller from '../../controllers/chats-controller';
 import { Button } from '../../components/button/button';
 import Aside  from '../../components/aside/aside';
 
@@ -9,7 +10,6 @@ import { connect } from '../../core/hos';
 
 class Chats extends Block {
     constructor(tag: string, props: Props) {
-
         const message_menu_button = new Button({
             img: {
                 src: '/menu-dots-vertical.svg',

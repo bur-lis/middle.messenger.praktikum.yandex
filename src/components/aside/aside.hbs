@@ -15,21 +15,24 @@
     </search>
     <ul class="chats-list">
         {{#each chats}}
-        <li class="chats-list__message">
+        <li class="chats-list__message" data-id="{{this.id}}">
             <div class="plug chats-list__message__interlocutor-photo"></div>
-            <label class="chats-list__message__interlocutor-name">{{this.name}}</label>
+            <label class="chats-list__message__interlocutor-name">{{this.title}}</label>
             <div class="chats-list__message__content">
                 {{#if this.output}} <label class="chats-list__message__content__is-sender">Вы:</label>{{/if}}
-                <label class="chats-list__message__ccontent__text">{{this.message}}</label>
+                <label class="chats-list__message__ccontent__text">
+                    {{#if this.last_message}} {{this.last_message}}
+                    {{else}}Сообщений пока нет{{/if}}
+                </label>
             </div>
             <label class="chats-list__message__time">{{this.time}}</label>
-            {{#if this.new_count}} <div class="chats-list__message__new-count">{{this.new_count}}</div>{{/if}}
+            {{#if this.unread_count}} <div class="chats-list__message__new-count">{{this.unread_count}}</div>{{/if}}
         </li>
         {{/each}}
     </ul>
+    {{{add_chat_block}}}
     {{{add_chat_button}}}
     {{else}}
     {{{expand_button}}}
     {{/if}}
 </aside>
-

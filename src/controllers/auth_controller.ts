@@ -72,7 +72,7 @@ class AuthController {
           if (response.status === 200) {
             this.user_info().then(() => { router.go('/chats'); log.hide(); });
           }
-          else { router.rederectToError(response.status) ;  log.hide(); }
+          else { router.rederectToError(response.status); log.hide(); }
         })
 
       }
