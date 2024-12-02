@@ -90,6 +90,7 @@ class Aside extends Block {
 
           if (!id) return;
           console.log(id)
+         chats_controller.get_selected_chat(id)
           // ChatsControllers.setCurrentChat(+id).then(); 
         },
       }

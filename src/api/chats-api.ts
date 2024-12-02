@@ -12,6 +12,10 @@ class ChstApi extends BaseAPI {
         // список чатов
         return MyFetch.get('/chats', { data: data });
     }
+    get_token_chat(data?: RequestData){
+        // выделенный чат
+        return MyFetch.post('/chats/token/'+ data.id);// 
+    }
 
     update(data?: RequestData) {
         // добавить пользователя в чат

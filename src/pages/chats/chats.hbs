@@ -1,14 +1,16 @@
 <div class="chat-page">
     {{{aside}}}
-    {{#if display_name}}
+    {{#if selected_chat}}
     <main>
         <header class="message-header">
             <div class="message-header__interlocutor">
                 <div class="plug message-header__interlocutor__photo"></div>
-                <label class="bright-blue-name message-header__interlocutor__display-name">{{display_name}}</label>
+                <label
+                    class="bright-blue-name message-header__interlocutor__display-name">{{selected_chat.chat.title}}</label>
             </div>
             {{{message_menu_button}}}
         </header>
+        {{#if selected_chat.user}}
         <section class="message__history">
             {{#if message}} <ul class="history-list">
                 {{#each message}}<li>
@@ -37,6 +39,12 @@
                 required="required"></textarea>
             {{{send_message_button}}}
         </form>
+        {{else}}
+        <div class="message-without-user">
+            Для начала диалога необходимо {{{add_user_button}}}
+        </div>
+        {{{add_user_panel}}}
+        {{/if}}
     </main>
     {{else}}
     <main>

@@ -20,15 +20,15 @@ function messageProcessing(message: IMessageRes, currentUserId: number) {
     };
 }
 
-export class SocketController {
+export class MessageController {
     static __instance: unknown;
     public ws?: WSService;
 
     constructor() {
-        if (SocketController.__instance) {
-            return SocketController.__instance as SocketController;
+        if (MessageController.__instance) {
+            return MessageController.__instance as MessageController;
         }
-        SocketController.__instance = this;
+        MessageController.__instance = this;
     }
 
     private subscribeMessages() {
@@ -59,12 +59,14 @@ export class SocketController {
             store.set('messages', []);
         }
         const user = store.getState().user;
-        const currentChat = store.getState().currentChat;
-        if (!user || !currentChat) {
-            throw new Error('Socket is not connected');
-        }
+        const selected_chat = store.getState().selected_chat;
+        // if (!user || !selected_chat) {
+        //     throw new Error('Socket is not connected');
+        // }
+///${user.id}/
 
-        const url = `wss://ya-praktikum.tech/ws/chats/${user.id}/${currentChat.id}/${currentChat.token}`;
+        const url = `wss://ya-praktikum.tech/ws/chats/ ${selected_chat.id}/${selected_chat.token}`;
+        console.log(url)
         this.ws = new WSService(url);
 
         await this.ws.connect();
@@ -85,3 +87,5 @@ export class SocketController {
         });
     }
 }
+
+export default new MessageController();

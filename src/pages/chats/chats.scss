@@ -21,6 +21,11 @@ textarea::placeholder {
     font-weight: 500;
 }
 
+.message-without-user {
+    padding: calc(50vh - 150px) 30%;
+    height: 100px;
+}
+
 .plug {
     grid-area: photo;
     width: 50px;
@@ -31,9 +36,11 @@ textarea::placeholder {
     align-self: center;
     margin: 5px;
 }
+
 .default-message {
     width: 100%;
-    margin: 50vh 0;;
+    margin: 50vh 0;
+    ;
     color: $grey-text;
 }
 

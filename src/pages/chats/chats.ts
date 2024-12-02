@@ -1,8 +1,10 @@
 import './chats.scss'
 import chat_template from "./chats.hbs";
 import chats_controller from '../../controllers/chats-controller';
+import meddage_controller from '../../controllers/messages-controller';
+import { AddUser } from './moduls/add_user/add_user';
 import { Button } from '../../components/button/button';
-import Aside  from '../../components/aside/aside';
+import Aside from '../../components/aside/aside';
 
 import { Block } from '../../core/block';
 import { Props } from '../../core/type';
@@ -17,7 +19,16 @@ class Chats extends Block {
             },
             class: 'message-header__menu-button'
         })
+        const add_user_button = new Button({
+            // class: 'message-header__menu-button',
+            label: ' выбрать собеседника',
+            events: {
+                click: () => add_user_panel.show()
+            }
+        
+        })
 
+        const add_user_panel = new AddUser({});
         const aside = new Aside({ open: true })
 
         const attach_file_button = new Button({
@@ -40,17 +51,20 @@ class Chats extends Block {
         super(tag, {
             ...props,
             send_message_button,
+            add_user_panel,
             aside,
             message_menu_button,
+            add_user_button,
             attach_file_button
         });
+        add_user_panel.hide();
     }
 
     render() {
         return this.compile(chat_template, {
             aside: this.props.aside,
             user: this.props.user,
-            display_name: this.props.display_name,
+            selected_chat: this.props.selected_chat,
             message: this.props.message,
             message_menu_button: this.props.message_menu_button,
             attach_file_button: this.props.attach_file_button,
@@ -59,5 +73,11 @@ class Chats extends Block {
     };
 }
 
-export default connect( 'div', Chats, (state) => ({ user: state.user })); 
+export default connect('div', Chats, MyFunction);
+
+function MyFunction(state: Props) {
+    const selected_chat = state.selected_chat;
+    if (selected_chat && selected_chat.user) meddage_controller.connect()
+    return { user: state.user, selected_chat: selected_chat }
+}
 
