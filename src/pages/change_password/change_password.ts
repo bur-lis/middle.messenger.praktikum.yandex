@@ -10,7 +10,6 @@ import UserLogo from '../../components/user_logo/user_logo';
 
 import { Block } from '../../core/block';
 import { Props } from '../../core/type';
-import { password_input, confirm_password_input } from '../../core/repeating_blocks';
 import change_password_template from "./change_password.hbs";
 import { Router } from '../../core/my_router';
 import current_user from '../../controllers/user-controller';
@@ -21,10 +20,23 @@ export class ChangePassword extends Block {
         const user_logo = new UserLogo({});
         const aside = new Aside({ open: false });
 
-        const confirm_new_password_input = confirm_password_input;
+        const confirm_new_password_input = new InputBlock({
+            label: 'Пароль(ещё раз)',
+            regtext: 'Пароль не соответсвует требованием',
+            regexp: '^(?=.*[0-9])(?=.*[A-ZА-Я])[0-9a-zA-ZА-Яа-я]{8,40}$',
+            display_error_label: 'none',
+            input: new Input({
+                name: 'confirm_password',
+                type: 'password',
+                required: 'required',
+                events: {
+                    blur: () => { Validate(confirm_new_password_input) }
+                }
+            })
+        });
 
         const new_password_input = new InputBlock({
-            label: 'Пароль',
+            label: 'Новый пароль',
             regtext: '8-40 символов, обязательно хотя бы одна заглавная буква и цифра',
             regexp: '^(?=.*[0-9])(?=.*[A-ZА-Я])[0-9a-zA-ZА-Яа-я]{8,40}$',
             display_error_label: 'none',
@@ -33,7 +45,7 @@ export class ChangePassword extends Block {
                 type: 'password',
                 required: 'required',
                 events: {
-                    blur: () => { Validate(password_input) }
+                    blur: () => { Validate(new_password_input) }
                 }
             })
         });

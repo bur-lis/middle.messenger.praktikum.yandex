@@ -14,7 +14,7 @@ function queryStringify(data: Record<string, string>) {
     }, '?');
 }
 
-const api_versions = '/api/v2';
+const api_versions = 'https://ya-praktikum.tech/api/v2';
 
 class MyFetch {
     get: HTTPMethod = (url, options) => {

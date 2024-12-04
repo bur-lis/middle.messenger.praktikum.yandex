@@ -1,24 +1,8 @@
 import { WSEvents, WSService } from '../core/my_socket';
-import  store  from '../core/store';
-import  ChatsControllers  from './chats-controller';
+import store from '../core/store';
+import chats_controller from './chats-controller';
 
-export interface IMessageRes {
-    id: number;
-    user_id: number;
-    type: string;
-    time: string;
-    content: string;
-    chat_id?: number;
-    is_read?: boolean;
-    file?: string | null;
-}
-
-function messageProcessing(message: IMessageRes, currentUserId: number) {
-    return {
-        role: currentUserId === message.user_id ? 'outgoing' : 'incoming',
-        message: message.content,
-    };
-}
+import { User, Message, SelectedChat } from '../core/type';
 
 export class MessageController {
     static __instance: unknown;
@@ -31,46 +15,53 @@ export class MessageController {
         MessageController.__instance = this;
     }
 
-    private subscribeMessages() {
+    private listen_messages() {
         if (!this.ws) {
             throw new Error('Socket is not connected');
         }
-        const currentUser = store.getState().user;
+        const user_id = (store.getState().user as User).id;
 
         this.ws.on(WSEvents.Message, data => {
-            let messagesStore = store.getState().message || [];
-
-            if (Array.isArray(data)) {
-                const messages = data?.map(item => {
-                    return messageProcessing(item, currentUser!.id);
-                });
-                messagesStore = messagesStore.concat(messages);
-            } else {
-                messagesStore.unshift(messageProcessing(data, currentUser!.id));
-                ChatsControllers.get_chats().then();
+            const all_messages = store.getState().message ? store.getState().message as Record<string, Message[]> : {};
+            let data_array;
+            if (Array.isArray(data)) data_array = data;
+            else {
+                data_array = [data];
+                chats_controller.get_chats();
             }
-            store.set('messages', messagesStore);
+            for (let i = data_array.length - 1; i > -1; i--) {
+                const message = data_array[i];
+                const output: boolean = message.user_id === user_id;
+                const datatime_array = message.time.split('T');
+                if (!all_messages[datatime_array[0]]) all_messages[datatime_array[0]] = []
+                all_messages[datatime_array[0]].push({
+                    output: output,
+                    time: datatime_array[1].split('+')[0].slice(0, 5),
+                    message: message.content
+
+                })
+            }
+            store.set('message', all_messages);
         });
     }
 
     async connect() {
-        if (this.ws) {
-            this.ws.close();
-            store.set('messages', []);
-        }
-        const user = store.getState().user;
-        const selected_chat = store.getState().selected_chat;
-        // if (!user || !selected_chat) {
-        //     throw new Error('Socket is not connected');
-        // }
-///${user.id}/
 
-        const url = `wss://ya-praktikum.tech/ws/chats/ ${selected_chat.id}/${selected_chat.token}`;
-        console.log(url)
+        const user = store.getState().user as User;
+        const selected_chat = store.getState().selected_chat as SelectedChat;
+        const url = 'wss://ya-praktikum.tech/ws/chats/' +
+            user.id + '/' + selected_chat.id + '/' + selected_chat.token;
+
+        this.close();
+
+        if (!user || !selected_chat) {
+            throw new Error('Socket is not connected');
+        }
+
         this.ws = new WSService(url);
 
         await this.ws.connect();
-        this.subscribeMessages();
+        this.listen_messages();
         this.ws?.send({
             content: '0',
             type: 'get old',
@@ -85,6 +76,13 @@ export class MessageController {
             content: message,
             type: 'message',
         });
+    }
+
+    close() {
+        if (this.ws) {
+            store.set('message', null);
+            this.ws.close();
+        }
     }
 }
 

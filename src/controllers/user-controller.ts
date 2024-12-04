@@ -1,4 +1,4 @@
-import  UserAPI  from "../api/user-api";
+import UserAPI from "../api/user-api";
 import { Router } from "../core/my_router";
 import { Block } from "../core/block";
 import { Response } from "../core/type";
@@ -8,8 +8,6 @@ import { ValidateForm, GetJsonDataFromForm, NotificationMassage } from "../core/
 const router = new Router('#app');
 
 class CurrentUser {
-    
-
 
     public async edit_user(profile_block: Block) {
         try {
@@ -73,3 +71,4 @@ class CurrentUser {
 }
 
 export default new CurrentUser(); 
+

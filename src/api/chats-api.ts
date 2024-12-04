@@ -3,34 +3,30 @@ import { BaseAPI } from './base-api';
 import { RequestData } from "../core/type"
 
 class ChstApi extends BaseAPI {
-    create(data?: RequestData) {
-        //создать чат
+    create_chat(data?: RequestData) {
         return MyFetch.post('/chats', { data: data });
     }
 
-    request(data?: RequestData) {
-        // список чатов
+    get_all_chats(data?: RequestData) {
         return MyFetch.get('/chats', { data: data });
     }
-    get_token_chat(data?: RequestData){
-        // выделенный чат
-        return MyFetch.post('/chats/token/'+ data.id);// 
+    get_token_chat(chat_id?: number) {
+        return MyFetch.post('/chats/token/' + chat_id);
     }
 
-    update(data?: RequestData) {
-        // добавить пользователя в чат
-        return MyFetch.get('/chats/users', { data: data });
+    add_user(data?: RequestData) {
+        return MyFetch.put('/chats/users', { data: data });
     }
 
-    delete(data?: string) {
-        // удалить чат
-        if (typeof data === 'string') {
-            return MyFetch.delete('/chats', { data: { 'chatId': data } })
-        };
+    get_user(chat_id?: number) {
+        return MyFetch.get('/chats/' + chat_id + '/users',);
     }
 
+    delete_chat(data?: RequestData) {
+        return MyFetch.delete('/chats', { data: data })
 
+    }
 }
 
+export default new ChstApi();
 
-export default new ChstApi(); 

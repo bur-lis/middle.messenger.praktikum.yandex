@@ -1,31 +1,27 @@
 import './chats.scss'
 import chat_template from "./chats.hbs";
-import chats_controller from '../../controllers/chats-controller';
-import meddage_controller from '../../controllers/messages-controller';
 import { AddUser } from './moduls/add_user/add_user';
 import { Button } from '../../components/button/button';
 import Aside from '../../components/aside/aside';
-
+import { GetJsonDataFromForm } from '../../core/utils';
 import { Block } from '../../core/block';
 import { Props } from '../../core/type';
 import { connect } from '../../core/hos';
+import chats_controller from '../../controllers/chats-controller';
+import messages_controller from '../../controllers/messages-controller';
+import { Textarea } from '../../components/textarea/textarea';
 
 class Chats extends Block {
     constructor(tag: string, props: Props) {
         const message_menu_button = new Button({
             img: {
-                src: '/menu-dots-vertical.svg',
-                alt: 'Меню чата'
+                src: '/delete.svg',
+                alt: 'Удалить чат'
             },
-            class: 'message-header__menu-button'
-        })
-        const add_user_button = new Button({
-            // class: 'message-header__menu-button',
-            label: ' выбрать собеседника',
+            class: 'message-header__menu-button',
             events: {
-                click: () => add_user_panel.show()
+                click: () => { chats_controller.delete_chat() }
             }
-        
         })
 
         const add_user_panel = new AddUser({});
@@ -39,12 +35,22 @@ class Chats extends Block {
             class: 'send-block__attach-file'
         })
 
+        const message_textarea = new Textarea({
+            class: 'send-block__writing-textarea',
+            name: 'message',
+            placeholder: 'Сообщение',
+            required: 'required'
+        })
+
         const send_message_button = new Button({
             class: 'send-block__send-button',
             label: '➔',
             type: 'submit',
             events: {
-                click: () => console.log(this, 'send_message_form')
+                click: () => {
+                    messages_controller.send(GetJsonDataFromForm('send_message_form').message);
+                    message_textarea.props.value = '';
+                }
             },
         });
 
@@ -54,20 +60,19 @@ class Chats extends Block {
             add_user_panel,
             aside,
             message_menu_button,
-            add_user_button,
-            attach_file_button
+            attach_file_button,
+            message_textarea
         });
-        add_user_panel.hide();
     }
 
     render() {
         return this.compile(chat_template, {
             aside: this.props.aside,
-            user: this.props.user,
             selected_chat: this.props.selected_chat,
             message: this.props.message,
             message_menu_button: this.props.message_menu_button,
             attach_file_button: this.props.attach_file_button,
+            message_textarea: this.props.message_textarea,
             send_message_button: this.props.send_message_button
         });
     };
@@ -76,8 +81,13 @@ class Chats extends Block {
 export default connect('div', Chats, MyFunction);
 
 function MyFunction(state: Props) {
-    const selected_chat = state.selected_chat;
-    if (selected_chat && selected_chat.user) meddage_controller.connect()
-    return { user: state.user, selected_chat: selected_chat }
+    setTimeout(() => {
+        const history_list = document.getElementById("history-list");
+        if (history_list) {history_list!.scrollTop = history_list!.scrollHeight;
+        };
+    }, 0.1);
+
+
+    return { selected_chat: state.selected_chat, message: state.message }
 }
 

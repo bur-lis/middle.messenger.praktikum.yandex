@@ -1,6 +1,5 @@
 
 import { Block } from './block';
-import { ErrorTemplate } from '../components/error_template/error_template';
 import store from './store';
 
 export function renderDom(query: string, block: Block) {
@@ -13,7 +12,7 @@ export function isEqual(lhs: string, rhs: string) {
     return lhs === rhs;
 }
 export function AddAvatarInStore(file_input: File, new_flag = false) {
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = function (e) {
         store.set('avatar_src', e.target!.result)
         if (new_flag) { store.set('avatar_file', file_input) }
@@ -37,7 +36,7 @@ export function ValidateForm(page_block: Block): boolean {
 export function GetJsonDataFromForm(form_name: string) {
     const form = document.getElementById(form_name) as HTMLFormElement;
     const form_data = new FormData(form);
-    var object: Record<string, string> = {};
+    const object: Record<string, string> = {};
     form_data.forEach(function (value, key) {
         object[key] = value as string;
     });

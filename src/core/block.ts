@@ -119,7 +119,7 @@ export class Block {
   }
 
   componentDidUpdate(oldProps: Props, newProps: Props) {
-    // console.log(oldProps, newProps)
+    console.log(oldProps, newProps)
     return true;
   }
 

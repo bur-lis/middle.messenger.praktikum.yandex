@@ -7,11 +7,21 @@
     border: none;
 }
 
-.personal__photo {
-    background: $bright-blue;
+.personal {
+    &__photo {
+        background: $bright-blue;
+    }
 }
 
-.chats-list__message__interlocutor-photo,
-.message-header__interlocutor__photo {
-    background: $grey-background;
+.chats-list {
+    &__message {
+        &__interlocutor-photo,
+        .message-header {
+            &__interlocutor {
+                &__photo {
+                    background: $grey-background;
+                }
+            }
+        }
+    }
 }

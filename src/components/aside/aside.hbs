@@ -19,9 +19,10 @@
             <div class="plug chats-list__message__interlocutor-photo"></div>
             <label class="chats-list__message__interlocutor-name">{{this.title}}</label>
             <div class="chats-list__message__content">
-                {{#if this.output}} <label class="chats-list__message__content__is-sender">Вы:</label>{{/if}}
+                {{#if this.last_message}} <label
+                    class="chats-list__message__content__is-sender">{{this.last_message.user.display_name}}:</label>
                 <label class="chats-list__message__ccontent__text">
-                    {{#if this.last_message}} {{this.last_message}}
+                    {{this.last_message.content}}
                     {{else}}Сообщений пока нет{{/if}}
                 </label>
             </div>

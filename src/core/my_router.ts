@@ -1,15 +1,15 @@
 import { Block } from "./block";
-import { Props } from "./type";
+import { Props , User} from "./type";
 import store from "./store";
 import { renderDom, isEqual } from "./utils";
 
 type Constructor<C = unknown, P = Props> = new (...args: P[]) => C
 
 export class Route<C extends Block, P extends Props = Props> {
-    _pathname: string;
-    _blockClass: Constructor;
-    _block: C | null;
-    _props: P;
+    private _pathname: string;
+    private _blockClass: Constructor;
+    private _block: C | null;
+    private _props: P;
     constructor(pathname: string, view: Constructor, props: P) {
         this._pathname = pathname;
         this._blockClass = view;
@@ -34,6 +34,10 @@ export class Route<C extends Block, P extends Props = Props> {
         return isEqual(pathname, this._pathname);
     }
 
+    error(props: Props) {
+        this._block?.setProps(props)
+    }
+
     render() {
         if (!this._block) {
             this._block = new this._blockClass(this._props) as C;
@@ -46,15 +50,15 @@ export class Route<C extends Block, P extends Props = Props> {
 }
 
 export class Router {
-    routes: Route<Block, Props>[];
-    history: History;
-    _currentRoute: Route<Block, Props> | null;
-    _rootQuery: string;
-    __instance: Router;
+    static __instance: unknown;
+    private routes: Route<Block, Props>[];
+    private history: History;
+    private _currentRoute: Route<Block, Props> | null;
+    private _rootQuery: string;
 
     constructor(rootQuery: string) {
         if (Router.__instance) {
-            return Router.__instance;
+            return Router.__instance as Router;
         }
 
         this.routes = [];
@@ -81,7 +85,7 @@ export class Router {
     rederectToError(status: number) {
         if (status != 401) {
             this._onRoute('/error')
-            let props = {
+            const props = {
                 code: status,
                 title: 'Что-то пошло не так((',
                 message: ''
@@ -95,12 +99,12 @@ export class Router {
                     props.message = 'Мы уже устраняем неисправность, попробуйте перезагрузить страницу через время.';
                     break;
             }
-            this._currentRoute?._block?.setProps(props)
+            this._currentRoute?.error(props)
         }
     }
 
     _onRoute(pathname: string) {
-        let route = this.getRoute(pathname);
+        const route = this.getRoute(pathname);
         if (!route) {
             this.rederectToError(404);
             return;
@@ -117,7 +121,6 @@ export class Router {
     go(pathname: string) {
         this.history.pushState({}, '', pathname);
         this.isLogin()
-        // this._onRoute(pathname);
     }
 
     back() {
@@ -132,7 +135,8 @@ export class Router {
         return this.routes.find(route => route.match(pathname));
     }
     isLogin() {
-        if (!store.getState().user.login && !['/register', '/authorization', '/'].includes(window.location.pathname)) {
+        const user = store.getState().user as User;
+        if (!user.login && !['/register', '/authorization', '/'].includes(window.location.pathname)) {
             this.go('/')
         }
         else { this._onRoute(window.location.pathname); }

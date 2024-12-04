@@ -28,11 +28,9 @@ class Aside extends Block {
 
     const add_chat_button = new Button({
       label: '+',
-      class: 'add_chat_button',
+      class: 'add-chat-button',
       events: {
         click: () => {
-          console.log('jafgsak');
-
           add_chat_block.show()
         },
       }
@@ -89,9 +87,8 @@ class Aside extends Block {
           const id = user?.dataset?.id || null;
 
           if (!id) return;
-          console.log(id)
-         chats_controller.get_selected_chat(id)
-          // ChatsControllers.setCurrentChat(+id).then(); 
+         chats_controller.get_selected_chat(Number(id))
+         router.go('/chats')
         },
       }
     });
@@ -122,6 +119,5 @@ class Aside extends Block {
 export default connect('div', Aside, MyFunction);
 
 function MyFunction(state: Record<string, Props>) {
-
   return { user: state.user, chats: state.chats }
 }

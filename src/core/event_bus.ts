@@ -25,7 +25,7 @@ export class EventBus {
       );
     }
   
-      emit(event: string, args?: Props) {
+      emit(event: string, args?: Props | Event) {
       if (!this.listeners[event]) {
         throw new Error(`Нет события: ${event}`);
       }

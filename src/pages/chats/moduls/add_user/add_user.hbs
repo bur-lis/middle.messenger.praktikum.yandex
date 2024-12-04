@@ -1,20 +1,5 @@
-<div class="add_user middle-panel">
-    <h2 class="middle-panel__title">Добавить пользователя</h2>
-    <form method="post" class="middle-panel__form" onsubmit="return false" id="add_user_form">
-        <div class="middle-panel__form__input-block">
-            {{{user_input}}}
-            {{{serch_button}}}
-        </div>
-        {{#if}}
-        <div class="list-users">
-            {{#each users}}
-            <div class="serch-user" data-id="{{this.id}}">
-                <label class="serch-user__display-name">{{user.display_name}}</label>
-                <label class="serch-user__name">{{user.second_name}} {{user.first_name}}</label>
-            </div>
-            {{/each}}
-        </div>
-        {{/if}}
-        {{{button}}}
-    </form>
-</div>
+<form class="message-without-user" id="add_user_form" onsubmit="return false">
+    Для начала диалога необходимо добавить собеседника!
+    {{{id_user_input}}}
+    {{{add_user_button}}}
+</form>
