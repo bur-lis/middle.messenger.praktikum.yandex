@@ -8,7 +8,6 @@ import { ChangePassword } from "./src/pages/change_password/change_password"
 import auth_controller from './src/controllers/auth_controller'
 import { ErrorTemplate } from './src/components/error_template/error_template'
 const router = new Router('#app')
-console.log('main.ts')
 auth_controller.user_info()
 .then(
     () => {
