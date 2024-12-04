@@ -33,7 +33,7 @@ class CurrentUser {
 
     public async edit_avatar() {
         try {
-            const file = store.getState().avatar_file;
+            const file = store.getState().avatar_file as File;
             if (file) {
                 const request_data = new FormData();
                 request_data.append('avatar', file)

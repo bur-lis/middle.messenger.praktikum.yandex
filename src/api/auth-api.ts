@@ -22,3 +22,4 @@ class AuthorizationAPI extends BaseAPI {
 }
 
 export default new AuthorizationAPI(); 
+

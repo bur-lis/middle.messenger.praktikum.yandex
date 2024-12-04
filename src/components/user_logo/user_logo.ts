@@ -47,4 +47,3 @@ export default connect('div', UserLogo, (state: Record<string, PropsValue>) => (
   avatar_img.setProps({ src: state.avatar_src}),
    { display_name: (state.user as PropsObject).display_name }));
 
-

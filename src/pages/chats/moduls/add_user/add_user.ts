@@ -43,4 +43,3 @@ const id_user_input = new InputBlock({
     };
 }
 
-

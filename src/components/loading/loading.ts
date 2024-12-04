@@ -15,3 +15,4 @@ export class Loading extends Block {
 }
 
 export default Loading;
+

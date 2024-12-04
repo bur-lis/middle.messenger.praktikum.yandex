@@ -22,3 +22,4 @@ import { RequestData } from "../core/type"
 
 
 export default new UserAPI(); 
+

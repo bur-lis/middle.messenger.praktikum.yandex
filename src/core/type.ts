@@ -17,7 +17,7 @@ export interface Response {
     status: number,
     response: string,
     responseURL: string
-}
+};
 
 
 export type Indexed<T = unknown> = {
@@ -28,24 +28,25 @@ export interface User {
     id: number,
     login: string,
     avatar: string
-}
+};
 
 export interface Message {
     time: string;
     message: string;
     output: boolean
-}
+};
 
 export interface Chat {
     id: number,
     title: string,
     avatar: string
-}
+};
+
 export interface SelectedChat {
     id: number,
     title: string,
     token:string,
     companion:boolean,
     users:User[]
+};
 
-}

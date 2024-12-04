@@ -40,7 +40,7 @@ export function GetJsonDataFromForm(form_name: string) {
     form_data.forEach(function (value, key) {
         object[key] = value as string;
     });
-    return object // Object.fromEntries(form_data) as Record<string, string>;
+    return object;
 }
 
 export function Validate(input_block: Block) {
@@ -68,3 +68,4 @@ export function Validate(input_block: Block) {
 export function NotificationMassage(massege: string) {
     alert(massege)
 }
+

@@ -29,4 +29,3 @@ export class Start_Page extends Block {
     };
 }
 
-

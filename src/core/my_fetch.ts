@@ -79,3 +79,4 @@ class MyFetch {
 }
 
 export default new MyFetch(); 
+

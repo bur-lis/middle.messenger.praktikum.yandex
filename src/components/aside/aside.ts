@@ -16,6 +16,7 @@ const router = new Router('#app');
 class Aside extends Block {
 
   constructor(tag: string, props: Props) {
+
     chats_controller.get_chats();
     const personal_photo = new PersonalPhoto({
       class: 'personal__photo',
@@ -35,6 +36,7 @@ class Aside extends Block {
         },
       }
     })
+
     const collapse_button = new Button({
       label: ' ❮ Свернуть',
       class: 'collapse-button',
@@ -54,7 +56,9 @@ class Aside extends Block {
         },
       }
     })
+
     const chat_title = new Input({})
+
     const add_chat_block = new AddChat({
       input: new InputBlock({
         input: chat_title,
@@ -79,16 +83,22 @@ class Aside extends Block {
         }
       })
     })
+
     super(tag, {
-      ...props, collapse_button, add_chat_block, expand_button, personal_photo, add_chat_button, events: {
+      ...props,
+      collapse_button,
+      add_chat_block,
+      expand_button,
+      personal_photo,
+      add_chat_button, events: {
         click: (event: Event) => {
           const target = event.target as HTMLElement;
           const user = target.closest<HTMLElement>('.chats-list__message');
           const id = user?.dataset?.id || null;
 
           if (!id) return;
-         chats_controller.get_selected_chat(Number(id))
-         router.go('/chats')
+          chats_controller.get_selected_chat(Number(id))
+          router.go('/chats')
         },
       }
     });
@@ -107,17 +117,9 @@ class Aside extends Block {
 
 }
 
-// type Chat = {
-//   "id": string,
-//   "title": string,
-//   "avatar": string,
-//   "created_by": number,
-//   "unread_count": number,
-//   "last_message": string
-// }
-
 export default connect('div', Aside, MyFunction);
 
 function MyFunction(state: Record<string, Props>) {
   return { user: state.user, chats: state.chats }
 }
+

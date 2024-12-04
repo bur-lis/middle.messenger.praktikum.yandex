@@ -17,8 +17,6 @@ import { connect } from '../../core/hos';
 
 const router = new Router('#app');
 
-// window.onload = () => { current_user.info() };
-
 
 const mail_input = new InputBlock({
     label: 'Почта',
