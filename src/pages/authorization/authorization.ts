@@ -47,7 +47,7 @@ export class Authorization extends Block {
             text_linck: 'Нет аккаунта?',
             class: 'middle-panel__linck',
             events: {
-                click: () => router.go('/register')
+                click: () => router.go('/sign-up')
             },
         });
 

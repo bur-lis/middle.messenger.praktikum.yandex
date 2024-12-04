@@ -12,7 +12,7 @@ export class ErrorTemplate extends Block {
     const back_linck = new Linck({
       text_linck: 'Назад к чатам',
       events: {
-          click: () => router.go('/chats')
+          click: () => router.go('/messenger')
       },
   });
     super('div', {...props, back_linck});

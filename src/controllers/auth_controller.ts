@@ -50,7 +50,7 @@ class AuthController {
         const request_data = GetJsonDataFromForm('register_form');
         auth_api.sign_up(request_data).then((response: Response) => {
           if (response.status === 200) {
-            this.user_info().then(() => { router.go('/chats'); log.hide(); });
+            this.user_info().then(() => { router.go('/messenger'); log.hide(); });
           }
           else { router.rederectToError(response.status); log.hide(); }
         })
@@ -70,7 +70,7 @@ class AuthController {
         const request_data = GetJsonDataFromForm('authorization_form');
         auth_api.sign_in(request_data).then((response: Response) => {
           if (response.status === 200) {
-            this.user_info().then(() => { router.go('/chats'); log.hide(); });
+            this.user_info().then(() => { router.go('/messenger'); log.hide(); });
           }
           else { router.rederectToError(response.status); log.hide(); }
         })

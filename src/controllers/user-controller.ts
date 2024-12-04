@@ -57,7 +57,7 @@ class CurrentUser {
                 UserAPI.update_password(request_data).then((response: Response) => {
                     if (response.status === 200) {
                         NotificationMassage('Пароль успешно изменен!')
-                        router.go('/profile');
+                        router.go('/settings');
                     }
                     else router.rederectToError(response.status)
                 })

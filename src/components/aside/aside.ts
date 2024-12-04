@@ -22,7 +22,7 @@ class Aside extends Block {
       class: 'personal__photo',
       events: {
         click: () => {
-          router.go('/profile')
+          router.go('/settings')
         },
       }
     })
@@ -98,7 +98,7 @@ class Aside extends Block {
 
           if (!id) return;
           chats_controller.get_selected_chat(Number(id))
-          router.go('/chats')
+          router.go('/messenger')
         },
       }
     });

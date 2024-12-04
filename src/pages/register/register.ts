@@ -121,7 +121,7 @@ export class Register extends Block {
             text_linck: 'Войти',
             class: 'middle-panel__linck',
             events: {
-                click: () => router.go('/authorization')
+                click: () => router.go('/')
             },
         });
 

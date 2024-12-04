@@ -73,7 +73,7 @@ export class ChangePassword extends Block {
             text_linck: 'Вернуться в профиль',
             class: 'change-password__back-linck',
             events: {
-                click: () => router.go('/profile')
+                click: () => router.go('/settings')
             },
         });
 

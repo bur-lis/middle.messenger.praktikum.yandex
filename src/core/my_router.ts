@@ -136,7 +136,7 @@ export class Router {
     }
     isLogin() {
         const user = store.getState().user as User;
-        if (!user.login && !['/register', '/authorization', '/'].includes(window.location.pathname)) {
+        if (!user.login && !['/sign-up', '/', '/'].includes(window.location.pathname)) {
             this.go('/')
         }
         else { this._onRoute(window.location.pathname); }
