@@ -79,9 +79,15 @@ export class Router {
     }
 
     start() {
-        window.onpopstate = (() => { this.isLogin() }).bind(this);
-        this.isLogin();
+        // window.onpopstate = (() => { this.isLogin() }).bind(this);
+        // this.isLogin();
+        window.onpopstate = (event: PopStateEvent) => {
+            this._onRoute((event.currentTarget as Window)?.location?.pathname);
+        };
+
+        this._onRoute(window.location.pathname);
     }
+
     rederectToError(status: number) {
         if (status != 401) {
             this._onRoute('/error')
