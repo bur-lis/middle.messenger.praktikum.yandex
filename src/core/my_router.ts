@@ -1,5 +1,5 @@
 import { Block } from "./block";
-import { Props , User} from "./type";
+import { Props, User } from "./type";
 import store from "./store";
 import { renderDom, isEqual } from "./utils";
 
@@ -81,6 +81,9 @@ export class Router {
     start() {
         // window.onpopstate = (() => { this.isLogin() }).bind(this);
         // this.isLogin();
+
+        console.log('router start');
+        console.log(window.location.pathname);
         window.onpopstate = (event: PopStateEvent) => {
             this._onRoute((event.currentTarget as Window)?.location?.pathname);
         };
