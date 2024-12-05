@@ -2,9 +2,9 @@
     {{#if open}}
     <header class="action-header">
         <div class="personal">
-            <div class="personal__photo"></div>
-            <label class="bright-blue-name  personal__display-name">{{display_name}}</label>
-            <label class="personal__name">{{first_name}} {{second_name}}</label>
+            {{{personal_photo}}}
+            <label class="bright-blue-name  personal__display-name">{{user.display_name}}</label>
+            <label class="personal__name">{{user.first_name}} {{user.second_name}}</label>
         </div>
         {{{collapse_button}}}
     </header>
@@ -15,18 +15,24 @@
     </search>
     <ul class="chats-list">
         {{#each chats}}
-        <li class="chats-list__message">
+        <li class="chats-list__message" data-id="{{this.id}}">
             <div class="plug chats-list__message__interlocutor-photo"></div>
-            <label class="chats-list__message__interlocutor-name">{{this.name}}</label>
+            <label class="chats-list__message__interlocutor-name">{{this.title}}</label>
             <div class="chats-list__message__content">
-                {{#if this.output}} <label class="chats-list__message__content__is-sender">Вы:</label>{{/if}}
-                <label class="chats-list__message__ccontent__text">{{this.message}}</label>
+                {{#if this.last_message}} <label
+                    class="chats-list__message__content__is-sender">{{this.last_message.user.display_name}}:</label>
+                <label class="chats-list__message__ccontent__text">
+                    {{this.last_message.content}}
+                    {{else}}Сообщений пока нет{{/if}}
+                </label>
             </div>
             <label class="chats-list__message__time">{{this.time}}</label>
-            {{#if this.new_count}} <div class="chats-list__message__new-count">{{this.new_count}}</div>{{/if}}
+            {{#if this.unread_count}} <div class="chats-list__message__new-count">{{this.unread_count}}</div>{{/if}}
         </li>
         {{/each}}
     </ul>
+    {{{add_chat_block}}}
+    {{{add_chat_button}}}
     {{else}}
     {{{expand_button}}}
     {{/if}}

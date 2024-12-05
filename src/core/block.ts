@@ -1,4 +1,4 @@
-import { Props, PropsValue, Children} from './type.js';
+import { Props, PropsValue, Children } from './type.js';
 import { EventBus } from './event_bus.js';
 import { v4 as makeUUID } from 'uuid';
 
@@ -30,7 +30,7 @@ export class Block {
   constructor(tagName = "div", propsAndChildren = {}) {
 
     this._id = makeUUID();
-    const { children, props } = this._getChildren(propsAndChildren);
+    const { children, props,  } = this._getChildren(propsAndChildren); 
     if (children) {
       this.children = children;
     }
@@ -53,11 +53,13 @@ export class Block {
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
         children[key] = value;
-      } else {
-        props[key] = value as PropsValue;
-      }
+      } 
+        else {
+          props[key] = value as PropsValue;
+        }
+     
     });
-    return { children, props };
+    return { children, props};
   }
 
 
@@ -125,7 +127,6 @@ export class Block {
     if (!nextProps) {
       return;
     }
-    
     Object.assign(this.props, nextProps);
   };
 
@@ -165,25 +166,20 @@ export class Block {
       }
     });
   }
- 
+
   _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
-
 
   compile(template: unknown, props: Props) {
     const propsAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([key, child]) => {
-
       propsAndStubs[key] = `<div data-id="${child._id}"></div>`
     });
 
     const fragment: HTMLTemplateElement = this._createDocumentElement('template') as HTMLTemplateElement;
-
     fragment.innerHTML = MYcompile(template, propsAndStubs);
-
-
     Object.values(this.children).forEach(child => {
       const stub: HTMLElement | null = fragment.content.querySelector(`[data-id="${child._id}"]`);
       if (stub) stub.replaceWith(child.getContent());
@@ -191,6 +187,7 @@ export class Block {
 
     return fragment.content;
   }
+
 
   show() {
     this.getContent().style.display = "block";

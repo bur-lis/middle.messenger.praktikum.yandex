@@ -1,15 +1,21 @@
 <div class="chat-page">
     {{{aside}}}
+    {{#if selected_chat}}
     <main>
         <header class="message-header">
             <div class="message-header__interlocutor">
                 <div class="plug message-header__interlocutor__photo"></div>
-                <label class="bright-blue-name message-header__interlocutor__display-name">{{display_name}}</label>
+                <label
+                    class="bright-blue-name message-header__interlocutor__display-name">{{selected_chat.title}}</label>
             </div>
-            {{{message_menu_button}}}
+            <div class="message-header__button-block">
+                {{#if selected_chat.companion}} {{{delete_user_button}}}{{/if}}
+                {{{delete_chat_button}}}
+                
         </header>
+        {{#if selected_chat.companion}}
         <section class="message__history">
-            <ul class="history-list">
+            {{#if message}} <ul class="history-list" id="history-list">
                 {{#each message}}<li>
                     <label class="history-list__data-block">{{@key}}</label>
                     {{#each this}}
@@ -22,12 +28,27 @@
                     {{/each}}
                 </li>
                 {{/each}}
+            </ul>
+            {{else}}
+            <div class="default-message">
+                <label>История сообщений пока пуста</label>
+            </div>
+            {{/if}}
         </section>
         <form onsubmit="return false" class="send-block" id="send_message_form">
             {{{attach_file_button}}}
-            <textarea class="send-block__writing-textarea" name="message" placeholder="Сообщение" required="required"></textarea>
+            {{{message_textarea}}}
             {{{send_message_button}}}
         </form>
+        {{else}}
+        {{{add_user_panel}}}
+        {{/if}}
     </main>
+    {{else}}
+    <main>
+        <div class="default-message">
+            <label>Не выбран ни один чат</label>
+        </div>
+    </main>
+    {{/if}}
 </div>
-

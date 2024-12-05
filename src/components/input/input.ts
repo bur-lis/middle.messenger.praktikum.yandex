@@ -14,7 +14,8 @@ export class Input extends Block {
             name: this.props.name,
             type: this.props.type,
             required: this.props.required,
-            class: this.props.class
+            class: this.props.class,
+            value:this.props.value
         });
     }
 }

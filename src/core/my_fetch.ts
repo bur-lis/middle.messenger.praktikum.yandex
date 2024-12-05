@@ -7,27 +7,32 @@ const METHODS = {
     DELETE: 'DELETE',
 };
 
-
-
 function queryStringify(data: Record<string, string>) {
     const keys = Object.keys(data);
     return keys.reduce((result, key, index) => {
-        return result + key + '=' + data[key] + (index < keys.length - 1 ? '&' : '');
+        return result + key + '=' + encodeURIComponent(data[key]) + (index < keys.length - 1 ? '&' : '');
     }, '?');
+
+
+    return encodeURIComponent(keys.reduce((result, key, index) => {
+        return result + key + '=' + data[key] + (index < keys.length - 1 ? '&' : '');
+    }, '?'));
 }
+
+const api_versions = 'https://ya-praktikum.tech/api/v2';
 
 class MyFetch {
     get: HTTPMethod = (url, options) => {
-        return this.request(url, { ...options, method: METHODS.GET }, options.timeout);
+        return this.request(url, { ...options, method: METHODS.GET }, options?.timeout);
     };
     put: HTTPMethod = (url, options) => {
-        return this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
+        return this.request(url, { ...options, method: METHODS.PUT }, options?.timeout);
     };
     post: HTTPMethod = (url, options) => {
-        return this.request(url, { ...options, method: METHODS.POST }, options.timeout);
+        return this.request(url, { ...options, method: METHODS.POST }, options?.timeout);
     };
     delete: HTTPMethod = (url, options) => {
-        return this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
+        return this.request(url, { ...options, method: METHODS.DELETE }, options?.timeout);
     };
 
 
@@ -47,9 +52,9 @@ class MyFetch {
             const xhr = new XMLHttpRequest();
             xhr.open(
                 method,
-                method === METHODS.GET && !!data
-                    ? (url + queryStringify(data as Record<string, string>))
-                    : url,
+
+                api_versions + url + (method === METHODS.GET && !!data ? queryStringify(data as Record<string, string>) : '')
+
             );
 
             xhr.onload = function () {
@@ -62,14 +67,21 @@ class MyFetch {
             xhr.timeout = timeout;
             xhr.ontimeout = reject;
 
+            xhr.withCredentials = true;
+
             if (method === METHODS.GET || !data) {
                 xhr.send();
-            } else {
+            }
+            else if (data instanceof FormData) {
+                xhr.send(data);
+            }
+            else {
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
                 xhr.send(JSON.stringify(data));
             }
         });
     };
 }
 
-console.log(new MyFetch);
+export default new MyFetch(); 
 

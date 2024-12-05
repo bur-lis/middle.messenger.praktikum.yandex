@@ -1,5 +1,6 @@
 
 import { Block } from './block';
+import store from './store';
 
 export function renderDom(query: string, block: Block) {
     const root = document.querySelector(query) ? document.querySelector(query) : document.body;
@@ -7,7 +8,20 @@ export function renderDom(query: string, block: Block) {
     return root;
 }
 
-export function FormDatatoConsole(page_block: Block, form_id:string) {
+export function isEqual(lhs: string, rhs: string) {
+    return lhs === rhs;
+}
+export function AddAvatarInStore(file_input: File, new_flag = false) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+        store.set('avatar_src', e.target!.result)
+        if (new_flag) { store.set('avatar_file', file_input) }
+    }
+
+    reader.readAsDataURL(file_input);
+}
+
+export function ValidateForm(page_block: Block): boolean {
     const page_children = page_block.children;
     let form_valid = true;
     Object.keys(page_children).forEach((input_block_name: string) => {
@@ -16,14 +30,19 @@ export function FormDatatoConsole(page_block: Block, form_id:string) {
             form_valid = form_valid && Validate(child);
         }
     })
-   
-    if (form_valid) {
-        const form = document.getElementById(form_id) as HTMLFormElement;
-         console.log(form)
-        const form_data = form ? new FormData(form) : 'Форма не найдена ';
-        console.log(form_data);
-    }
+
+    return form_valid;
 }
+export function GetJsonDataFromForm(form_name: string) {
+    const form = document.getElementById(form_name) as HTMLFormElement;
+    const form_data = new FormData(form);
+    const object: Record<string, string> = {};
+    form_data.forEach(function (value, key) {
+        object[key] = value as string;
+    });
+    return object;
+}
+
 export function Validate(input_block: Block) {
 
     const input: HTMLInputElement = input_block.children.input.element.firstElementChild as HTMLInputElement;
@@ -44,5 +63,9 @@ export function Validate(input_block: Block) {
         return false;
     }
 
+}
+
+export function NotificationMassage(massege: string) {
+    alert(massege)
 }
 

@@ -17,18 +17,13 @@ The project currently consists of several main pages. Below are links to the git
 * [Selected chat page](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/chat)
 * [Edit profile](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/profile)
 * [Change password](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/change_password)
-* [Server error](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/server_errors)
-* [Client error](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/client_errors)
 
 And the result posted on Nelifay:
-* [Start page](https://gleaming-pixie-8d9ada.netlify.app)
-* [User authorization](https://gleaming-pixie-8d9ada.netlify.app/src/pages/authorization/authorization)
-* [User registration](https://gleaming-pixie-8d9ada.netlify.app/src/pages/register/register.html)
-* [Selected chat page](https://gleaming-pixie-8d9ada.netlify.app/src/pages/chat/chat)
-* [Edit profile](https://gleaming-pixie-8d9ada.netlify.app/src/pages/profile/profile)
-* [Change password](https://gleaming-pixie-8d9ada.netlify.app/src/pages/change_password/change_password.html)
-* [Server error](https://gleaming-pixie-8d9ada.netlify.app/src/pages/server_errors/server_errors)
-* [Client error](https://gleaming-pixie-8d9ada.netlify.app/src/pages/client_errors/client_errors)
+* [User authorization](https://gleaming-pixie-8d9ada.netlify.app)
+* [User registration](https://gleaming-pixie-8d9ada.netlify.app/sign-up)
+* [Selected chat page](https://gleaming-pixie-8d9ada.netlify.app/messenger)
+* [Edit profile](https://gleaming-pixie-8d9ada.netlify.app/settings)
+* [Change password](https://gleaming-pixie-8d9ada.netlify.app/change_password)
 ## Runing
 
 ```js

@@ -1,0 +1,30 @@
+@import "../../../style";
+
+.mini {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    border: none;
+}
+
+.personal {
+    &__photo {
+        background: $bright-blue;
+    }
+}
+
+.chats-list {
+    &__message {
+        &__interlocutor-photo,
+        .message-header {
+            &__interlocutor {
+                &__photo {
+                    background: $grey-background;
+                }
+            }
+        }
+    }
+}
+
+/* - все ради пустой строки- */
+

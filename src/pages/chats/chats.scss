@@ -1,24 +1,14 @@
 @import "../../../style";
 
-textarea {
-    width: 90%;
-    height: 60px;
-    background: $grey-background;
-    border: none;
-    border-radius: 10px;
-    resize: none;
-    padding: 10px;
-}
-
-textarea::placeholder {
-    color: $grey-text;
-    font-size: 13px;
-    font-weight: 500;
-}
 
 .bright-blue-name {
     color: $bright-blue;
     font-weight: 500;
+}
+
+.message-without-user {
+    padding: calc(50vh - 150px) 30%;
+    height: 100px;
 }
 
 .plug {
@@ -32,9 +22,17 @@ textarea::placeholder {
     margin: 5px;
 }
 
+.default-message {
+    width: 100%;
+    margin: calc(50vh - 150px) 0;
+    ;
+    color: $grey-text;
+}
+
 .send-block {
     height: 90px;
-    display: flex;
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
     align-items: center;
     border-top: 1px solid $grey-border;
     box-sizing: border-box;
@@ -67,18 +65,19 @@ textarea::placeholder {
     align-items: center;
 
     &__interlocutor {
-        width: calc(100% - 30px);
+        width: calc(100% - 300px);
         display: flex;
         align-items: center;
     }
 
-    &__menu-button {
-        background: none;
-        border: none;
-        margin: 0;
+    &__button-block {
+        display: flex;
+        width: 300px;
+        justify-content: end;
 
-        img {
-            height: 20px;
+        button {
+            margin: 0;
+            margin-left: 15px;
         }
     }
 }
@@ -86,8 +85,6 @@ textarea::placeholder {
 .message {
     &__history {
         height: calc(100% - 180px);
-        display: flex;
-        align-items: end;
         overflow: hidden;
 
         .history-list {
@@ -95,7 +92,7 @@ textarea::placeholder {
             padding: 0;
             list-style: none;
             height: 100%;
-            overflow-y: auto;
+            overflow-y: scroll;
 
             &__data-block {
                 color: #999;
@@ -122,6 +119,7 @@ textarea::placeholder {
                     grid-area: message;
                     margin: 0;
                     text-align: left;
+                    overflow-y: auto;
                 }
 
                 &__time {

@@ -27,16 +27,14 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 90vh;
+  height: 100%;
+  overflow: hidden;
 }
 
 #app {
   text-align: center;
   width: 100%;
-
-  .additional-links {
-    text-align: left;
-  }
 }
 
 .stasrt-page-main {
@@ -65,9 +63,6 @@ header {
   box-sizing: border-box;
 }
 
-a {
-  color: $bright-blue;
-}
 
 h1,
 h2 {
@@ -120,6 +115,28 @@ h2 {
   }
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px; 
+    background-color: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $dusty-blue;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 10px white;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    box-shadow:none ;
+}
+
+::-webkit-scrollbar-button:vertical:start:decrement, 
+::-webkit-scrollbar-button:vertical:end:increment,
+::-webkit-scrollbar-button:horizontal:start:decrement,
+::-webkit-scrollbar-button:horizontal:end:increment {
+    background: none;
+}
 
 /* - все ради пустой строки- */
 

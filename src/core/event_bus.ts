@@ -7,6 +7,7 @@ export class EventBus {
     }
   
     on(event: string, callback:Callback) {
+      
       if (!this.listeners[event]) {
         this.listeners[event] = [];
       }
@@ -24,7 +25,7 @@ export class EventBus {
       );
     }
   
-      emit(event: string, args?: Props) {
+      emit(event: string, args?: Props | Event) {
       if (!this.listeners[event]) {
         throw new Error(`Нет события: ${event}`);
       }
