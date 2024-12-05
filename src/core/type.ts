@@ -51,3 +51,4 @@ export interface SelectedChat {
 };
 
 export enum HttpStatus { OK = 200, NotFound = 400, ServerError = 500, Unauthorized = 401}
+
