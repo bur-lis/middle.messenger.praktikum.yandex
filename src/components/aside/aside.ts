@@ -6,7 +6,7 @@ import { Props } from '../../core/type.ts';
 import { Router } from '../../core/my_router';
 import { Button } from '../../components/button/button';
 import { AddChat } from './modules/add_chat.ts';
-import { PersonalPhoto } from '../personal_photo/personal_photo.ts';
+import PersonalPhoto from '../personal_photo/personal_photo.ts';
 import chats_controller from '../../controllers/chats-controller';
 import { connect } from '../../core/hos.ts';
 import { InputBlock } from '../input_block/input_block.ts';

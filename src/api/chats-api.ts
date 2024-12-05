@@ -21,6 +21,9 @@ class ChstApi extends BaseAPI {
     get_user(chat_id?: number) {
         return MyFetch.get('/chats/' + chat_id + '/users',);
     }
+    delete_user(data?: RequestData) {
+        return MyFetch.delete('/chats/users',{data:data});
+    }
 
     delete_chat(data?: RequestData) {
         return MyFetch.delete('/chats', { data: data })

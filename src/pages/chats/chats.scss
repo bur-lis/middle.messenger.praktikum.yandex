@@ -65,18 +65,19 @@
     align-items: center;
 
     &__interlocutor {
-        width: calc(100% - 30px);
+        width: calc(100% - 300px);
         display: flex;
         align-items: center;
     }
 
-    &__menu-button {
-        background: none;
-        border: none;
-        margin: 0;
+    &__button-block {
+        display: flex;
+        width: 300px;
+        justify-content: end;
 
-        img {
-            height: 20px;
+        button {
+            margin: 0;
+            margin-left: 15px;
         }
     }
 }
@@ -142,4 +143,3 @@
 }
 
 /* - все ради пустой строки- */
-

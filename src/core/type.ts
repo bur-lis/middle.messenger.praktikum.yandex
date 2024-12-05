@@ -12,7 +12,7 @@ type Primitives = string | boolean | number;
 
 export type HTTPMethod = (url: string, options?: Options | { timeout?: number }) => Promise<unknown>
 export interface Options { method?: string, data?: RequestData, timeout?: number }
-export type RequestData = Record<string, string | number | number[]> | FormData | XMLHttpRequestBodyInit;
+export type RequestData = Record<string, string | number | number[] | object[]> | FormData | XMLHttpRequestBodyInit;
 export interface Response {
     status: number,
     response: string,
@@ -50,3 +50,4 @@ export interface SelectedChat {
     users:User[]
 };
 
+export enum HttpStatus { OK = 200, NotFound = 400, ServerError = 500, Unauthorized = 401}

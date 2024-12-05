@@ -13,14 +13,18 @@ import { Textarea } from '../../components/textarea/textarea';
 
 class Chats extends Block {
     constructor(tag: string, props: Props) {
-        const message_menu_button = new Button({
-            img: {
-                src: '/delete.svg',
-                alt: 'Удалить чат'
-            },
+        const delete_chat_button = new Button({
+            label:'Удалить чат',
             class: 'message-header__menu-button',
             events: {
                 click: () => { chats_controller.delete_chat() }
+            }
+        })
+        const delete_user_button = new Button({
+            label:'Удалить собеседника',
+            class: 'message-header__menu-button',
+            events: {
+                click: () => { chats_controller.delete_user() }
             }
         })
 
@@ -59,7 +63,8 @@ class Chats extends Block {
             send_message_button,
             add_user_panel,
             aside,
-            message_menu_button,
+            delete_chat_button,
+            delete_user_button,
             attach_file_button,
             message_textarea
         });
@@ -70,7 +75,7 @@ class Chats extends Block {
             aside: this.props.aside,
             selected_chat: this.props.selected_chat,
             message: this.props.message,
-            message_menu_button: this.props.message_menu_button,
+            delete_chat_button: this.props.delete_chat_button,
             attach_file_button: this.props.attach_file_button,
             message_textarea: this.props.message_textarea,
             send_message_button: this.props.send_message_button

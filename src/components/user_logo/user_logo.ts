@@ -29,8 +29,6 @@ const avatar_img = new Img({
 
 class UserLogo extends Block {
   constructor(tag: string,props: Props) {
-
-
     super(tag, { ...props, avatar_input, avatar_img })
   }
 

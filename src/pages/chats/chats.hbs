@@ -8,7 +8,10 @@
                 <label
                     class="bright-blue-name message-header__interlocutor__display-name">{{selected_chat.title}}</label>
             </div>
-            {{{message_menu_button}}}
+            <div class="message-header__button-block">
+                {{#if selected_chat.companion}} {{{delete_user_button}}}{{/if}}
+                {{{delete_chat_button}}}
+                
         </header>
         {{#if selected_chat.companion}}
         <section class="message__history">
@@ -34,7 +37,7 @@
         </section>
         <form onsubmit="return false" class="send-block" id="send_message_form">
             {{{attach_file_button}}}
-                {{{message_textarea}}}
+            {{{message_textarea}}}
             {{{send_message_button}}}
         </form>
         {{else}}
@@ -49,4 +52,3 @@
     </main>
     {{/if}}
 </div>
-

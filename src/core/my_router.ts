@@ -1,5 +1,5 @@
 import { Block } from "./block";
-import { Props , User} from "./type";
+import { Props , User, HttpStatus} from "./type";
 import store from "./store";
 import { renderDom, isEqual } from "./utils";
 
@@ -83,7 +83,7 @@ export class Router {
         this.isLogin();
     }
     rederectToError(status: number) {
-        if (status != 401) {
+        if (status != HttpStatus.Unauthorized) {
             this._onRoute('/error')
             const props = {
                 code: status,
@@ -91,10 +91,10 @@ export class Router {
                 message: ''
             };
             switch (status) {
-                case 404:
+                case HttpStatus.NotFound:
                     props.title = 'Страница не найдена';
                     break;
-                case 500:
+                case HttpStatus.ServerError:
                     props.title = 'Ошибка обращения к сереверу';
                     props.message = 'Мы уже устраняем неисправность, попробуйте перезагрузить страницу через время.';
                     break;
@@ -136,10 +136,13 @@ export class Router {
     }
     isLogin() {
         const user = store.getState().user as User;
-        if (!user.login && !['/sign-up', '/', '/'].includes(window.location.pathname)) {
+        if (!user.login && !['/sign-up', '/',].includes(window.location.pathname)) {
             this.go('/')
         }
-        else { this._onRoute(window.location.pathname); }
+        else if (user.login && ['/sign-up', '/',].includes(window.location.pathname)) {
+            this.go('/messenger')
+        }
+        { this._onRoute(window.location.pathname); }
     }
 }
 

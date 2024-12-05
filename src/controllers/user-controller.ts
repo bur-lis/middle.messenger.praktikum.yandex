@@ -1,7 +1,7 @@
 import UserAPI from "../api/user-api";
 import { Router } from "../core/my_router";
 import { Block } from "../core/block";
-import { Response } from "../core/type";
+import { Response, HttpStatus } from "../core/type";
 import store from '../core/store';
 import { ValidateForm, GetJsonDataFromForm, NotificationMassage } from "../core/utils";
 
@@ -15,7 +15,7 @@ class CurrentUser {
             if (ValidateForm(profile_block)) {
                 const request_data = GetJsonDataFromForm('profile_form');
                 UserAPI.update_user(request_data).then((response: Response) => {
-                    if (response.status === 200) {
+                    if (response.status === HttpStatus.OK) {
 
                         NotificationMassage('Данные пользователя успешно изменены!')
                         const user = response.response;
@@ -38,7 +38,7 @@ class CurrentUser {
                 const request_data = new FormData();
                 request_data.append('avatar', file)
                 UserAPI.update_avatar(request_data).then((response: Response) => {
-                    if (response.status === 200) {
+                    if (response.status === HttpStatus.OK) {
                         NotificationMassage('Аватар пользователя успешно изменен!')
                     }
                     else router.rederectToError(response.status)
@@ -55,7 +55,7 @@ class CurrentUser {
             if (ValidateForm(change_password_block)) {
                 const request_data = GetJsonDataFromForm('change_password_form');
                 UserAPI.update_password(request_data).then((response: Response) => {
-                    if (response.status === 200) {
+                    if (response.status === HttpStatus.OK) {
                         NotificationMassage('Пароль успешно изменен!')
                         router.go('/settings');
                     }
