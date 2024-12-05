@@ -28,3 +28,5 @@ export default connect('div', PersonalPhoto,
                 alt: 'Аватар пользователя. Переход к редактированию профиля.'
             }
         }));
+
+        
