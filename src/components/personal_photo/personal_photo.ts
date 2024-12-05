@@ -29,4 +29,3 @@ export default connect('div', PersonalPhoto,
             }
         }));
 
-        
