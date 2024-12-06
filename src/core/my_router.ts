@@ -1,6 +1,6 @@
-import { Block } from "./block";
+import { Block } from "./block/block";
 import { Props , User, HttpStatus} from "./type";
-import store from "./store";
+import store from "./store/store";
 import { renderDom, isEqual } from "./utils";
 
 type Constructor<C = unknown, P = Props> = new (...args: P[]) => C

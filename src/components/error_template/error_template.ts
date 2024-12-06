@@ -1,6 +1,6 @@
 import './error_template.scss'
 
-import { Block } from '../../core/block.ts';
+import { Block } from '../../core/block/block.ts';
 import { Props } from '../../core/type.ts';
 import { Linck } from '../linck/linck.ts';
 import { Router } from '../../core/my_router.ts';

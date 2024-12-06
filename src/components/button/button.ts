@@ -1,7 +1,7 @@
 
 import './button.scss'
 
-import { Block } from '../../core/block.ts';
+import { Block } from '../../core/block/block.ts';
 import { Props } from '../../core/type.ts';
 import mu_button from "./button.hbs";
 

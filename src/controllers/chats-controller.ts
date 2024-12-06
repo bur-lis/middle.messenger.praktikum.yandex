@@ -2,7 +2,7 @@ import chats_api from "../api/chats-api"
 import { Router } from "../core/my_router";
 import { Response } from "../core/type";
 import messages_controller from "./messages-controller";
-import store from "../core/store";
+import store from "../core/store/store";
 import { Chat, SelectedChat, User, HttpStatus } from "../core/type";
 
 const router = new Router('#app');

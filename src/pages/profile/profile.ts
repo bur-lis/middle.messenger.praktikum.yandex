@@ -9,7 +9,7 @@ import { Input } from '../../components/input/input';
 import UserLogo from '../../components/user_logo/user_logo';
 import Aside from '../../components/aside/aside';
 
-import { Block } from '../../core/block';
+import { Block } from '../../core/block/block';
 import { Props } from '../../core/type';
 import current_user from '../../controllers/user-controller';
 import auth_controller from '../../controllers/auth_controller';

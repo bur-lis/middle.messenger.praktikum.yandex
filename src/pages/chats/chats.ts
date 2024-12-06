@@ -4,7 +4,7 @@ import { AddUser } from './moduls/add_user/add_user';
 import { Button } from '../../components/button/button';
 import Aside from '../../components/aside/aside';
 import { GetJsonDataFromForm } from '../../core/utils';
-import { Block } from '../../core/block';
+import { Block } from '../../core/block/block';
 import { Props } from '../../core/type';
 import { connect } from '../../core/hos';
 import chats_controller from '../../controllers/chats-controller';

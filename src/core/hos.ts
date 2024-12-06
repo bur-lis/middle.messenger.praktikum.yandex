@@ -1,6 +1,6 @@
-import { Block } from "./block";
+import { Block } from "./block/block";
 import { Props, Indexed } from "./type";
-import store, { StoreEvents } from "./store"
+import store, { StoreEvents } from "./store/store"
 
 export function connect(tag: string, Component: typeof Block, mapStateToProps: (state: Indexed) => Indexed) {
   return class extends Component {

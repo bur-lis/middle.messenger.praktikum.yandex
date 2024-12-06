@@ -2,7 +2,7 @@ import './authorization.scss'
 import authorization_template from "./authorization.hbs";
 import auth_controller from "../../controllers/auth_controller"
 
-import { Block } from '../../core/block';
+import { Block } from '../../core/block/block';
 import { Props } from '../../core/type';
 import { Router } from '../../core/my_router';
 

@@ -2,7 +2,9 @@
     "compilerOptions": {
         "target": "ES2020",
         "types": [
-            "node"
+            "node",
+            "mocha",
+            "chai"
         ],
         "moduleResolution": "node",
         "allowImportingTsExtensions": true,
@@ -15,7 +17,7 @@
         "noUnusedParameters": true,
         "sourceMap": true,
         "strictNullChecks": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
     },
     "include": [
         "src//*",
@@ -24,4 +26,3 @@
         "hendlbars_precompille.ts"
     ]
 }
-

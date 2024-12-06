@@ -8,7 +8,7 @@ import { Linck } from '../../components/linck/linck';
 import Aside from '../../components/aside/aside';
 import UserLogo from '../../components/user_logo/user_logo';
 
-import { Block } from '../../core/block';
+import { Block } from '../../core/block/block';
 import { Props } from '../../core/type';
 import change_password_template from "./change_password.hbs";
 import { Router } from '../../core/my_router';
