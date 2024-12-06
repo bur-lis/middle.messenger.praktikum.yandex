@@ -59,7 +59,7 @@ export class ChatsController {
         try {
             const selected_chat = store.getState().selected_chat as SelectedChat;
             const chat_id = selected_chat.id;
-            let users:number[] = [];
+            const users:number[] = [];
             selected_chat.users.forEach((user) => {if (user.id !== (store.getState().user as User).id) users.push(user.id) });
             const request_data = { chatId: chat_id, users: users };
             chats_api.delete_user(request_data).then((response: Response) => {

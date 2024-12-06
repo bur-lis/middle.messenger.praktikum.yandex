@@ -11,12 +11,12 @@ describe('Router', () => {
         }
     }
     global.window = Object.create(window);
-    // router.use('/', TestComponent)
-    // router.start();
-    // it('Переход на новую страницу', () => {
-    //     router.go('/')
-    //     expect(window.location.href).toBe('http://localhost/');
-    // });
+    router.use('/', TestComponent)
+    router.start();
+    it('Переход на новую страницу', () => {
+        router.go('/')
+        expect(window.location.href).toBe('http://localhost/');
+    });
 
     it('Проверка повторного создания роутера', () => {
         const double_router = new Router('#app');

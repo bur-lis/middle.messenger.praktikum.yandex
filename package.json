@@ -4,17 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "prepare": "husky install",
     "dev": "vite",
     "start": "vite build && vite preview --port 3000",
     "build": "vite build",
     "lint": "eslint ",
-    "test": "jest"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all test lint:all"
-    }
+    "test": "jest",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
