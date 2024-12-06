@@ -1,5 +1,5 @@
 import { WSEvents, WSService } from '../core/my_socket';
-import store from '../core/store/store';
+import store from '../core/store';
 import chats_controller from './chats-controller';
 
 import { User, Message, SelectedChat } from '../core/type';

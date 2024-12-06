@@ -2,7 +2,7 @@ import './profile.scss'
 import profile_template from "./profile.hbs";
 
 import { Validate } from '../../core/utils'
-import { Router } from '../../core/my_router';
+import { Router } from '../../core/router/my_router';
 import { InputBlock } from '../../components/input_block/input_block';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';

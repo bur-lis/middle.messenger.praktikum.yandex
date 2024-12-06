@@ -1,6 +1,6 @@
 import auth_api from "../api/auth-api"
-import store from "../core/store/store";
-import { Router } from "../core/my_router";
+import store from "../core/store";
+import { Router } from "../core/router/my_router";
 import { Block } from "../core/block/block";
 import { Response, HttpStatus } from "../core/type";
 import loading from "../components/loading/loading";

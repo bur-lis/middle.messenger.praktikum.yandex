@@ -1,4 +1,4 @@
-import MyFetch from '../core/my_fetch';
+import MyFetch from '../core/fetch/my_fetch';
 import { BaseAPI } from './base-api';
 import { RequestData } from "../core/type"
 

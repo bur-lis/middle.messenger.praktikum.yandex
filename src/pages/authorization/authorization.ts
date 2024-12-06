@@ -4,7 +4,7 @@ import auth_controller from "../../controllers/auth_controller"
 
 import { Block } from '../../core/block/block';
 import { Props } from '../../core/type';
-import { Router } from '../../core/my_router';
+import { Router } from '../../core/router/my_router';
 
 import { InputBlock } from '../../components/input_block/input_block';
 import { Input } from '../../components/input/input';

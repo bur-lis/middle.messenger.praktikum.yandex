@@ -1,5 +1,5 @@
-import { Indexed } from "../type";
-import { EventBus } from "../event_bus";
+import { Indexed } from "./type";
+import { EventBus } from "./event_bus";
 
 export enum StoreEvents {
     Updated = 'updated',

@@ -1,6 +1,6 @@
 
 import { Block } from './block/block';
-import store from './store/store';
+import store from './store';
 
 export function renderDom(query: string, block: Block) {
     const root = document.querySelector(query) ? document.querySelector(query) : document.body;
