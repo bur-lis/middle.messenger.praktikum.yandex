@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "prepare": "husky install",
     "dev": "vite",
     "start": "vite build && vite preview --port 3000",
     "build": "vite build",
@@ -12,8 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm-run-all test lint:all",
-      "pre-push": "npm run other command"
+      "pre-commit": "npm-run-all test lint:all"
     }
   },
   "devDependencies": {
@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@types/uuid": "^10.0.0",
+    "npm-run-all": "^4.1.5",
     "uuid": "^10.0.0",
     "vite-plugin-handlebars": "^2.0.0"
   },

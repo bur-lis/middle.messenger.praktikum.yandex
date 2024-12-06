@@ -21,3 +21,4 @@ describe('Block', () => {
         expect(comp).not.toBeNull();
     });
 });
+
