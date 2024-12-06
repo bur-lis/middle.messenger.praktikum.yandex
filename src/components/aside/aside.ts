@@ -1,9 +1,9 @@
 import './aside.scss'
 import aside from "./aside.hbs";
 
-import { Block } from '../../core/block.ts';
+import { Block } from '../../core/block/block.ts';
 import { Props } from '../../core/type.ts';
-import { Router } from '../../core/my_router';
+import { Router } from '../../core/router/my_router.ts';
 import { Button } from '../../components/button/button';
 import { AddChat } from './modules/add_chat.ts';
 import PersonalPhoto from '../personal_photo/personal_photo.ts';

@@ -1,7 +1,7 @@
 
 import './personal_photo.scss'
 
-import { Block } from '../../core/block.ts';
+import { Block } from '../../core/block/block.ts';
 import { Props } from '../../core/type.ts';
 import { connect } from '../../core/hos.ts';
 import personal_photo from "./personal_photo.hbs";

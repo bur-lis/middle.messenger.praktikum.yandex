@@ -1,6 +1,6 @@
 import UserAPI from "../api/user-api";
-import { Router } from "../core/my_router";
-import { Block } from "../core/block";
+import { Router } from "../core/router/my_router";
+import { Block } from "../core/block/block";
 import { Response, HttpStatus } from "../core/type";
 import store from '../core/store';
 import { ValidateForm, GetJsonDataFromForm, NotificationMassage } from "../core/utils";

@@ -1,6 +1,6 @@
 import './add_chat.scss'
 
-import { Block } from '../../../core/block.js';
+import { Block } from '../../../core/block/block.js';
 import { Props } from '../../../core/type.js';
 import add_chat_template from "./add_chat.hbs";
 

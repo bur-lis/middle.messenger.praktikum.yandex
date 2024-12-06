@@ -1,6 +1,6 @@
 import add_user_template from "./add_user.hbs";
 
-import { Block } from '../../../../core/block';
+import { Block } from '../../../../core/block/block';
 import { Props } from '../../../../core/type';
 import { Button } from '../../../../components/button/button';
 import { InputBlock } from '../../../../components/input_block/input_block';

@@ -1,5 +1,5 @@
-import { Props, PropsValue, Children } from './type.js';
-import { EventBus } from './event_bus.js';
+import { Props, PropsValue, Children } from '../type.ts';
+import { EventBus } from '../event_bus.ts';
 import { v4 as makeUUID } from 'uuid';
 
 export class Block {

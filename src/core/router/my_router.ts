@@ -1,7 +1,7 @@
-import { Block } from "./block";
-import { Props , User, HttpStatus} from "./type";
-import store from "./store";
-import { renderDom, isEqual } from "./utils";
+import { Block } from "../block/block";
+import { Props , User, HttpStatus} from "../type";
+import store from "../store";
+import { renderDom, isEqual } from "../utils";
 
 type Constructor<C = unknown, P = Props> = new (...args: P[]) => C
 

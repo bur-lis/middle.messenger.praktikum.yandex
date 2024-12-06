@@ -11,12 +11,11 @@ You can view it by following the [link](https://www.figma.com/design/RC8oqsy8WuM
 
 The project currently consists of several main pages. Below are links to the git folders with their implementation:
 
-* [Start page](https://github.com/bur-lis/middle.messenger.praktikum.yandex/blob/sprint_1/index.html)
-* [User authorization](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/authorization)
-* [User registration](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/register)
-* [Selected chat page](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/chat)
-* [Edit profile](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/profile)
-* [Change password](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_2/src/pages/change_password)
+* [User authorization](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_4/src/pages/authorization)
+* [User registration](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_4/src/pages/register)
+* [Selected chat page](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_4/src/pages/chat)
+* [Edit profile](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_4/src/pages/profile)
+* [Change password](https://github.com/bur-lis/middle.messenger.praktikum.yandex/tree/sprint_4/src/pages/change_password)
 
 And the result posted on Nelifay:
 * [User authorization](https://gleaming-pixie-8d9ada.netlify.app)
@@ -32,6 +31,9 @@ npm run dev
 
 // builds and launches the project
 npm run start
+
+//to run tests
+npm run test
 ```
 
 ## Netlify
@@ -39,3 +41,4 @@ npm run start
 
 The project is deployed on Netlify at the [link](https://app.netlify.com/sites/gleaming-pixie-8d9ada/overview)
 
+ 

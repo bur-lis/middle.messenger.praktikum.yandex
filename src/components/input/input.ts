@@ -1,6 +1,6 @@
 import './input.scss'
 
-import { Block } from '../../core/block.ts';
+import { Block } from '../../core/block/block.ts';
 import { Props } from '../../core/type.ts';
 import input_template from "./input.hbs";
 

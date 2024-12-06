@@ -1,4 +1,4 @@
-import { Block } from "./block";
+import { Block } from "./block/block";
 import { Props, Indexed } from "./type";
 import store, { StoreEvents } from "./store"
 

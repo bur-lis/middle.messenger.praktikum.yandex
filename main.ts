@@ -1,5 +1,5 @@
 import './style.scss'
-import { Router } from "./src/core/my_router"
+import { Router } from './src/core/router/my_router'
 import { Register } from "./src/pages/register/register"
 import { Authorization } from "./src/pages/authorization/authorization"
 import Chats from "./src/pages/chats/chats"

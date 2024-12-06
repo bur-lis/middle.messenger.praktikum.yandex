@@ -1,7 +1,7 @@
 
 import './linck.scss'
 
-import { Block } from '../../core/block.ts';
+import { Block } from '../../core/block/block.ts';
 import { Props } from '../../core/type.ts';
 import mu_linck from "./linck.hbs";
 

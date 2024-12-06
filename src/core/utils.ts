@@ -1,5 +1,5 @@
 
-import { Block } from './block';
+import { Block } from './block/block';
 import store from './store';
 
 export function renderDom(query: string, block: Block) {

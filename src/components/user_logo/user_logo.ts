@@ -1,5 +1,5 @@
 import './user_logo.scss'
-import { Block } from '../../core/block.ts';
+import { Block } from '../../core/block/block.ts';
 import { Props, PropsObject, PropsValue } from '../../core/type.ts';
 import { default as user_logo_template } from "./user_logo.hbs";
 import { connect } from '../../core/hos.ts';
